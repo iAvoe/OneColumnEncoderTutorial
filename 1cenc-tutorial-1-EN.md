@@ -42,7 +42,7 @@ Running 1cenc requires at least Windows 10. Version 1809 / 21H2 (LTSC) or higher
 
 #### Video Processing Tool Placement
 
-The .exe tools from `x86|x64-upstreams-encoders.7z` can be placed anywhere. However, 1cenc has an auto-import feature that searches the following locations, making subsequent import operations easier:
+The .exe tools from `x86|x64-upstreams-encoders.7z` can be placed anywhere. However, 1cenc has an auto-import feature that searches the following locations, making subsequent import more plesant:
 
 >     .
 >     ├── ①

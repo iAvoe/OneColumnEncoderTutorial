@@ -1,6 +1,6 @@
 # 1cenc 基本流程使用教程
 
-本文档面向入门群体，用于说明从下载到开始压制视频的完整流程顺序；本文的操作流程会写的非常详细，且会忽略可能与压制性能相关的使用建议。
+本文档面向入门群体，用于说明从下载到开始压制视频的完整流程顺序；本文的操作流程会写的偏详细，且会忽略可能与压制性能相关的使用建议。
 
 ## 如何反馈问题
 
@@ -21,7 +21,7 @@
 
 - `1cenc` 文件夹：集成的工具、队列列表数据、压制运行日志、设置等数据
 - `OneColumnEncoder.exe`：主程序
-- `OneColumnEncoder.pdb`：除错信息（反馈问题时上传）
+- `OneColumnEncoder.pdb`：崩溃除错信息（反馈问题时上传）
 - `x64-upstreams-encoders.7z`：ffmpeg、ffprobe、x264 等**视频处理工具**的压缩包
     - 这些工具体积太大（触发 GitHub 限制），因此需要额外进行解压
     - 32bit 操作系统则为 `x86-upstreams-encoders.7z`
@@ -33,7 +33,7 @@
 - `x265[...].exe`：HEVC 视频编码器
 - `SvtAv1EncApp[...].exe`：AV1 视频编码器
 
-> 附带所有工具的 1cenc 会超过 350MB，其中 350MB 是因为 FFmpeg 和内置 .net 9.0 的依赖所增肥，轻量安装可询问 AI 来“自行”编译
+> 附带所有工具的 1cenc 会超过 350MB，主因是 FFmpeg 和内置 .net 9.0 的依赖所增，轻量安装可询问 AI 来“自行”编译
 > 工具详细说明见视频压制相关工具下载教程：[NazoRip](https://nazorip.site/archives/1482)；[GitHub](https://github.com/iAvoe/encoding-tools-download-tutorial)
 
 **其它工具**
@@ -42,7 +42,7 @@
 
 #### 视频处理工具放置
 
-`x86|x64-upstreams-encoders.7z` 中的 .exe 工具可以放在任意位置，但 1cenc 拥有自动导入功能，且会搜索以下范围，让后续的导入操作更轻松愉悦：
+`x86|x64-upstreams-encoders.7z` 中的 .exe 工具可以放在任意位置，但 1cenc 拥有自动导入功能，且会搜索以下范围，让后续的导入操作更轻松：
 
 >     .
 >     ├── ①

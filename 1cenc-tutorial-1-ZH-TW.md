@@ -1,6 +1,6 @@
 # 1cenc 基本流程使用教學
 
-本文件面向入門群體，用於說明從下載到開始壓製影片的完整流程順序；本文的操作流程會寫的非常詳細，且會忽略可能與壓制性能相關的使用建議。
+本文件面向入門群體，用於說明從下載到開始壓製影片的完整流程順序；本文的操作流程會寫的偏詳細，且會忽略可能與壓制性能相關的使用建議。
 
 ## 如何回饋問題
 
@@ -21,7 +21,7 @@
 
 - `1cenc` 文件夾：集成的工具、隊列列表數據、壓制運行日誌、設置等數據
 - `OneColumnEncoder.exe`：主程式
-- `OneColumnEncoder.pdb`：除錯資訊（回饋問題時上傳）
+- `OneColumnEncoder.pdb`：崩潰除錯資訊（回饋問題時上傳）
 - `x64-upstreams-encoders.7z`：ffmpeg、ffprobe、x264 等**影像處理工具**的壓縮包
     - 這些工具體積太大（觸發 GitHub 限制），因此需要額外進行解壓
     - 32bit 操作系統則為 `x86-upstreams-encoders.7z`
@@ -33,7 +33,7 @@
 - `x265[...].exe`：HEVC 影片編碼器
 - `SvtAv1EncApp[...].exe`：AV1 影片編碼器
 
-> 附帶所有工具的 1cenc 會超過 350MB，其中 350MB 是因為 FFmpeg 和內建 .net 9.0 的依賴所增肥，輕量安裝可詢問 AI 來“自行”編譯
+> 附帶所有工具的 1cenc 會超過 350MB，主因是 FFmpeg 和內建 .net 9.0 的依賴所增，輕量安裝可詢問 AI 來“自行”編譯
 > 工具詳細說明見影片壓製相關工具下載教學：[NazoRip](https://nazorip.site/archives/1482)；[GitHub](https://github.com/iAvoe/encoding-tools-download-tutorial)
 
 **其它工具**
@@ -42,7 +42,7 @@
 
 #### 影像處理工具放置
 
-`x86|x64-upstreams-encoders.7z` 中的 .exe 工具可以放在任意位置，但 1cenc 擁有自動導入功能，且會搜索以下範圍，讓後續的導入操作更輕鬆愉悅：
+`x86|x64-upstreams-encoders.7z` 中的 .exe 工具可以放在任意位置，但 1cenc 擁有自動導入功能，且會搜索以下範圍，讓後續的導入操作更輕鬆：
 
 >     .
 >     ├── ①
