@@ -95,13 +95,13 @@
 - 光标悬浮一段时间后的工具提示
 - 点击选择工具卡片后，在下方的提示文本中
 
-<img src="./img-cn/6-Hover-Hint.png" alt="悬浮提示" width=350 />
+<img src="./img-cn/6-Hover-Hint.png" alt="悬浮提示" width=400 />
 
 #### 标题、按钮
 
 **标题**说明了操作步骤顺序，步骤说明，以及包含了右侧的展开/折叠按钮。
 
-<img src="./img-cn/7-Main-Page-Title-Buttons.png" alt="标题和按钮" width=550 />
+<img src="./img-cn/7-Main-Page-Title-Buttons.png" alt="标题和按钮" width=600 />
 
 **按钮**会执行一些操作或打开窗口，但若未满足运行前提时，按钮会被禁用
 

@@ -4,7 +4,7 @@ This document is aimed at beginners, explaining the complete workflow from downl
 
 ## How to Report Issues
 
-You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip project comments section](https://nazorip.site/archives/1593/). Before reporting, please confirm that the issue is indeed caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
+You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please confirm that the issue is indeed caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
 
 ## Download and "Installation"
 
@@ -95,13 +95,13 @@ Since paths can be very long, tool cards provide two ways to display the full pa
 - Tooltip that appears after hovering the cursor for a while
 - In the hint text below after clicking to select the tool card
 
-<img src="./img-cn/6-Hover-Hint.png" alt="Hover hint" width=350 />
+<img src="./img-cn/6-Hover-Hint.png" alt="Hover hint" width=400 />
 
 #### Titles and Buttons
 
 **Titles** indicate the operation step sequence and instructions, and include the expand/collapse button on the right.
 
-<img src="./img-cn/7-Main-Page-Title-Buttons.png" alt="Titles and buttons" width=550 />
+<img src="./img-cn/7-Main-Page-Title-Buttons.png" alt="Titles and buttons" width=600 />
 
 **Buttons** perform operations or open windows, but are disabled when prerequisites are not met.
 

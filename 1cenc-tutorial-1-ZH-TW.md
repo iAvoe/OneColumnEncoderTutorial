@@ -95,13 +95,13 @@
 - 游標懸浮一段時間後的工具提示
 - 點擊選擇工具卡片後，在下方的提示文本中
 
-<img src="./img-cn/6-Hover-Hint.png" alt="懸浮提示" width=350 />
+<img src="./img-cn/6-Hover-Hint.png" alt="懸浮提示" width=400 />
 
 #### 標題、按鈕
 
 **標題**說明了操作步驟順序，步驟說明，以及包含了右側的展開/摺疊按鈕。
 
-<img src="./img-cn/7-Main-Page-Title-Buttons.png" alt="標題和按鈕" width=550 />
+<img src="./img-cn/7-Main-Page-Title-Buttons.png" alt="標題和按鈕" width=600 />
 
 **按鈕**會執行一些操作或打開窗口，但若未滿足運行前提時，按鈕會被禁用
 
