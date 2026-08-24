@@ -16,7 +16,7 @@ TODO
 
 ## i18n:
 
-- ✘ English (Texts ready, but screenshots should be retaken in English)
+- !! English (Texts ready, but screenshots should be retaken in English)
 - ✔ 中文简体
 - ✔ 中文繁體
 - ✘ Français
