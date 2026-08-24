@@ -326,6 +326,6 @@ After confirming "Start Sampling", a debug window will pop up, but this time no 
 - Blu-ray chapter import
 - Video source queue mode
 - Video source concat mode
-- Video source repart mode (basic splitting, meat platter handling, merge platter handling)
+- Video source repart mode (basic splitting, over-segmented BD repartition, conjoined BD repartition)
 - Basic AviSynth and VapourSynth filter processing with queue, concat, and repart mode variations
 - Multi-NUMA-node multi-instance strategies (title PID numbers, source folder splitting, queue splitting)
