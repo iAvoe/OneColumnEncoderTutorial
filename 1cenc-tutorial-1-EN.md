@@ -42,7 +42,7 @@ Running 1cenc requires at least Windows 10. Version 1809 / 21H2 (LTSC) or higher
 
 #### Video Processing Tool Placement
 
-The .exe tools from `x86|x64-upstreams-encoders.7z` can be placed anywhere. However, 1cenc has an auto-import feature that searches the following locations, making subsequent import more plesant:
+The .exe tools from `x86|x64-upstreams-encoders.7z` can be placed anywhere. However, 1cenc has an auto-import feature that searches the following locations, which makes it smoother:
 
 >     .
 >     ├── ①
@@ -82,9 +82,9 @@ Since VapourSynth and SVFI are system-installed software, 1cenc's auto-import se
 
 ### First Launch — Main Interface Overview
 
-The main interface of 1cenc consists primarily of **titles**, **checklist**, **cards**, and **buttons**. Tool cards may select or open windows when clicked, depending on their function.
+The main interface of 1cenc consists primarily of **titles**, **checklist**, **ItmeCards**, and **buttons**. Tool cards may select or open windows when clicked, depending on their function.
 
-#### Tool Cards
+#### Tool ItemCards
 
 The main building blocks of the interface. Composed of black borders, black text, and a light gray background. They support expand/collapse, hover highlight, selection, and error state display. Once familiar, collapsed state makes operations more convenient.
 - If a tool shows an abnormal state (red border), re-import the tool
@@ -121,7 +121,7 @@ Various check items, including whether tools are selected, conditions for unlock
 - Warning — yellow text, double exclamation icon: may cause abnormal encoding results, but does not disable the "Start Encoding" button
 - Error — red text, cross icon: base conditions not met or encoding cannot start; disables the "Start Encoding" button
 
-#### Video Source Card and Encoding Config Card
+#### Video Source ItemCard and Encoding Config ItemCard
 
 These cards have different functions, so their appearance differs from the default white-background black-text style. Video source cards typically open a file selection window when clicked; encoding config cards typically open a configuration window.
 
