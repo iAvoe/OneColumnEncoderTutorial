@@ -86,7 +86,8 @@ The main interface of 1cenc consists primarily of **titles**, **checklist**, **I
 
 #### Tool ItemCards
 
-The main building blocks of the interface. Composed of black borders, black text, and a light gray background. They support expand/collapse, hover highlight, selection, and error state display. Once familiar, collapsed state makes operations more convenient.
+The main building blocks of the interface. Composed of black borders, black text, and a light gray background. They support expand/collapse, hover highlight, selection, and error state display.
+- Once familiar, collapsed state makes UI simpler to use
 - If a tool shows an abnormal state (red border), re-import the tool
 
 <img src="./img-cn/5-Tool-ItemCard.png" alt="Tool card" width=1000 />
@@ -105,7 +106,7 @@ Since paths can be very long, tool cards provide two ways to display the full pa
 
 **Buttons** perform operations or open windows, but are disabled when prerequisites are not met.
 
-> Note: "3. Select dependency file" is for AvsToPipeMod's AviSynth.dll dependency. Ignore if not needed.
+> Note: "3. Select dependency file" is for AvsToPipeMod's AviSynth.dll dependency, ignorable.
 
 #### Checklist
 
@@ -129,9 +130,9 @@ These cards have different functions, so their appearance differs from the defau
 
 **Video Source Card Functions:**
 - **Video Source**: select a single video source
-- **Video Queue**: select multiple video sources or Blu-ray playlist (PLAYLIST) folders
+- **Video Queue**: select multiple video sources or Blu-ray PLAYLIST folders
 - **Video Source Concat**: select multiple video sources, output a concatenated video
-- **Video Source Repart**: select a video source folder (multiple sources) or Blu-ray playlist (PLAYLIST) folder, specify split points, output multiple split or merged-then-split videos (can be simply understood as splitting)
+- **Video Source Repart**: select a video source folder (multiple sources) or Blu-ray PLAYLIST folder, specify split points, output multiple split or merged-then-split videos (can be simply understood as splitting)
 
 ---
 
