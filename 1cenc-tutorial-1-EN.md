@@ -82,7 +82,7 @@ If missed, you can import manually or enable "Run auto-import on next open" in s
 
 ### First Launch — Main Interface Overview
 
-The main interface consists of **titles**, **checklists**, **ItemCards**, and **buttons**. Tool cards select items or open windows depending on their function.
+The main interface consists of **titles**, **checklists**, **ItemCards**, and **buttons**. Tool ItemCards select items or open windows depending on their function.
 
 #### Tool ItemCards
 
@@ -92,7 +92,7 @@ Interface building blocks featuring black borders, black text, and light gray ba
 
 <img src="./img-en/5-Tool-ItemCard.png" alt="Tool card" width=1000 />
 
-To handle long paths, tool cards provide two display methods:
+To handle long paths, tool ItemCards provide two display methods:
 - A tooltip appearing on hover
 - Hint text displayed below upon selection
 
@@ -117,10 +117,10 @@ Checks tool selection, encoding unlock conditions, and potential video source is
 <img src="./img-en/8-Checklist.png" alt="Checklist" width=700 />
 
 **4 Checklist Item States:**
-- Not checked — black text, closed-eye icon: the check item is not relevant to the current workflow and is skipped
-- Passed — green text, checkmark icon: normal or conditions met
-- Warning — yellow text, double exclamation icon: may cause abnormal encoding results, but does not disable the "Start Encoding" button
-- Error — red text, cross icon: base conditions not met or encoding cannot start; disables the "Start Encoding" button
+- **Not checked** — black text, closed-eye icon: the check item is not relevant to the current workflow and is skipped
+- **Passed** — green text, checkmark icon: normal or conditions met
+- **Warning** — yellow text, double exclamation icon: may cause abnormal encoding results, but does not disable the "Start Encoding" button
+- **Error** — red text, cross icon: base conditions not met or encoding cannot start; disables the "Start Encoding" button
 
 #### Video Source ItemCard and Encoding Config ItemCard
 
