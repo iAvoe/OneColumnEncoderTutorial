@@ -1,5 +1,8 @@
 # OneColumnEncoder Tutorial
 
+The tutorials for operating OneColumnEncoder. | 1cenc 压制工具教程。
+The screenshot images in tutorial may have differ from latest build, which is normal. | 教程中的截图画面或与最新版软件有所不同，这是正常现象。
+
 ## Basics | 基础
 
 Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础流程教程，使能快速上手。
