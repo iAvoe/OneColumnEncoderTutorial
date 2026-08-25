@@ -96,13 +96,13 @@ Since paths can be very long, tool cards provide two ways to display the full pa
 - Tooltip that appears after hovering the cursor for a while
 - In the hint text below after clicking to select the tool card
 
-<img src="./img-cn/6-Hover-Hint.png" alt="Hover hint" width=400 />
+<img src="./img-en/6-Hover-Hint.png" alt="Hover hint" width=400 />
 
 #### Titles and Buttons
 
 **Titles** indicate the operation step sequence and instructions, and include the expand/collapse button on the right.
 
-<img src="./img-cn/7-Main-Page-Title-Buttons.png" alt="Titles and buttons" width=600 />
+<img src="./img-en/7-Main-Page-Title-Buttons.png" alt="Titles and buttons" width=600 />
 
 **Buttons** perform operations or open windows, but are disabled when prerequisites are not met.
 
@@ -114,7 +114,7 @@ Various check items, including whether tools are selected, conditions for unlock
 - The checklist also supports collapse state
 - Click list items to view details
 
-<img src="./img-cn/8-Checklist.png" alt="Checklist" width=700 />
+<img src="./img-en/8-Checklist.png" alt="Checklist" width=700 />
 
 **4 Checklist Item States:**
 - Not checked — black text, closed-eye icon: the check item is not relevant to the current workflow and is skipped
@@ -126,7 +126,7 @@ Various check items, including whether tools are selected, conditions for unlock
 
 These cards have different functions, so their appearance differs from the default white-background black-text style. Video source cards typically open a file selection window when clicked; encoding config cards typically open a configuration window.
 
-<img src="./img-cn/9-Source-And-Config-ItemCards.png" alt="Video source and config cards" width=1300 />
+<img src="./img-en/9-Source-And-Config-ItemCards.png" alt="Video source and config cards" width=1300 />
 
 **Video Source Card Functions:**
 - **Video Source**: select a single video source
@@ -140,27 +140,27 @@ These cards have different functions, so their appearance differs from the defau
 
 The settings page is the slowest window to open in 1cenc — due to font settings loading.
 
-<img src="./img-cn/10-Settings.png" alt="Settings" width=500 />
+<img src="./img-en/10-Settings.png" alt="Settings" width=500 />
 
 #### Defaults and Recommended Values
 
-**File Overwrite Confirmation — Cooldown MB Divisor**
+**Overwrite Handling — Cooldown MB Divisor**
 - When a file to be overwritten is detected, calculates a cooldown duration based on the file size
 - Recommended to keep default to prevent large files from being easily overwritten; minimum is 1
 
-**Encoding Log TXT**
-- Saves runtime logs from the selected upstream program (ffmpeg, VapourSynth, ...) and downstream program (x264, x265, SVT-AV1) to files during encoding tasks
-- Recommended to enable for troubleshooting; the default file count limit is based on common anime episode counts (i.e., queue length)
+**Encoding Log TXTs**
+- Saves runtime logs from the selected upstream program (ffmpeg, VapourSynth, ...) and downstream program (x264, x265, SVT-AV1) to files
+- Recommended to enable for troubleshooting; the default number is based on common TV Show episode counts (i.e., queue length)
 
-**Auto Mux Switch**
-- Muxes the encoded video stream into `.mkv` format
-- Since x265 does not support auto mux (only exports `.hevc`) and causes loss of frame rate and other metadata, it is recommended to enable this for x265
-- x264 muxes to `.mp4`, SVT-AV1 muxes to lightweight `.ivf`; these formats have audio compatibility limitations, so disabling auto mux disables the audio processing mechanism
+**Auto Muxing**
+- Multiplexes the encoded video stream into `.mkv` container format
+- Since x265 comes without this capability (only exports `.hevc`) and may not keep frame rate metadata without parameter configuration, is recommended to keep x265 enabled
+- x264 muxes to `.mp4`, SVT-AV1 muxes to lightweight `.ivf`; these formats have audio compatibility limitations, so disabling auto mux also disables the audio processing mechanism
 
-**Auto Mux — Audio Processing**
-- Due to `.mkv`'s good compatibility and support by Adobe editing software, **single file** and **queue mode** recommend copying the audio stream directly to the muxed output
-- **Concat mode** and **repart mode** involve audio stream editing; some audio streams may not be supported or have poor support, so the default is set to re-encode
-- Although re-encoding supports Opus format, the default is intentionally set to AAC for compatibility
+**Auto Muxing — Audio Processing**
+- Due to `.mkv`'s good compatibility and support by Adobe editing software, **single file** and **queue mode** are defaults to copy mode for best quality and fastest processing
+- **Concat mode** and **repart mode** involve audio stream editing; some audio streams may not support, or have limited support, so the default is set to re-encode
+- Although re-encoding has Opus setting, the default is intentionally set to AAC due to its wider compatibility
 
 ---
 
