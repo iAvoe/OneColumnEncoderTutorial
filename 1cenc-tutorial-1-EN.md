@@ -11,7 +11,7 @@ You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEnco
 1cenc requires Windows 10 version 1607 minimum; version 1809 / 21H2 (LTSC) or higher is recommended
 - 64-bit OS: download `1cenc-win-x64.7z`
 - 32-bit OS: download `1cenc-win-x86.7z`
-- The 32-bit version is not recommended unless you are willing to tinker
+- The 32-bit version is not recommended for general use
 
 > Some bundled tools lack 32-bit support, resulting in limited functionality.
 
@@ -70,47 +70,47 @@ Double-click `1cenc.exe` to open. On first launch, click Confirm to run auto-imp
 
 <img src="./img-en/2-Auto-Import.png" alt="Auto-import prompt" width=400 />
 
-If you clicked wrong or missed it, you can manually import, or check "Run auto-import on next open" in the settings page.
+If missed, you can import manually or enable "Run auto-import on next open" in settings.
 
 <img src="./img-en/3-Rerun-Auto-Import.png" alt="Re-run auto-import" width=1000 />
 
 > If you want to open 1cenc.exe from elsewhere, you can create a shortcut or Start Menu entry.
 
-Since VapourSynth and SVFI are system-installed software, 1cenc's auto-import search will attempt to find and import them. The image below shows auto-import importing 4 extracted tools along with 2 installed tools simultaneously.
+1cenc auto-search will also attempt to locate system-installed VapourSynth and SVFI. The image below shows auto-import capturing 4 extracted and 2 installed tools simultaneously.
 
 <img src="./img-en/4-Import-Result-And-Click-Select.png" alt="Import result" width=550 />
 
 ### First Launch — Main Interface Overview
 
-The main interface of 1cenc consists primarily of **titles**, **checklist**, **ItemCards**, and **buttons**. Tool cards may select or open windows when clicked, depending on their function.
+The main interface consists of **titles**, **checklists**, **ItemCards**, and **buttons**. Tool cards select items or open windows depending on their function.
 
 #### Tool ItemCards
 
-The main building blocks of the interface. Composed of black borders, black text, and a light gray background. They support expand/collapse, hover highlight, selection, and error state display.
+Interface building blocks featuring black borders, black text, and light gray backgrounds. They support collapsing, hovering, selection, and error states.
 - Once familiar, collapsed state makes UI simpler to use
 - If a tool shows an abnormal state (red border), re-import the tool
 
 <img src="./img-en/5-Tool-ItemCard.png" alt="Tool card" width=1000 />
 
-Since paths can be very long, tool cards provide two ways to display the full path:
-- Tooltip that appears after hovering the cursor for a while
-- In the hint text below after clicking to select the tool card
+To handle long paths, tool cards provide two display methods:
+- A tooltip appearing on hover
+- Hint text displayed below upon selection
 
 <img src="./img-en/6-Hover-Hint.png" alt="Hover hint" width=400 />
 
 #### Titles and Buttons
 
-**Titles** indicate the operation step sequence and instructions, and include the expand/collapse button on the right.
+**Titles** show step sequences and instructions, including an expand/collapse button on the right.
 
 <img src="./img-en/7-Main-Page-Title-Buttons.png" alt="Titles and buttons" width=600 />
 
-**Buttons** perform operations or open windows, but are disabled when prerequisites are not met.
+**Buttons** execute actions or open windows, disabling automatically if prerequisites fail.
 
 > Note: "3. Select dependency file" is for AvsToPipeMod's AviSynth.dll dependency, which can be ignored.
 
 #### Checklist
 
-Various check items, including whether tools are selected, conditions for unlocking the "Start Encoding" button, and potential issues with the video source.
+Checks tool selection, encoding unlock conditions, and potential video source issues.
 - The checklist also supports collapse state
 - Click list items to view details
 
@@ -124,7 +124,7 @@ Various check items, including whether tools are selected, conditions for unlock
 
 #### Video Source ItemCard and Encoding Config ItemCard
 
-These cards have different functions, so their appearance differs from the default white-background black-text style. Video source cards typically open a file selection window when clicked; encoding config cards typically open a configuration window.
+These cards differ visually from the default white-background style due to their unique functions. Video source cards typically open a file selection window when clicked; encoding config cards typically open a configuration window.
 
 <img src="./img-en/9-Source-And-Config-ItemCards.png" alt="Video source and config cards" width=1300 />
 
@@ -145,15 +145,15 @@ The settings page is the slowest window to open in 1cenc — due to font setting
 #### Defaults and Recommended Values
 
 **Overwrite Handling — Cooldown MB Divisor**
-- When a file to be overwritten is detected, calculates a cooldown duration based on the file size
+- Calculates an overwrite cooldown duration based on file size.
 - Recommended to keep default to prevent large files from being easily overwritten; minimum is 1
 
 **Encoding Log TXTs**
-- Saves runtime logs from the selected upstream program (ffmpeg, VapourSynth, ...) and downstream program (x264, x265, SVT-AV1) to files
+- Saves runtime logs from upstream (FFmpeg, VapourSynth) and downstream (x264, x265, SVT-AV1) programs to files.
 - Recommended to enable for troubleshooting; the default number is based on common TV Show episode counts (i.e., queue length)
 
 **Auto Muxing**
-- Multiplexes the encoded video stream into `.mkv` container format
+- Multiplexes encoded video streams into `.mkv` containers.
 - Since x265 comes without this capability (only exports `.hevc`) and may not keep frame rate metadata without parameter configuration, so it is recommended to keep x265 enabled
 - x264 muxes to `.mp4`, SVT-AV1 muxes to lightweight `.ivf`; these formats have audio compatibility limitations, so disabling auto mux also disables the audio processing mechanism
 
@@ -169,39 +169,39 @@ The settings page is the slowest window to open in 1cenc — due to font setting
 1. Select FFmpeg
 2. Select x264
 3. Select a video source
-    - Each time a new video source is selected, 1cenc automatically runs video analysis; otherwise click the "Run Video Source Analysis" button
+    - 1cenc auto-analyzes new video sources; otherwise, click "Run Video Source Analysis".
     - FFProbe is automatically selected, so no manual selection is needed
 4. Click "Start Encoding"
     - You can also click "Output Filename and Path" to adjust the output location
 
 <img src="./img-en/11-Start-First-Encode.png" alt="Start first encoding" width=600 />
 
-After clicking "Start Encoding", 1cenc will first pop up an encoding and muxing parameter dialog, which supports right-click to copy text.
+Clicking "Start Encoding" opens a parameter dialog supporting right-click text copying.
 - The image shows a two-stage structure: **Encoding** → **Muxing**
     - i.e., "**Video Encoding** → **Audio Copy or Encode + Muxing**"
 - In **concat mode** and **repart mode**, with auto mux audio processing set to "Re-encode to AAC/Opus", the encoding command becomes a three-stage structure
     - i.e., "**Video Encoding** → **Audio Encoding** → **Muxing**"
-- If you see `--master-display` or `G(xxx,yyy),B(zzz,aaa),R...` parameters, it means the source video's HDR metadata appendix/sidedata has been recognized and converted to encoding parameters
+    - Parameters like `--master-display` indicate HDR metadata was recognized and converted.
 
 <img src="./img-en/12-Inspect-Encoding-Param.png" alt="Inspect parameters" width=400 />
 
-After clicking confirm again, the main interface will hide to free memory and reduce background interference, and the **Encoding Monitor** window will open:
+Confirming hides the main interface to save memory and opens the **Encoding Monitor**:
 
 <img src="./img-en/13-Encoding-Monitor.png" alt="Encoding monitor" width=800 />
 
 ### First Encode — Encoding Monitor Overview
 
 **Progress Bar**
-- If the video metadata contains total frame count, a progress bar is shown; otherwise a barber pole animation is displayed (stops when complete)
+- Displays a progress bar if total frames are known; otherwise, shows a barber pole animation.
 
 **Memory Usage**
-- Check if the current computer's memory is a bottleneck
+- Monitors system memory bottlenecks.
 - Check if some programs should be closed to free more memory
 - If the computer has multiple NUMA nodes, you can theoretically open several encoding processes
 
 **Process Logs**
-- Left side: upstream program (ffmpeg, VapourSynth, ...) logs
-- Right side: downstream program / encoder logs
+- Left side: upstream logs (FFmpeg, VapourSynth).
+- Right side: downstream encoder logs.
 - The divider in the middle can be dragged to resize the two windows
 - Three buttons at the bottom can copy the current log text or cycle through font sizes
 
@@ -236,19 +236,19 @@ After encoding completes, 1cenc will start the auto mux operation, producing a s
 
 ### Second Encode ④ — Filter Editor Overview
 
-Some command lines / script lines in the filter editor are generated based on analysis data, so its buttons are only unlocked after "Run Video Source Analysis" is completed.
+Filter editor buttons unlock after analysis completes, as some lines rely on source data.
 - The filter editor automatically selects the tab (the upstream program here is ffmpeg)
 
 <img src="./img-en/16-Filter-Scribe-Modal.png" alt="Filter editor" width=500 />
 
-Most filter parameters in the image show "N/A" — because the video source does not need these corrections. Conversely, if the video source has variable frame rate, non-square pixels (SAR correction needed), etc., the corresponding filter command lines will be generated.
+Parameters show "N/A" if unneeded; fixes for variable frame rates or non-square pixels generate automatically.
 
 ***Follow the image below to generate a scale-down command using the resolution scaling controls, then paste it into the filter parameter box at the top and click Confirm.***
 
 <img src="./img-en/17-Filter-Scribe-Modal-Apply.png" alt="Filter editor apply" width=500 />
 
 
-When clicking Confirm to save, an "Overwrite ffprobe JSON" confirmation dialog will appear. This is because the filter modifies the video source resolution, changing the basis for encoding parameter construction, requiring manual recalibration.
+When clicking Confirm to save, an "Overwrite ffprobe JSON" confirmation dialog will appear. This occurs because resolution changes require encoding parameter recalibration.
 
 ***Click "Update ffprobe JSON".***
 
@@ -264,7 +264,7 @@ When 1cenc makes strange checklist judgments or triggers unexpected warnings, yo
 
 ### Second Encode ⑥ — Output Filename and Path
 
-Used to preview how filenames appear under various device / UI width constraints, while avoiding encoding failures caused by filenames. Useful for managing large numbers of files or when publishing.
+Previews filename appearance across UI widths to prevent encoding failures, aiding bulk file management.
 
 Set a new filename and specify a new output location here.
 
@@ -272,15 +272,15 @@ Set a new filename and specify a new output location here.
 
 ### Second Encode ⑦ — Parallelism Scheduling
 
-Configure which NUMA node the upstream program and encoder run on. On computers with more than one CPU–memory node, due to BIOS settings or using TR/EPYC processors, there is a chance that multiple node options will appear.
+Configures NUMA node assignments for multi-node processors or custom BIOS setups.
 
 **Limit Upstream / Downstream Program Threads to Physical Core Count**
-- The encoder (downstream program) is a compute-heavy, cache-light program (though cache usage depends on video resolution)
-    - Limiting to physical core count achieves an "HPC disable hyperthreading strategy" speedup, while not wasting the low-overhead benefit of hyperthreading for compute-light, cache-heavy programs
-- This is what makes 1cenc faster and more stable than general encoding software
+- Encoders are typically compute-heavy and cache-light.
+    - Limiting to physical cores achieves an HPC-style speedup without losing hyperthreading benefits.
+- This enhances 1cenc speed and stability over generic encoders.
 
 **Pipe Buffer**
-- Increases cache usage to avoid performance bottlenecks — theoretically. In practice, no significant change was observed, and there is no negative impact, so it can be ignored.
+- Theoretically increases cache usage; negligible practical impact, safe to ignore.
 
 ***You can keep the defaults or check all items here, then confirm***
 
@@ -289,11 +289,11 @@ Configure which NUMA node the upstream program and encoder run on. On computers 
 ### Second Encode ⑧ — Encoding Parameters (and Preview)
 
 Configure and preview encoder / downstream program parameters here:
-1. Select an appropriate CRF value based on the **CRF Scale** hint at the bottom of the CRF mode tab
-2. In **Custom Parameters — Base Parameters**, select the preset most relevant to your video source
-3. In **Custom Parameters — Keyframe Interval Seconds**, select a value matching your playback scenario based on the hint below
+1. Select a CRF value using the **CRF Scale** hint.
+2. Select a source-relevant preset in **Custom Parameters — Base Parameters**.
+3. Set a playback-appropriate keyframe interval in **Custom Parameters — Keyframe Interval Seconds**.
 4. (Ignore other settings)
-5. At the bottom of the right preview window, click **Preview**, then wait a while
+5. Click **Preview** in the right window and wait for completion.
     1. Wait for the current frame encoding to complete
     2. (Optional) Wait for the SSIMULACRA and Butteraugli quality scores in blue text at the bottom right to finish
 6. Drag the divider between SOURCE and ENCODE for precise comparison
@@ -306,7 +306,7 @@ Configure and preview encoder / downstream program parameters here:
 
 ### Second Encode — Clip Sampling
 
-Specify a segment of the video to encode. This function trims excess intro/outro and also serves sharing or sample testing needs (such as encoding group review workflows) to demonstrate **normal subjective quality**.
+Specify a segment of the video to encode. Trims intros/outros for sample testing and quality review.
 
 ***Try using the duration slider to expand the segment to 60 seconds, drag the yellow portion on the timeline to the beginning, and click "Start Sampling"***
 
