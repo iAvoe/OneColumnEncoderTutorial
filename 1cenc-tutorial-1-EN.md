@@ -174,7 +174,7 @@ The settings page is the slowest window to open in 1cenc — due to font setting
 4. Click "Start Encoding"
     - You can also click "Output Filename and Path" to adjust the output location
 
-<img src="./img-cn/11-Start-First-Encode.png" alt="Start first encoding" width=600 />
+<img src="./img-en/11-Start-First-Encode.png" alt="Start first encoding" width=600 />
 
 After clicking "Start Encoding", 1cenc will first pop up an encoding and muxing parameter dialog, which supports right-click to copy text.
 - The image shows a two-stage structure: **Encoding** → **Muxing**
@@ -183,11 +183,11 @@ After clicking "Start Encoding", 1cenc will first pop up an encoding and muxing 
     - i.e., "**Video Encoding** → **Audio Encoding** → **Muxing**"
 - If you see `--master-display` or `G(xxx,yyy),B(zzz,aaa),R...` parameters, it means the source video's HDR metadata appendix/sidedata has been recognized and converted to encoding parameters
 
-<img src="./img-cn/12-Inspect-Encoding-Param.png" alt="Inspect parameters" width=400 />
+<img src="./img-en/12-Inspect-Encoding-Param.png" alt="Inspect parameters" width=400 />
 
 After clicking confirm again, the main interface will hide to free memory and reduce background interference, and the **Encoding Monitor** window will open:
 
-<img src="./img-cn/13-Encoding-Monitor.png" alt="Encoding monitor" width=800 />
+<img src="./img-en/13-Encoding-Monitor.png" alt="Encoding monitor" width=800 />
 
 ### First Encode — Encoding Monitor Overview
 
@@ -224,7 +224,7 @@ After clicking confirm again, the main interface will hide to free memory and re
 
 After encoding completes, 1cenc will start the auto mux operation, producing a second segment of upstream program log:
 
-<img src="./img-cn/14-Encoding-Monitor-On-Fin.png" alt="Encoding monitor completion state" width=800 />
+<img src="./img-en/14-Encoding-Monitor-On-Fin.png" alt="Encoding monitor completion state" width=800 />
 
 ---
 
@@ -232,27 +232,27 @@ After encoding completes, 1cenc will start the auto mux operation, producing a s
 
 ***Follow the configuration / click sequence shown in the image below to re-run this encoding:***
 
-<img src="./img-cn/15-Start-First-Encode-Again.png" alt="Start encoding again" width=600 />
+<img src="./img-en/15-Start-First-Encode-Again.png" alt="Start encoding again" width=600 />
 
 ### Second Encode ④ — Filter Editor Overview
 
 Some command lines / script lines in the filter editor are generated based on analysis data, so its buttons are only unlocked after "Run Video Source Analysis" is completed.
 - The filter editor automatically selects the tab (the upstream program here is ffmpeg)
 
-<img src="./img-cn/16-Filter-Scribe-Modal.png" alt="Filter editor" width=500 />
+<img src="./img-en/16-Filter-Scribe-Modal.png" alt="Filter editor" width=500 />
 
 Most filter parameters in the image show "N/A" — because the video source does not need these corrections. Conversely, if the video source has variable frame rate, non-square pixels (SAR correction needed), etc., the corresponding filter command lines will be generated.
 
 ***Follow the image below to generate a scale-down command using the resolution scaling controls, then paste it into the filter parameter box at the top and click Confirm.***
 
-<img src="./img-cn/17-Filter-Scribe-Modal-Apply.png" alt="Filter editor apply" width=500 />
+<img src="./img-en/17-Filter-Scribe-Modal-Apply.png" alt="Filter editor apply" width=500 />
 
 
 When clicking Confirm to save, an "Overwrite ffprobe JSON" confirmation dialog will appear. This is because the filter modifies the video source resolution, changing the basis for encoding parameter construction, requiring manual recalibration.
 
 ***Click "Update ffprobe JSON".***
 
-<img src="./img-cn/18-Source-Reviser.png" alt="Source reviser" width=350 />
+<img src="./img-en/18-Source-Reviser.png" alt="Source reviser" width=350 />
 
 > Note: VapourSynth filter editor supports single-frame filter effect preview
 
@@ -268,7 +268,7 @@ Used to preview how filenames appear under various device / UI width constraints
 
 Set a new filename and specify a new output location here.
 
-<img src="./img-cn/19-Output-Filename-And-Path.png" alt="Output settings" width=350 />
+<img src="./img-en/19-Output-Filename-And-Path.png" alt="Output settings" width=350 />
 
 ### Second Encode ⑦ — Parallelism Scheduling
 
@@ -284,7 +284,7 @@ Configure which NUMA node the upstream program and encoder run on. On computers 
 
 ***You can keep the defaults or check all items here, then confirm***
 
-<img src="./img-cn/20-Parallelism-Settings.png" alt="Parallelism settings" width=500 />
+<img src="./img-en/20-Parallelism-Settings.png" alt="Parallelism settings" width=500 />
 
 ### Second Encode ⑧ — Encoding Parameters (and Preview)
 
@@ -302,7 +302,7 @@ Configure and preview encoder / downstream program parameters here:
 
 ***Adjust CRF mode parameter values, select base parameters, and keyframe interval according to the instructions above, then click Confirm at the bottom of the left panel***
 
-<img src="./img-cn/21-Encode-Settings.png" alt="Encoding settings" width=1200 />
+<img src="./img-en/21-Encode-Settings.png" alt="Encoding settings" width=1200 />
 
 ### Second Encode — Clip Sampling
 
@@ -310,13 +310,13 @@ Specify a segment of the video to encode. This function trims excess intro/outro
 
 ***Try using the duration slider to expand the segment to 60 seconds, drag the yellow portion on the timeline to the beginning, and click "Start Sampling"***
 
-<img src="./img-cn/22-Clip-Sampler.png" alt="Clip sampler" width=450 />
+<img src="./img-en/22-Clip-Sampler.png" alt="Clip sampler" width=450 />
 
 After confirming "Start Sampling", a debug window will pop up, but this time no muxing command will appear.
 
 ***Click Confirm to start encoding***
 
-<img src="./img-cn/23-Inspect-Sampling-Param.png" alt="Inspect sampling parameters" width=400 />
+<img src="./img-en/23-Inspect-Sampling-Param.png" alt="Inspect sampling parameters" width=400 />
 
 ---
 
