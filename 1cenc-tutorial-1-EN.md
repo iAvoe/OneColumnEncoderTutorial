@@ -260,7 +260,7 @@ When clicking Confirm to save, an "Overwrite ffprobe JSON" confirmation dialog w
 
 When 1cenc makes strange checklist judgments or triggers unexpected warnings, you can use this to troubleshoot.
 
-*** (Optional) Open your preferred text editor, paste it in, and inspect it***
+***(Optional) Open your preferred text editor, paste it in, and inspect it***
 
 ### Second Encode ⑥ — Output Filename and Path
 
