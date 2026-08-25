@@ -1,19 +1,19 @@
 # 1cenc Basic Workflow Tutorial
 
-This document is aimed at beginners, explaining the complete workflow from downloading to starting video encoding. The instructions are written in great detail and omit performance-related usage tips.
+This document is aimed at beginners, explaining the workflow from download to encoding. The instructions are written in great detail and omit performance-related usage tips.
 
 ## How to Report Issues
 
-You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please confirm that the issue is indeed caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
+You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
 
 ## Download and "Installation"
 
-Running 1cenc requires at least Windows 10. Version 1809 / 21H2 (LTSC) or higher is recommended; the minimum is 1607.
+1cenc requires Windows 10 version 1607 minimum; version 1809 / 21H2 (LTSC) or higher is recommended
 - 64-bit OS: download `1cenc-win-x64.7z`
 - 32-bit OS: download `1cenc-win-x86.7z`
 - The 32-bit version is not recommended unless you are willing to tinker
 
-> Most operating systems are 64-bit, and some bundled tools do not support 32-bit OS. Although it can run, functionality is limited.
+> Some bundled tools lack 32-bit support, resulting in limited functionality.
 
 ### Download and "Installation" — Extracted File List
 
@@ -22,7 +22,7 @@ Running 1cenc requires at least Windows 10. Version 1809 / 21H2 (LTSC) or higher
 - `1cenc` folder: bundled tools, queue list data, encoding runtime logs, settings, and other data
 - `OneColumnEncoder.exe`: main program
 - `OneColumnEncoder.pdb`: debug information (upload when reporting issues)
-- `x64-upstreams-encoders.7z`: archive containing **video processing tools** such as ffmpeg, ffprobe, x264, etc.
+- `x64-upstreams-encoders.7z`: archive containing video processing tools like FFmpeg, FFprobe, x264, ...
     - These tools are too large (triggering GitHub limits) and need to be extracted separately
     - For 32-bit OS, use `x86-upstreams-encoders.7z`
 
@@ -38,11 +38,11 @@ Running 1cenc requires at least Windows 10. Version 1809 / 21H2 (LTSC) or higher
 
 **Other Tools**
 - `x64-AVS-VS-plugins`: AviSynth and VapourSynth video filters (requires AviSynth and VapourSynth to be installed and imported)
-- `x64-CloudinarySSIMULACRA2.1|GoogleButteraugli`: bundled image quality scoring tools for previewing the impact of encoding parameter settings
+- `x64-CloudinarySSIMULACRA2.1|GoogleButteraugli`: image quality scoring tools for previewing encoding parameter impacts live
 
 #### Video Processing Tool Placement
 
-The .exe tools from `x86|x64-upstreams-encoders.7z` can be placed anywhere. However, 1cenc has an auto-import feature that searches the following locations, making it smoother:
+While .exe tools can go anywhere, 1cenc auto-imports them from the following locations:
 
 >     .
 >     ├── ①
@@ -66,7 +66,7 @@ The .exe tools from `x86|x64-upstreams-encoders.7z` can be placed anywhere. Howe
 
 ## First Launch
 
-Double-click `1cenc.exe` to open. On first launch, you will be asked whether to auto-import. Click Confirm to import:
+Double-click `1cenc.exe` to open. On first launch, click Confirm to run auto-import:
 
 <img src="./img-en/2-Auto-Import.png" alt="Auto-import prompt" width=400 />
 
@@ -82,7 +82,7 @@ Since VapourSynth and SVFI are system-installed software, 1cenc's auto-import se
 
 ### First Launch — Main Interface Overview
 
-The main interface of 1cenc consists primarily of **titles**, **checklist**, **ItmeCards**, and **buttons**. Tool cards may select or open windows when clicked, depending on their function.
+The main interface of 1cenc consists primarily of **titles**, **checklist**, **ItemCards**, and **buttons**. Tool cards may select or open windows when clicked, depending on their function.
 
 #### Tool ItemCards
 
@@ -106,7 +106,7 @@ Since paths can be very long, tool cards provide two ways to display the full pa
 
 **Buttons** perform operations or open windows, but are disabled when prerequisites are not met.
 
-> Note: "3. Select dependency file" is for AvsToPipeMod's AviSynth.dll dependency, ignorable.
+> Note: "3. Select dependency file" is for AvsToPipeMod's AviSynth.dll dependency, which can be ignored.
 
 #### Checklist
 
@@ -154,12 +154,12 @@ The settings page is the slowest window to open in 1cenc — due to font setting
 
 **Auto Muxing**
 - Multiplexes the encoded video stream into `.mkv` container format
-- Since x265 comes without this capability (only exports `.hevc`) and may not keep frame rate metadata without parameter configuration, is recommended to keep x265 enabled
+- Since x265 comes without this capability (only exports `.hevc`) and may not keep frame rate metadata without parameter configuration, so it is recommended to keep x265 enabled
 - x264 muxes to `.mp4`, SVT-AV1 muxes to lightweight `.ivf`; these formats have audio compatibility limitations, so disabling auto mux also disables the audio processing mechanism
 
 **Auto Muxing — Audio Processing**
 - Due to `.mkv`'s good compatibility and support by Adobe editing software, **single file** and **queue mode** are defaults to copy mode for best quality and fastest processing
-- **Concat mode** and **repart mode** involve audio stream editing; some audio streams may not support, or have limited support, so the default is set to re-encode
+- **Concat mode** and **repart mode** involve audio stream editing; some audio streams may not be supported, or may have limited support, so the default is set to re-encode
 - Although re-encoding has Opus setting, the default is intentionally set to AAC due to its wider compatibility
 
 ---
@@ -218,7 +218,7 @@ After clicking confirm again, the main interface will hide to free memory and re
 **Browse and Process Operations**
 - **Interrupt Upstream / Downstream Program**
     - The upstream program handles decoding, so it completes more frames than the downstream program (encoder)
-    - The choice depends on whether you want to encode a few more frames (interrupt upstream) or emergency stop (interrupt downstream)
+    - The choice depends on whether you want to encode a few more frames (interrupt upstream) or do a full stop (interrupt downstream)
 - **Close**
     - Unlocked after both upstream and downstream programs have been interrupted / exited
 
@@ -272,7 +272,7 @@ Set a new filename and specify a new output location here.
 
 ### Second Encode ⑦ — Parallelism Scheduling
 
-Configure which NUMA node the upstream program and encoder run on. On computers with more than one CPU–memory node, due to BIOS settings or using TR (Threadripper) / EPYC (霄龙) processors, there is a chance that multiple node options will appear.
+Configure which NUMA node the upstream program and encoder run on. On computers with more than one CPU–memory node, due to BIOS settings or using TR/EPYC processors, there is a chance that multiple node options will appear.
 
 **Limit Upstream / Downstream Program Threads to Physical Core Count**
 - The encoder (downstream program) is a compute-heavy, cache-light program (though cache usage depends on video resolution)
