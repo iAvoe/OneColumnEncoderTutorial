@@ -17,7 +17,7 @@ Running 1cenc requires at least Windows 10. Version 1809 / 21H2 (LTSC) or higher
 
 ### Download and "Installation" — Extracted File List
 
-<img src="./img-cn/1-Extract-Archive.png" alt="Extracted file list" width=300 />
+<img src="./img-en/1-Extract-Archive.png" alt="Extracted file list" width=300 />
 
 - `1cenc` folder: bundled tools, queue list data, encoding runtime logs, settings, and other data
 - `OneColumnEncoder.exe`: main program
@@ -68,17 +68,17 @@ The .exe tools from `x86|x64-upstreams-encoders.7z` can be placed anywhere. Howe
 
 Double-click `1cenc.exe` to open. On first launch, you will be asked whether to auto-import. Click Confirm to import:
 
-<img src="./img-cn/2-Auto-Import.png" alt="Auto-import prompt" width=400 />
+<img src="./img-en/2-Auto-Import.png" alt="Auto-import prompt" width=400 />
 
 If you clicked wrong or missed it, you can manually import, or check "Run auto-import on next open" in the settings page.
 
-<img src="./img-cn/3-Rerun-Auto-Import.png" alt="Re-run auto-import" width=1000 />
+<img src="./img-en/3-Rerun-Auto-Import.png" alt="Re-run auto-import" width=1000 />
 
 > If you want to open 1cenc.exe from elsewhere, you can create a shortcut or Start Menu entry.
 
 Since VapourSynth and SVFI are system-installed software, 1cenc's auto-import search will attempt to find and import them. The image below shows auto-import importing 4 extracted tools along with 2 installed tools simultaneously.
 
-<img src="./img-cn/4-Import-Result-And-Click-Select.png" alt="Import result" width=550 />
+<img src="./img-en/4-Import-Result-And-Click-Select.png" alt="Import result" width=550 />
 
 ### First Launch — Main Interface Overview
 
@@ -90,7 +90,7 @@ The main building blocks of the interface. Composed of black borders, black text
 - Once familiar, collapsed state makes UI simpler to use
 - If a tool shows an abnormal state (red border), re-import the tool
 
-<img src="./img-cn/5-Tool-ItemCard.png" alt="Tool card" width=1000 />
+<img src="./img-en/5-Tool-ItemCard.png" alt="Tool card" width=1000 />
 
 Since paths can be very long, tool cards provide two ways to display the full path:
 - Tooltip that appears after hovering the cursor for a while

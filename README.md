@@ -2,7 +2,7 @@
 
 ## Basics | 基础
 
-Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础流程教程，使能无脑上手。
+Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础流程教程，使能快速上手。
 
 ### Coverage | 涵盖范围
 - Download (File struct.) → 1st launch (UI & behaviors) → 1st encode (Showing flow) → 2nd encode (Showing tools)
