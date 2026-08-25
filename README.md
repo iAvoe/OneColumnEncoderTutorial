@@ -30,7 +30,7 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 
 ## i18n:
 
-- !! English (Texts ready, screenshots should be retaken in English)
+- ✔ English
 - ✔ 中文简体
 - ✔ 中文繁體
 - ✘ Français

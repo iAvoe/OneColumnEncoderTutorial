@@ -27,7 +27,7 @@ Running 1cenc requires at least Windows 10. Version 1809 / 21H2 (LTSC) or higher
     - For 32-bit OS, use `x86-upstreams-encoders.7z`
 
 **Bundled Video Processing Tools**
-- `ffmpeg.exe`: video decoding, ffmpeg filters, video frame encoding preview, repartition boundary preview, auto muxing
+- `ffmpeg.exe`: video decoding, ffmpeg filters, video frame encoding preview, repart editor divider preview, auto muxing
 - `ffprobe.exe`: video source analysis (generates partial encoder parameters, checks format compatibility and corruption)
 - `x264[...].exe`: AVC video encoder
 - `x265[...].exe`: HEVC video encoder
