@@ -164,7 +164,7 @@ The settings page is the slowest window to open in 1cenc — due to font setting
 
 ---
 
-## First Encoding
+## First Encode
 
 1. Select FFmpeg
 2. Select x264
@@ -189,7 +189,7 @@ After clicking confirm again, the main interface will hide to free memory and re
 
 <img src="./img-cn/13-Encoding-Monitor.png" alt="Encoding monitor" width=800 />
 
-### First Encoding — Encoding Monitor Overview
+### First Encode — Encoding Monitor Overview
 
 **Progress Bar**
 - If the video metadata contains total frame count, a progress bar is shown; otherwise a barber pole animation is displayed (stops when complete)
@@ -228,13 +228,13 @@ After encoding completes, 1cenc will start the auto mux operation, producing a s
 
 ---
 
-## Encoding Again (Full Workflow)
+## Second Encode (Full Workflow)
 
 ***Follow the configuration / click sequence shown in the image below to re-run this encoding:***
 
 <img src="./img-cn/15-Start-First-Encode-Again.png" alt="Start encoding again" width=600 />
 
-### Encoding Again ④ — Filter Editor Overview
+### Second Encode ④ — Filter Editor Overview
 
 Some command lines / script lines in the filter editor are generated based on analysis data, so its buttons are only unlocked after "Run Video Source Analysis" is completed.
 - The filter editor automatically selects the tab (the upstream program here is ffmpeg)
@@ -256,13 +256,13 @@ When clicking Confirm to save, an "Overwrite ffprobe JSON" confirmation dialog w
 
 > Note: VapourSynth filter editor supports single-frame filter effect preview
 
-### Encoding Again ⑤ — Copy Raw JSON
+### Second Encode ⑤ — Copy Raw JSON
 
 When 1cenc makes strange checklist judgments or triggers unexpected warnings, you can use this to troubleshoot.
 
 *** (Optional) Open your preferred text editor, paste it in, and inspect it***
 
-### Encoding Again ⑥ — Output Filename and Path
+### Second Encode ⑥ — Output Filename and Path
 
 Used to preview how filenames appear under various device / UI width constraints, while avoiding encoding failures caused by filenames. Useful for managing large numbers of files or when publishing.
 
@@ -270,7 +270,7 @@ Set a new filename and specify a new output location here.
 
 <img src="./img-cn/19-Output-Filename-And-Path.png" alt="Output settings" width=350 />
 
-### Encoding Again ⑦ — Parallelism Scheduling
+### Second Encode ⑦ — Parallelism Scheduling
 
 Configure which NUMA node the upstream program and encoder run on. On computers with more than one CPU–memory node, due to BIOS settings or using TR (Threadripper) / EPYC (霄龙) processors, there is a chance that multiple node options will appear.
 
@@ -286,7 +286,7 @@ Configure which NUMA node the upstream program and encoder run on. On computers 
 
 <img src="./img-cn/20-Parallelism-Settings.png" alt="Parallelism settings" width=500 />
 
-### Encoding Again ⑧ — Encoding Parameters (and Preview)
+### Second Encode ⑧ — Encoding Parameters (and Preview)
 
 Configure and preview encoder / downstream program parameters here:
 1. Select an appropriate CRF value based on the **CRF Scale** hint at the bottom of the CRF mode tab
@@ -304,7 +304,7 @@ Configure and preview encoder / downstream program parameters here:
 
 <img src="./img-cn/21-Encode-Settings.png" alt="Encoding settings" width=1200 />
 
-### Encoding Again — Clip Sampling
+### Second Encode — Clip Sampling
 
 Specify a segment of the video to encode. This function trims excess intro/outro and also serves sharing or sample testing needs (such as encoding group review workflows) to demonstrate **normal subjective quality**.
 
