@@ -174,7 +174,7 @@
 4. 「エンコード開始」をクリック
     - 「出力ファイル名とパス」をクリックして出力先を調整することもできます
 
-<img src="./img-en/11-Start-First-Encode.png" alt="初めてのエンコードを開始" width=600 />
+<img src="./img-ja/11-Start-First-Encode.png" alt="初めてのエンコードを開始" width=600 />
 
 「エンコード開始」をクリックすると、パラメータダイアログが開きます。右クリックでテキストをコピーできます。
 - 画像は 2 段階の構造を示しています：**エンコード** → **マルチプレクス**
@@ -183,11 +183,11 @@
     - すなわち、「**ビデオエンコード** → **音声エンコード** → **マルチプレクス**」
 - `--master-display` などのパラメータは、HDR メタデータが認識され変換されたことを示します。
 
-<img src="./img-en/12-Inspect-Encoding-Param.png" alt="パラメータの確認" width=400 />
+<img src="./img-ja/12-Inspect-Encoding-Param.png" alt="パラメータの確認" width=400 />
 
 確認すると、メインインターフェースはメモリ節約のために非表示になり、**エンコードモニター**が開きます：
 
-<img src="./img-en/13-Encoding-Monitor.png" alt="エンコードモニター" width=800 />
+<img src="./img-ja/13-Encoding-Monitor.png" alt="エンコードモニター" width=800 />
 
 ### 初めてのエンコード — エンコードモニターの概要
 
@@ -224,7 +224,7 @@
 
 エンコードが完了すると、1cenc は自動マルチプレクス操作を開始し、2 番目のセグメントの上流プログラムログが生成されます：
 
-<img src="./img-en/14-Encoding-Monitor-On-Fin.png" alt="エンコードモニター完了状態" width=800 />
+<img src="./img-ja/14-Encoding-Monitor-On-Fin.png" alt="エンコードモニター完了状態" width=800 />
 
 ---
 

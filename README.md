@@ -40,8 +40,8 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 - ✔ 中文繁體
 - ✘ Français
 - ✘ Español
-- ... 日本語
-- ... Русский
+- ⭮ 日本語
+- ⭮ Русский
 - ✘ Deutsch
 - ✘ 한국어
 - ✘ Português (Brasil)
