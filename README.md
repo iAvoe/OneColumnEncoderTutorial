@@ -11,9 +11,11 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 - Download (File struct.) → 1st launch (UI & behaviors) → 1st encode (Showing flow) → 2nd encode (Showing tools)
 - 下载（文件结构）→ 首次启动（UI 与软件行为）→ 首次压制（展示流程）→ 再次压制（展示工具）
 
-- [1cenc-tutorial-1-EN.md](./1cenc-tutorial-1-EN.md)
-- [1cenc-tutorial-1-ZH-CN.md](./1cenc-tutorial-1-ZH-CN.md)
-- [1cenc-tutorial-1-ZH-TW.md](./1cenc-tutorial-1-ZH-TW.md)
+- [1cenc-tutorial-1-EN](./1cenc-tutorial-1-EN.md)
+- [1cenc-tutorial-1-ZH-CN](./1cenc-tutorial-1-ZH-CN.md)
+- [1cenc-tutorial-1-ZH-TW](./1cenc-tutorial-1-ZH-TW.md)
+- [1cenc-tutorial-1-JA](./1cenc-tutorial-1-JA.md)
+- [1cenc-tutorial-1-RU](./1cenc-tutorial-1-RU.md)
 
 ## Advanced (TODO) | 高级
 
@@ -38,8 +40,8 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 - ✔ 中文繁體
 - ✘ Français
 - ✘ Español
-- ✘ 日本語
-- ✘ Русский
+- ... 日本語
+- ... Русский
 - ✘ Deutsch
 - ✘ 한국어
 - ✘ Português (Brasil)

@@ -17,7 +17,7 @@ You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEnco
 
 ### Download and "Installation" — Extracted File List
 
-<img src="./img-en/1-Extract-Archive.png" alt="Extracted file list" width=300 />
+<img src="./img-all/1-Extract-Archive.png" alt="Extracted file list" width=300 />
 
 - `1cenc` folder: bundled tools, queue list data, encoding runtime logs, settings, and other data
 - `OneColumnEncoder.exe`: main program

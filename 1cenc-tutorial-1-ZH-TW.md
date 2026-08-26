@@ -17,7 +17,7 @@
 
 ### 下載與“安裝”——解壓文件列表
 
-<img src="./img-cn/1-Extract-Archive.png" alt="解壓文件列表" width=300 />
+<img src="./img-all/1-Extract-Archive.png" alt="解壓文件列表" width=300 />
 
 - `1cenc` 文件夾：集成的工具、隊列列表數據、壓制運行日誌、設置等數據
 - `OneColumnEncoder.exe`：主程式
