@@ -239,19 +239,19 @@
 フィルターエディターのボタンは、解析が完了するとロックが解除されます。これは、一部の行がソースデータに依存するためです。
 - フィルターエディターは自動的にタブを選択します（ここでは上流プログラムは ffmpeg です）
 
-<img src="./img-en/16-Filter-Scribe-Modal.png" alt="フィルターエディター" width=500 />
+<img src="./img-ja/16-Filter-Scribe-Modal.png" alt="フィルターエディター" width=500 />
 
 不要なパラメータは「N/A」と表示されます。可変フレームレートや非正方形ピクセル（SAR 修正が必要）などの修正は自動的に生成されます。
 
 ***以下の画像に従って、解像度スケーリングコントロールを使用して縮小コマンドを生成し、それをフィルターパラメータボックスに貼り付けて、「確認」をクリックします。***
 
-<img src="./img-en/17-Filter-Scribe-Modal-Apply.png" alt="フィルターエディター適用" width=500 />
+<img src="./img-ja/17-Filter-Scribe-Modal-Apply.png" alt="フィルターエディター適用" width=500 />
 
 「確認」をクリックして保存すると、「ffprobe JSON を上書き」確認ダイアログが表示されます。これは、解像度変更によりエンコードパラメータの再調整が必要になるためです。
 
 ***「ffprobe JSON を更新」をクリックします。***
 
-<img src="./img-en/18-Source-Reviser.png" alt="ソース修正器" width=350 />
+<img src="./img-ja/18-Source-Reviser.png" alt="ソース修正器" width=350 />
 
 > 注意：VapourSynth フィルターエディターは、単一フレームのフィルター効果プレビューをサポートしています。
 
@@ -267,7 +267,7 @@
 
 ここで新しいファイル名を設定し、新しい出力場所を指定します。
 
-<img src="./img-en/19-Output-Filename-And-Path.png" alt="出力設定" width=350 />
+<img src="./img-ja/19-Output-Filename-And-Path.png" alt="出力設定" width=350 />
 
 ### 2 回目のエンコード ⑦ — 並列スケジューリング
 
@@ -283,7 +283,7 @@
 
 ***ここではデフォルトのままにするか、すべての項目にチェックを入れてから確認します。***
 
-<img src="./img-en/20-Parallelism-Settings.png" alt="並列設定" width=500 />
+<img src="./img-ja/20-Parallelism-Settings.png" alt="並列設定" width=500 />
 
 ### 2 回目のエンコード ⑧ — エンコードパラメータ（およびプレビュー）
 
@@ -301,7 +301,7 @@
 
 ***上記の手順に従って CRF モードパラメータ値を調整し、ベースパラメータとキーフレーム間隔を選択したら、左パネル下部の確認をクリックします。***
 
-<img src="./img-en/21-Encode-Settings.png" alt="エンコード設定" width=1200 />
+<img src="./img-ja/21-Encode-Settings.png" alt="エンコード設定" width=1200 />
 
 ### 2 回目のエンコード — クリップサンプリング
 
@@ -309,13 +309,13 @@
 
 ***期間スライダーを使用してセグメントを 60 秒に拡張し、タイムラインの黄色い部分を先頭にドラッグして、「サンプリング開始」をクリックしてみます。***
 
-<img src="./img-en/22-Clip-Sampler.png" alt="クリップサンプラー" width=450 />
+<img src="./img-ja/22-Clip-Sampler.png" alt="クリップサンプラー" width=450 />
 
 「サンプリング開始」を確認すると、デバッグウィンドウがポップアップ表示されますが、今回はマルチプレクスコマンドは表示されません。
 
 ***確認をクリックしてエンコードを開始します。***
 
-<img src="./img-en/23-Inspect-Sampling-Param.png" alt="サンプリングパラメータの確認" width=400 />
+<img src="./img-ja/23-Inspect-Sampling-Param.png" alt="サンプリングパラメータの確認" width=400 />
 
 ---
 
