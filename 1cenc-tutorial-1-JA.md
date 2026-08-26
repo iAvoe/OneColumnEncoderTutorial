@@ -232,7 +232,7 @@
 
 ***以下の画像の設定/クリック順に従って、このエンコードを再実行します：***
 
-<img src="./img-en/15-Start-First-Encode-Again.png" alt="エンコードの再開始" width=600 />
+<img src="./img-ja/15-Start-First-Encode-Again.png" alt="エンコードの再開始" width=600 />
 
 ### 2 回目のエンコード ④ — フィルターエディターの概要
 
