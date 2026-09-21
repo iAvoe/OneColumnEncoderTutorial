@@ -120,9 +120,9 @@ VapourSynth runs on a Python environment; use the table below or directly use 3.
 
 | VapourSynth | Windows Supported Python |
 | --- | --- |
-| **R71**     | *3.8、3.13*  |
-| **R72**     | *3.8、3.12+* |
-| **R73**     | *3.8、3.12+* |
+| **R71**     | *3.8, 3.13*  |
+| **R72**     | *3.8, 3.12+* |
+| **R73**     | *3.8, 3.12+* |
 | **R74→R80** | *3.12+*      |
 
 When downloading, select the version based on your system architecture (x86/64) and download the "Installer":
