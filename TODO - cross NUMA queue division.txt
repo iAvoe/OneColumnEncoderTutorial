@@ -1,0 +1,81 @@
+
+> **Cross-NUMA job division workflow (2 nodes)**
+> 1. Import videos to queue mode or segment mode.
+> 2. Configure video filters, subtitles, output paths, etc. as usual.
+> 3. Click 'Fork' to spawn a duplicate instance with a different PID.
+> 4. In the first instance, open Queue Editor, delete some queue tasks, and click Confirm to save.
+> 5. In the second instance, open Queue Editor, delete the remaining queue tasks, and click Confirm to save.
+> 6. In either instance, open Parallelism Settings, pick a different NUMA node, and click Confirm to save.
+> 7. Click Start Encoding and let it run overnight.
+
+> **跨 NUMA 节点任务拆分操作流程（2 节点）**
+> 1. 将视频导入队列模式或分段模式。
+> 2. 照常配置视频滤镜、字幕、输出路径等参数。
+> 3. 点击“分身”以生成一个 PID 不同的重复实例。
+> 4. 在第一个实例中打开“队列编辑器”，删除部分队列任务，点击“确认”保存。
+> 5. 在第二个实例中打开“队列编辑器”，删除剩余的队列任务，点击“确认”保存。
+> 6. 在任一实例中打开“并行设置”，选择不同的 NUMA 节点，点击“确认”保存。
+> 7. 点击“开始编码”，让其通宵，次日收菜即可。
+
+> **Flux de travail pour répartition des tâches entre nœuds NUMA (2 nœuds)**
+> 1. Importer les vidéos en mode file d’attente ou en mode répartition par segments.
+> 2. Configurer les filtres vidéo, les sous-titres, les chemins de sortie, etc. comme d’habitude.
+> 3. Cliquer sur « Fork » (dupliquer) pour créer une instance 1cenc jumelle avec un PID différent.
+> 4. Dans la première instance, ouvrir l’éditeur de file d’attente, supprimer certaines tâches, puis cliquer sur « Confirmer » pour enregistrer.
+> 5. Dans la seconde instance, ouvrir l’éditeur de file d’attente, supprimer les autres tâches, puis cliquer sur « Confirmer » pour enregistrer.
+> 6. Dans l’une ou l’autre instance, ouvrir les paramètres de parallélisme, choisir un nœud NUMA différent, puis cliquer sur « Confirmer » pour enregistrer.
+> 7. Cliquer sur « Démarrer l’encodage » et laisser tourner jusqu’au lendemain.
+
+> **Flujo de trabajo para división de tareas entre nodos NUMA (2 nodos)**
+> 1. Importar los vídeos en modo cola o en modo repartición por segmentos.
+> 2. Configurar filtros de vídeo, subtítulos, rutas de salida, etc. como de costumbre.
+> 3. Hacer clic en « Fork » (bifurcar) para generar una instancia 1cenc gemela con PID distinto.
+> 4. En la primera instancia, abrir el editor de cola, eliminar algunas tareas y hacer clic en « Confirmar » para guardar.
+> 5. En la segunda instancia, abrir el editor de cola, eliminar las tareas restantes y hacer clic en « Confirmar » para guardar.
+> 6. En cualquiera de las instancias, abrir la configuración de paralelismo, seleccionar un nodo NUMA diferente y hacer clic en « Confirmar » para guardar.
+> 7. Hacer clic en « Iniciar codificación » y dejar que funcione hasta el día siguiente.
+
+> **NUMAノード間でのタスク分割ワークフロー（2ノード例）**
+> 1. ビデオを「キュー形式」または「セグメント分割形式」でインポートする。
+> 2. ビデオフィルター、字幕、出力パスなどは通常通り設定する。
+> 3. 「Fork」（分岐）をクリックし、異なるPIDを持つ複製1cencインスタンスを起動する。
+> 4. 1つ目のインスタンスで「キューエディター」を開き、一部のタスクを削除して「確認」をクリックして保存する。
+> 5. 2つ目のインスタンスで「キューエディター」を開き、残りのタスクを削除して「確認」をクリックして保存する。
+> 6. どちらかのインスタンスで「並列設定」を開き、異なるNUMAノードを選択して「確認」をクリックして保存する。
+> 7. 「エンコード開始」をクリックし、翌朝までそのままにしておく。
+
+> **Рабочий процесс разделения задач между узлами NUMA (2 узла)**
+> 1. Импортировать видео в режиме очереди или в режиме сегментного разделения.
+> 2. Настроить видеофильтры, субтитры, пути вывода и т. д. как обычно.
+> 3. Нажать «Fork» (ответвление), чтобы создать клон-экземпляр 1cenc с другим PID.
+> 4. В первом экземпляре открыть редактор очереди, удалить часть задач и нажать «Подтвердить» для сохранения.
+> 5. Во втором экземпляре открыть редактор очереди, удалить оставшиеся задачи и нажать «Подтвердить» для сохранения.
+> 6. В любом экземпляре открыть настройки параллелизма, выбрать другой узел NUMA и нажать «Подтвердить» для сохранения.
+> 7. Нажать «Начать кодирование» и оставить работать до завтра.
+
+> **Workflow zur Aufgabenaufteilung zwischen NUMA-Knoten (2 Knoten)**
+> 1. Videos im Warteschlangenmodus oder im Segmentierungsmodus importieren.
+> 2. Videofilter, Untertitel, Ausgabepfade usw. wie gewohnt konfigurieren.
+> 3. Auf „Fork“ (Verzweigung) klicken, um eine identische 1cenc-Instanz mit anderer PID zu erzeugen.
+> 4. In der ersten Instanz den Warteschlangen-Editor öffnen, einige Aufgaben löschen und mit „Bestätigen“ speichern.
+> 5. In der zweiten Instanz den Warteschlangen-Editor öffnen, die übrigen Aufgaben löschen und mit „Bestätigen“ speichern.
+> 6. In einer der Instanzen die Parallelitätseinstellungen öffnen, einen anderen NUMA-Knoten auswählen und mit „Bestätigen“ speichern.
+> 7. Auf „Kodierung starten“ klicken und bis zum nächsten Morgen laufen lassen.
+
+> **NUMA 노드 간 작업 분할 워크플로우 (2노드 예시)**
+> 1. 비디오를 "대기열 모드" 또는 "세그먼트 분할 모드"로 가져옵니다.
+> 2. 비디오 필터, 자막, 출력 경로 등을 평소대로 설정합니다.
+> 3. "Fork"(분기)를 클릭하여 PID가 다른 복제 1cenc 인스턴스를 생성합니다.
+> 4. 첫 번째 인스턴스에서 "대기열 편집기"를 열고 일부 작업을 삭제한 후 "확인"을 클릭하여 저장합니다.
+> 5. 두 번째 인스턴스에서 "대기열 편집기"를 열고 나머지 작업을 삭제한 후 "확인"을 클릭하여 저장합니다.
+> 6. 아무 인스턴스에서 "병렬 처리 설정"을 열고 다른 NUMA 노드를 선택한 후 "확인"을 클릭하여 저장합니다.
+> 7. "인코딩 시작"을 클릭하고 내일까지 그대로 둡니다.
+
+> **Fluxo de trabalho para divisão de tarefas entre nós NUMA (2 nós)**
+> 1. Importar os vídeos no modo fila ou no modo divisão por segmentos.
+> 2. Configurar filtros de vídeo, legendas, caminhos de saída, etc. como de costume.
+> 3. Clicar em “Fork” (bifurcar) para gerar uma instância 1cenc gêmea com PID diferente.
+> 4. Na primeira instância, abrir o editor de fila, excluir algumas tarefas e clicar em “Confirmar” para salvar.
+> 5. Na segunda instância, abrir o editor de fila, excluir as demais tarefas e clicar em “Confirmar” para salvar.
+> 6. Em qualquer uma das instâncias, abrir as configurações de paralelismo, escolher um nó NUMA diferente e clicar em “Confirmar” para salvar.
+> 7. Clicar em “Iniciar codificação” e deixar rodando até o dia seguinte.

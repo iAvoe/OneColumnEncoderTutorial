@@ -64,6 +64,111 @@
 
 ---
 
+## AviSynth+ 與 LSMASH 安裝（可選）
+
+如果你希望使用 AviSynth 濾鏡，則完成這步。
+
+### 下載
+
+- [AviSynth+ 發布頁（GitHub）](https://github.com/AviSynth/AviSynthPlus/releases)
+  - 根據系統類型選擇編譯目標後綴
+  - x86 架構 CPU + Windows 64bit → AviSynthPlus_x.y.z_yyyymmdd.exe
+- [L-SMASH-Works 濾鏡（GitHub）](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works/releases/)
+
+<img src="./img-all/tools/AviSynth+.png" alt="AviSynth+ 發布頁" width=800 />
+
+<img src="./img-all/tools/L-SMASH-Works.png" alt="L-SMASH 發布頁" width=800 />
+
+### 安裝
+
+<img src="./img-all/tools/AviSynth-Setup.png" alt="AviSynth+ 安裝" width=700 />
+
+1. 安裝 AviSynth+，可以選擇只安裝 AviSynth+ Base
+2. 將 `L-SMASH-Works-rXXXX....7z` 壓縮包中的 `LSMASHSource.dll` 拷到與其對應的文件夾下
+
+<img src="./img-all/tools/L-SMASH-Works-Extract-Archive.png" alt="LSMASH 解壓" width=350 />
+
+```
+C:\Program Files (x86)\AviSynth+
+├── ...
+├── plugins
+├── plugins+
+│   └── LSMASHSource.dll ← L-SMASH-Works-rXXXX....7z/x86/
+├── plugins64
+└── plugins64+
+    └── LSMASHSource.dll ← L-SMASH-Works-rXXXX....7z/x64/
+```
+
+> 注意，不是 `libvslsmashsource.dll`
+
+---
+
+## Python、VapourSynth、libvslsmashsource 安裝
+
+如果你希望使用 VapourSynth 濾鏡，並且使用 64bit 操作系統，則完成這步。
+
+1cenc 附帶的濾鏡不一定相容最新版的 VapourSynth，求穩則避；但考慮到新版本性能往往更好，因此同樣推薦。
+- 已驗證的環境：Python 3.13.7，3.14.7；VapourSynth Core R71，R73
+
+> 若新版 VapourSynth 遇到相容性問題，請使用 [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) 匯報
+
+### Python 下載與安裝
+
+VapourSynth 基於 Python 環境運行，根據下表或直接使用 3.14.x 版即可
+- [Python 下載頁—Windows](https://www.python.org/downloads/windows/)
+
+| VapourSynth | Windows 支持的 Python |
+| --- | --- |
+| **R71**     | *3.8、3.13*  |
+| **R72**     | *3.8、3.12+* |
+| **R73**     | *3.8、3.12+* |
+| **R74→R80** | *3.12+*      |
+
+下載時根據系統位數（x86/64）選擇版本，並且下載“Installer”：
+| 類型                     | 說明                           | 適用範圍                               | 是否推薦     |
+| ---------------------- | ---------------------------- | --------------------------------- | -------- |
+| **Installer**          | 傳統 `.exe` 安裝程式               | 普通 Windows 用戶                     | ✅ |
+| **Embeddable package** | 精簡的可嵌入 Python 運行時 ZIP        | 軟體開發者、隨程序打包 Python                | ❌ |
+| **MSI package**        | Windows Installer `.msi` 安裝包 | 企業部署、管理員、自動化安裝                    | ⚠️ |
+| **Installer (MSIX)**   | Windows 的現代 MSIX 應用包         | Microsoft Store / 現代 Windows 應用部署 | ⚠️ |
+
+安裝程式中**必須勾選 Add python.exe to Path**，否則 VapourSynth 無法調用 Python
+
+<img src="./img-all/tools/Python3.14.7.png" alt="Python 安裝" width=350 />
+
+> 注意截圖中的安裝程式提示了“(64 bit)”的字樣，如果沒顯示，則回到下載頁面看看是否點錯了
+
+### 下載
+
+- [VapourSynth 發布頁（GitHub）](https://github.com/vapoursynth/vapoursynth/releases)
+  - Portable：行動版，需要手動完成安裝步驟（添加系統變數等），建議不用
+  
+- [LSMAS 濾鏡 GitHub/AkarinVS](https://github.com/AkarinVS/L-SMASH-Works/releases)
+  - 運行解碼器會創建影片源索引文件（快取文件），根據想要的儲存路徑選一個版本
+    - tmp：`cachedir=%TEMP%`，據操作系統設置指定快取盤，Windows 一般為 C 槽
+      - 推薦——運行系統清理時高機率能被自動刪掉
+    - src：`cachedir=""`，命令行窗口當前路徑
+      - Windows 預設為 C 槽
+    - cwd：`cachedir="."`，即運行時的命令行路徑
+      - 打開 CMD/PowerShell/Bash 時的初始路徑
+
+> 註：之前下載的 `LSMASHSource.dll` 也能跑，可以試試
+
+<img src="./img-all/tools/VapourSynth-R73.png" alt="VapourSynth 發布頁" width=800 />
+
+<img src="./img-all/tools/libvslsmashsource.png" alt="AkarinVS L-SMASH 發布頁" width=800 />
+
+### 安裝
+
+<img src="./img-all/tools/VapourSynth-R73-Install.png" alt="VS 安裝" width=900 />
+
+1. 安裝 VapourSynth，在安裝界面第二頁會列出系統存在的 Python 環境
+    - 如果沒列出之前安裝的 Python 則重做
+2. 將壓縮包中的 `libvslsmashsource.dll` 拷到 `C:\Program Files\VapourSynth\plugins` 文件夾下
+3. 打開 CMD 或 PowerShell，運行 `vspipe --version` 驗證
+
+---
+
 ## 首次啟動
 
 雙擊 `1cenc.exe` 以打開。首次啟動會詢問是否自動導入，點擊確認導入：
