@@ -62,6 +62,112 @@
 >             └── ...
 >
 
+
+---
+
+## AviSynth+ と LSMASH のインストール（オプション）
+
+AviSynth フィルターを使用する場合は、この手順を行ってください。
+
+### ダウンロード
+
+- [AviSynth+ リリースページ（GitHub）](https://github.com/AviSynth/AviSynthPlus/releases)
+  - システムタイプに応じてビルドターゲットのサフィックスを選択してください
+  - x86 アーキテクチャ CPU + Windows 64bit → AviSynthPlus_x.y.z_yyyymmdd.exe
+- [L-SMASH-Works フィルター（GitHub）](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works/releases/)
+
+<img src="./img-all/tools/AviSynth+.png" alt="AviSynth+ リリースページ" width=800 />
+
+<img src="./img-all/tools/L-SMASH-Works.png" alt="L-SMASH リリースページ" width=800 />
+
+### インストール
+
+<img src="./img-all/tools/AviSynth-Setup.png" alt="AviSynth+ インストール" width=700 />
+
+1. AviSynth+ をインストールします。AviSynth+ Base のみをインストールすることもできます。
+2. `L-SMASH-Works-rXXXX....7z` アーカイブ内の `LSMASHSource.dll` を対応するフォルダーにコピーします。
+
+<img src="./img-all/tools/L-SMASH-Works-Extract-Archive.png" alt="LSMASH 展開" width=350 />
+
+```
+C:\Program Files (x86)\AviSynth+
+├── ...
+├── plugins
+├── plugins+
+│   └── LSMASHSource.dll ← L-SMASH-Works-rXXXX....7z/x86/
+├── plugins64
+└── plugins64+
+    └── LSMASHSource.dll ← L-SMASH-Works-rXXXX....7z/x64/
+```
+
+> 注意：これは `libvslsmashsource.dll` ではありません。
+
+---
+
+## Python、VapourSynth、libvslsmashsource のインストール
+
+VapourSynth フィルターを使用し、かつ 64bit OS を使用している場合は、この手順を行ってください。
+
+1cenc に付属するフィルターは最新版の VapourSynth と互換性がない場合がありますが、安定を重視するなら避けるべきです。ただし、新バージョンは性能が良い傾向にあるため、同様に推奨されます。
+- 確認済み環境：Python 3.13.7、3.14.7；VapourSynth Core R71、R73
+
+> 新版 VapourSynth で互換性の問題が発生した場合は、[GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) まで報告してください。
+
+### Python のダウンロードとインストール
+
+VapourSynth は Python 環境上で動作します。以下の表を参照するか、直接 3.14.x を使用してください。
+- [Python ダウンロードページ—Windows](https://www.python.org/downloads/windows/)
+
+| VapourSynth | Windows 対応の Python |
+| --- | --- |
+| **R71**     | *3.8、3.13*  |
+| **R72**     | *3.8、3.12+* |
+| **R73**     | *3.8、3.12+* |
+| **R74→R80** | *3.12+*      |
+
+ダウンロード時には、システムのビット数（x86/64）に応じてバージョンを選択し、"Installer" をダウンロードしてください：
+| タイプ | 説明 | 対象範囲 | 推奨 |
+| --- | --- | --- | --- |
+| **Installer** | 伝統的な `.exe` インストールプログラム | 一般的な Windows ユーザー | ✅ |
+| **Embeddable package** | 簡易埋め込み Python ランタイム ZIP | ソフトウェア開発者、プログラムに Python をバンドルする場合 | ❌ |
+| **MSI package** | Windows Installer `.msi` パッケージ | 企業デプロイ、管理者、自動化インストール | ⚠️ |
+| **Installer (MSIX)** | モダン MSIX アプリパッケージ for Windows | Microsoft Store / モダンな Windows アプリデプロイ | ⚠️ |
+
+インストーラーで **Add python.exe to Path に必ずチェックを入れてください**。そうしないと VapourSynth は Python を呼び出せません。
+
+<img src="./img-all/tools/Python3.14.7.png" alt="Python インストール" width=350 />
+
+> インストールプログラムのスクリーンショットに "(64 bit)" と表示されている場合、正しいバージョンです。表示されていない場合は、ダウンロードページに戻って間違えていないか確認してください。
+
+### ダウンロード
+
+- [VapourSynth リリースページ（GitHub）](https://github.com/vapoursynth/vapoursynth/releases)
+  - Portable：ポータブル版で、手動でインストール手順（システム変数の追加など）が必要です。推奨しません。
+   
+- [LSMAS フィルター GitHub/AkarinVS](https://github.com/AkarinVS/L-SMASH-Works/releases)
+  - デコーダーは動画ソースのインデックスファイル（キャッシュファイル）を作成します。保存先パスに応じてバージョンを選択してください。
+    - tmp：`cachedir=%TEMP%`、OS 設定に基づいてキャッシュドライブを指定します。Windows の場合は通常 C: ドライブです。
+      - 推奨 — システムクリーンアップ時に自動的に削除される可能性が高いです。
+    - src：`cachedir=""`、コマンドウィンドウの現在のパスです。
+      - Windows のデフォルトは C: ドライブです。
+    - cwd：`cachedir="."`、実行時のコマンドライン パスです。
+      - CMD/PowerShell/Bash を開いたときの初期パスです。
+
+> 以前にダウンロードした `LSMASHSource.dll` でも動作する可能性がありますので、試してみてください。
+
+<img src="./img-all/tools/VapourSynth-R73.png" alt="VapourSynth リリースページ" width=800 />
+
+<img src="./img-all/tools/libvslsmashsource.png" alt="AkarinVS L-SMASH リリースページ" width=800 />
+
+### インストール
+
+<img src="./img-all/tools/VapourSynth-R73-Install.png" alt="VS インストール" width=900 />
+
+1. VapourSynth をインストールします。インストール画面の 2 ページ目に、システムに存在する Python 環境が一覧表示されます。
+     - 以前にインストールした Python が一覧にない場合は、やり直してください。
+2. アーカイブ内の `libvslsmashsource.dll` を `C:\Program Files\VapourSynth\plugins` フォルダーにコピーします。
+3. CMD または PowerShell を開き、`vspipe --version` を実行して確認します。
+
 ---
 
 ## 初回起動
