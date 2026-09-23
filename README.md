@@ -10,21 +10,25 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 
 **Download and "Installation" | 下载与“安装”**
 - Archived files | 解压文件列表
+- Bundled Tools | 集成的工具
 - Video Processing Tool Placement | 视频处理工具放置
-- AviSynth+, LSMASH
-- Python-VapourSynth-LSMASH
+
+**Install Optional Tools | 安装可选工具**
+- AviSynth+, LSMASH (Optional)
+- Python, VapourSynth, LSMASH (Optional)
 
 **First Launch | 首次启动**
 - Main Interface Overview | 主界面一览
 - Settings Overview | 设置一览
+- Defaults and Recommended Settings | 默认与建议设置
 
-**First Encode——Simple Workflow | 首次压制——简易工作流**
+**First Encode | 首次压制**
 - Flow & Encoding Monitor Overview | 流程与压制监视器一览
 
-**Second Encode——Full Workflow | 再次压制——完整工作流**
+**Second Encode (Full Workflow) | 再次压制（完整流程版）**
 - Filter Editor | 滤镜编辑器
-- Open Raw JSON | 打开原生 JSON
-- Output Filename and Path | 导出文件名和路径
+- Copy Raw JSON | 复制原生 JSON
+- Output Filename and Path | 输出文件名与路径
 - Parallelism Scheduling | 并行计算调度
 - Encoding Parameters and Preview | 压缩参数配置和预览
 - Clip Sampling | 取段打样
@@ -43,15 +47,19 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 - Other Uses | 其它用途
 
 **Blu-ray Format | 蓝光格式**
-- File Structure to Encoding Mode | 文件结构到压制模式判断
-- Stream structure examples | 片源结构示例
-- Blu-ray PLAYLIST | 蓝光播放列表
+- Basic File Structure | 文件结构
+- Encoding Mode Selection 压制模式判断
+- TV Series Disc Structure | 番剧碟片结构
+- Concert Disc Structure | 演唱会碟片结构
+- Movie Disc Structure | 电影碟片结构
+- Blu-ray Playlists | 蓝光播放列表
 
 **Importing Blu-ray Playlists | 导入蓝光播放列表**
-- Blu-Ray Playlist Selector | 蓝光播放列表选择器
+- Blu-ray Playlist Selector | 蓝光播放列表选择器
 - Queue Mode | 队列模式
 - Repart Mode | 重分集模式
-- Interlaced Blu-Ray streams | 蓝光隔行视频流
+- Repart Editor | 重分集编辑器
+- Blu-ray Interlaced Video | 蓝光隔行视频
 
 * **English:** [1cenc-tutorial-2-EN](./1cenc-tutorial-2-EN.md)
 * **中文简体：** [1cenc-tutorial-2-ZH-CN](./1cenc-tutorial-2-ZH-CN.md)
