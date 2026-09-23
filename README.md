@@ -46,7 +46,6 @@ The screenshot images and edge functionality in tutorial may differ from latest 
 
 **Blu-ray Format | 蓝光格式**
 - Basic File Structure | 文件结构
-- Encoding Mode Selection 压制模式判断
 - TV Series Disc Structure | 番剧碟片结构
 - Concert Disc Structure | 演唱会碟片结构
 - Movie Disc Structure | 电影碟片结构
