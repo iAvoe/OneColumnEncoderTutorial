@@ -504,13 +504,7 @@ Using the concert source above as an example:
 
 ---
 
-## Queue Mode
-
-### Queue Mode — Filter Editor
-
----
-
-## ?? Tutorial Complete
+## Advanced Workdlow Tutorial Complete
 
 ### Unmentioned Content
 - Abnormal Blu-ray formats — conjoined discs, over-segmented discs
