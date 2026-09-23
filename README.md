@@ -3,7 +3,7 @@
 The tutorials for operating OneColumnEncoder. | 1cenc 压制工具教程。
 The screenshot images in tutorial may have differ from latest build, which is normal. | 教程中的截图画面或与最新版软件有所不同，这是正常现象。
 
-## Basics | 基础
+## 1. Basics | 基础
 
 Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础流程教程，使能快速上手。
 
@@ -27,17 +27,13 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 - Encoding Parameters and Preview | 压缩参数配置和预览
 - Clip Sampling | 取段打样
 
-[1cenc-tutorial-1-EN](./1cenc-tutorial-1-EN.md)
+* **English:** [1cenc-tutorial-1-EN](./1cenc-tutorial-1-EN.md)
+* **中文简体：** [1cenc-tutorial-1-ZH-CN](./1cenc-tutorial-1-ZH-CN.md)
+* **中文繁體：** [1cenc-tutorial-1-ZH-TW](./1cenc-tutorial-1-ZH-TW.md)
+* **日本語：** [1cenc-tutorial-1-JA](./1cenc-tutorial-1-JA.md)
+* **Русский:** [1cenc-tutorial-1-RU](./1cenc-tutorial-1-RU.md)
 
-[1cenc-tutorial-1-ZH-CN](./1cenc-tutorial-1-ZH-CN.md)
-
-[1cenc-tutorial-1-ZH-TW](./1cenc-tutorial-1-ZH-TW.md)
-
-[1cenc-tutorial-1-JA](./1cenc-tutorial-1-JA.md)
-
-[1cenc-tutorial-1-RU](./1cenc-tutorial-1-RU.md)
-
-## Advanced | 高级
+## 2. Advanced | 高级
 
 **Fork (Self-clone) | 分身（Fork）**
 - Basic Workflow | 基本操作流程
@@ -53,38 +49,30 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 - Queue Mode via BDPlaylistSelector | 队列模式经由蓝光播放列表选择器
 - Repart Mode via BDPlaylistSelector + Repart Editor (RepartConfModal), Blu-ray Interlaced Video note | 重分集模式经由蓝光播放列表选择器 + 重分集编辑器，蓝光隔行视频说明
 
-[1cenc-tutorial-2-EN](./1cenc-tutorial-2-EN.md)
+* **English:** [1cenc-tutorial-2-EN](./1cenc-tutorial-2-EN.md)
+* **中文简体：** [1cenc-tutorial-2-ZH-CN](./1cenc-tutorial-2-ZH-CN.md)
+* **中文繁體：** [1cenc-tutorial-2-ZH-TW](./1cenc-tutorial-2-ZH-TW.md)
+* **日本語：** [1cenc-tutorial-2-JA](./1cenc-tutorial-2-JA.md)
+* **Русский:** [1cenc-tutorial-2-RU](./1cenc-tutorial-2-RU.md)
 
-[1cenc-tutorial-2-ZH-CN](./1cenc-tutorial-2-ZH-CN.md)
-
-[1cenc-tutorial-2-ZH-TW](./1cenc-tutorial-2-ZH-TW.md)
-
-[1cenc-tutorial-2-JA](./1cenc-tutorial-2-JA.md)
-
-[1cenc-tutorial-2-RU](./1cenc-tutorial-2-RU.md)
+## 3. End-Game | 终极
 
 **TODO**
 - Encode Settings Description | 压制设置说明
-
-## End-Game | 终极
-
-**TODO**
+- FFProbe raw JSON explained | 说明 FFProbe 原生 JSON
 - Concat Mode | 拼接模式
-- Advanced Repart Mode (over-segmented BD repartition, conjoined BD repartition)
-- Basic AviSynth and VapourSynth filter processing with queue, concat, and repart mode variations
-
-- 高级重分集模式（肉酱盘重分集、合并盘重分集）
-- 基本 AviSynth 和 VapourSynth 滤镜处理与队列、拼接、重分集模式的变化
+- Advanced Repart Mode (over/under-segmented BD repartition) | 高级重分集模式（肉酱盘、合并盘重分集）
+- Basic video filter processing logics | 基本视频滤镜处理逻辑
 
 ## i18n:
 
-- ✔ English 1
-- ✔ 中文简体 1
-- ✔ 中文繁體 1
+- ✔ English 1 2
+- ✔ 中文简体 1 2
+- ✔ 中文繁體 1 2
 - ✘ Français
 - ✘ Español
-- ✔ 日本語 1
-- ✔ Русский 1
+- ✔ 日本語 1 2
+- ✔ Русский 1 2
 - ✘ Deutsch
 - ✘ 한국어
 - ✘ Português (Brasil)
