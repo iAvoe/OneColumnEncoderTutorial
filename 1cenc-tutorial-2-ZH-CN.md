@@ -439,9 +439,11 @@ DISC4 BDMV/STREAM/
     - 此处判断为无需添加
 
 **最终播放列表：**
+
 <img src="./img2-all/4-BDPlaylistSelector-1.png" alt="蓝光播放列表选择器 2" width=700 />
 
 **完成队列导入：**
+
 <img src="./img2-all/5-BDPlaylistSelector-2.png" alt="蓝光播放列表选择器 3" width=500 />
 
 > 同时，这个空格 + 双引号的“恐怖”路径被正确解析了

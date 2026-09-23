@@ -438,9 +438,11 @@ Playlist の構成方法と用途に基づき、一般的な構造は次のよ�
     - ここでは追加不要と判断します
 
 **Final Playlist:**
+
 <img src="./img2-all/4-BDPlaylistSelector-1.png" alt="Blu-ray プレイリストセレクター 2" width=700 />
 
 **キューのインポート完了：**
+
 <img src="./img2-all/5-BDPlaylistSelector-2.png" alt="Blu-ray プレイリストセレクター 3" width=500 />
 
 > 空白と二重引用符を含む「恐ろしい」パスも正しく解析されました。

@@ -439,9 +439,11 @@ A tool for quickly importing the feature from a Blu-ray disc structure in Queue 
     - Judged here as nothing more to add
 
 **Final Playlist:**
+
 <img src="./img2-all/4-BDPlaylistSelector-1.png" alt="Blu-ray playlist selector 2" width=700 />
 
 **Queue import complete:**
+
 <img src="./img2-all/5-BDPlaylistSelector-2.png" alt="Blu-ray playlist selector 3" width=500 />
 
 > Meanwhile, this "terrifying" path with spaces and double quotes was parsed correctly
