@@ -31,8 +31,11 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
   - Find the approriate encoding mode | 找出合适的压制模式
   - Blu-ray playlist import | 蓝光章节导入
 
+- [1cenc-tutorial-2-EN](./1cenc-tutorial-2-EN.md)
 - [1cenc-tutorial-2-ZH-CN](./1cenc-tutorial-2-ZH-CN.md)
 - [1cenc-tutorial-2-ZH-TW](./1cenc-tutorial-2-ZH-TW.md)
+- [1cenc-tutorial-2-JA](./1cenc-tutorial-2-JA.md)
+- [1cenc-tutorial-2-RU](./1cenc-tutorial-2-RU.md)
 
 **TODO**
 

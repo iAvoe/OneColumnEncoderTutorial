@@ -1,101 +1,101 @@
-# 1cenc Advanced Worflow Tutorial
+# 1cenc Advanced Workflow Tutorial
 
-This document outlines Blu-Ray nuances and features made for advanced encoding workflows, usages and examples; Unlike the basic tutorials, this tutorial no longer shows every single step.
+This document explains Blu-ray format details, features for advanced encoding workflows, usage, and examples. Unlike the basic tutorial, it does not show every step in full.
 
-**To report an issue**
+**How to Report Issues**
 - You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
 
 
 ## Fork (Self-clone)
 
-In Layman's terms, fork is a clone with all states copied to another instance, becoming 2 identical instances with no clear primary-secondary tiering. 1cenc might be the first batch of encoding program that incroporated this functionality, but this idea isn't something new, Git (version control), VMFork (virtual machine control), and many PVE online games uses it all the time.
+In simple terms, a fork clones the software's complete current state to create two identical running instances with no clear primary or secondary instance. 1cenc may be among the first encoding programs to support this feature, but the concept is not new: it also appears in Git (version control), VMFork (virtual-machine management), and some PVE online games.
 
 **Instance**
-- In computer science, an instance or token (from metalogic and metamathematics) is a specific occurrence of a software element that is based on a type definition——Wikipedia
+- In computer science, an instance is a concrete realization created from a model or blueprint. Instances based on the same model usually share a data structure, but the values stored in each instance are independent. —Wikipedia
 
 <img src="./img2-all/1-Fork-Usage.png" alt="Fork" width=800 />
 
-> The convenience of Fork comes from eliminating the need to repeatly relaunch and re-configure
-> You may distinguish the running instances by checking the PID (Process ID) displayed on the taskbar or in the program's title bar
+> Fork is convenient because it eliminates repeated launches and repeated configuration.
+> Distinguish running instances by checking the PID (process ID) shown on the taskbar or in the program title bar.
 
-### Fork——Basic Workflow
-1. Complete the shared encoding configurations
+### Fork — Basic Workflow
+1. Complete the shared configuration
     - Select upstream tool (filtering) and downstream tool (encoder)
     - Import source video
     - Define common video filters and encode settings as needed
-2. Fork into a number of instances, depending on your encoding target
+2. Create enough instances for the required targets
     - 2: Lossless compression | Lossy compression
     - 2: Burn-in subtitle | Contain subtitle
     - 4: x264-1080p | x264-720p | x265-1080p | x265-720p
     - N: Try different encoding parameter values to find the best, or simply for testing
-3. Define individual encoding settings
+3. Differentiate each instance's configuration
     - Individual video filters, encode settings, etc.
-    - Output Settings (Path and Filename): Differenciate output filenames
+     - Output Settings (Path and Filename): use different output filenames
 
-### Fork——NUMA node work distribution (optional)
-1. Complete the shared encoding configurations
+### Fork — NUMA Node Distribution (optional)
+1. Complete the shared configuration
     - Select upstream tool (filtering) and downstream tool (encoder)
-    - Import source videos using Queue Mode or Repart Mode (Explaination below)
+     - Import sources in Queue Mode or Repart Mode (described below)
     - Define common video filters and encode settings as needed
-2. Fork into a number of instances based on available NUMA nodes
-3. Define individual workload
-    - Selectively delete duplicated source to encode, so that work is evenly distributed across N nodes
+2. Create one instance for each available NUMA node
+3. Differentiate each instance's workload
+     - Delete duplicate tasks selectively so the work is distributed evenly across N nodes
         - Queue Mode → Open Queue Editor → Delete button
-        - Repart Mode → Open Repart Editor → find Output Queue → Delete button
-        - You may use “Sort by file size” to further improve workload distribution
-    - Parallelism Control: Select an idle NUMA node
+         - Repart Mode → Open the Repart Editor → find the Output Queue → press Delete
+         - “Sort by file size” can further improve the distribution
+     - Parallelism Control: assign each instance to an exclusive compute node
 
-> Queue Mode and Repart Mode cannot specify output filename manually, but since the duplicated works are dropped, overwritting is prevented
-> Effectively achieves the x265 thread pool scheduling in x264... but only for the result
+> Queue Mode and Repart Mode do not support manually specifying filenames, but removing duplicate tasks also prevents overwriting.
+> This produces an effect similar to x265's thread-pool scheduling in x264...
 
-### Fork——Other uses
+### Fork — Other Uses
 
 **Look back during encoding**
-- The main window hides when an encoding is in progress, Fork allows you to double check your settings
+- The main window is hidden while encoding. Fork lets you review the settings in another instance.
 
 **Dense scheduling**
-- Limit all instances to run on 1~4 cores (or all cores a ZEN CCD povides)
-- Every encoding task slows down, but the improved caching ends up improves redundancy (lossless compression), and overall batch encoding performance
-- High-res. video may consume too much RAM than the computer offers
+- Limit every instance to 1–4 cores (or one CCD on an AMD ZEN CPU).
+- Individual tasks become slower, but improved cache scheduling can improve encoder redundancy (lossless compression) and the efficiency of large batches.
+- High-resolution video may exceed available memory.
 
 ---
 
-## Blu-Ray Format
+## Blu-ray Format
 
 **Note: Content may originate from illegal sources. Before proceeding, please consult to local and international copyright regulations as well as regional laws regarding the legality of the content itself (such as the US DMCA or EU copyright directives), and opt for resources that are no longer under copyright protection.**
 
 ### File Structure and Encoding Mode Selection
 
-考虑到很多人大概率是第一次接触蓝光光盘，因此这部分会啰嗦一些，并且会含有很多“推测”和“结论”在内；已悉则可略。
-- 以下文件结构由 `Get-PSTree` 列出
+Since many readers are likely encountering Blu-ray discs for the first time, this section is deliberately detailed and contains many inferences and conclusions. Skip it if you already know the material.
+- The following structure was listed by `Get-PSTree`.
 
-**基本结构：**
+**Basic structure:**
 ```
 BDMV/
-├─ index.bdmv        [入口] 标题索引/导航入口
-├─ MovieObject.bdmv  [导航] 命令对象/播放控制
-├─ PLAYLIST/         [播放列表] *.mpls，决定播放顺序
-├─ CLIPINF/          [剪辑信息] *.clpi，与 m2ts 编号对应
-├─ STREAM/           [实际流] *.m2ts ★按体积判断内容性质
-├─ META/DL/          [元数据/商标] .xml/.jpg
-├─ BACKUP/           [备份] 与关键文件重复，介绍时可省略
-└─ CERTIFICATE/      [证书] id.bdmv，介绍时可省略
+├─ index.bdmv        [entry] title index/navigation entry
+├─ MovieObject.bdmv  [navigation] command objects/playback control
+├─ PLAYLIST/         [playlists] *.mpls, determines playback order
+├─ CLIPINF/          [clip information] *.clpi, corresponds to m2ts numbers
+├─ STREAM/           [actual streams] *.m2ts ★content type can be inferred from size
+├─ META/DL/          [metadata/trademarks] .xml/.jpg
+├─ BACKUP/           [backup] duplicates key files and may be omitted here
+└─ CERTIFICATE/      [certificate] id.bdmv, may be omitted here
 ```
 
-#### 番剧剧集文件结构
+#### TV Series Episode File Structure
 
-以一套 2 碟片多集 TV 动画为例，其中部分文件夹保持折叠以突出有效内容
+Using a two-disc multi-episode TV anime as an example; some folders remain collapsed to highlight useful content.
 ```
         [BDMV][220705][One Piece：Season Eleven Voyage Nine (ep.733-746)][USA][Puto]
            ├── OnePiece_S11_V9_D1
            │   └── BDMV
- 456.00  B │       ├── index.bdmv       [入口/导航]
- 113.23 KB │       ├── MovieObject.bdmv [导航命令]
-  93.82 KB │       ├── AUXDATA          [辅助数据：字体/音效/菜单]
- 113.67 KB │       ├── BACKUP           [备份，省略]
-  96.05 KB │       ├── CLIPINF          [剪辑信息] 00002~00064.clpi，与 m2ts 对应
-           │       ├── META             [元数据]
-  54.35 KB │       ├── PLAYLIST         [播放列表] 00001~00047.mpls，不完全与 m2ts 对应
+ 456.00  B │       ├── index.bdmv       [entry/navigation]
+ 113.23 KB │       ├── MovieObject.bdmv [navigation commands]
+  93.82 KB │       ├── AUXDATA          [auxiliary data: fonts/sound/menu]
+ 113.67 KB │       ├── BACKUP           [backup, omitted]
+  96.05 KB │       ├── CLIPINF          [clip information] 00002~00064.clpi, corresponding to m2ts
+           │       ├── META             [metadata]
+  54.35 KB │       ├── PLAYLIST         [playlists] 00001~00047.mpls, not fully corresponding to m2ts
   45.55 GB │       └── STREAM
   15.40 MB │           ├── 00002.m2ts
    2.04 MB │           ├── 00003.m2ts
@@ -107,48 +107,48 @@ BDMV/
  276.00 KB │           ├── 00011.m2ts
   18.00 KB │           ├── 00012.m2ts
   18.00 KB │           ├── 00013.m2ts
-   6.39 GB │           ├── 00014.m2ts  [大概率是正片] 推测为第 733 集，时长约 24 分钟
-  54.31 MB │           ├── 00015.m2ts  [可能是预告图]
-   6.39 GB │           ├── 00016.m2ts  [大概率是正片] 推测为第 734 集
-  54.31 MB │           ├── 00017.m2ts  [可能是预告图]
-   6.39 GB │           ├── 00018.m2ts  [大概率是正片] 推测为第 735 集
-  54.35 MB │           ├── 00019.m2ts  [可能是预告图]
-   6.39 GB │           ├── 00020.m2ts  [大概率是正片] 推测为第 736 集
-  54.33 MB │           ├── 00021.m2ts  [可能是预告图]
-   6.39 GB │           ├── 00022.m2ts  [大概率是正片] 推测为第 737 集
-  54.30 MB │           ├── 00023.m2ts  [可能是预告图]
-   6.39 GB │           ├── 00024.m2ts  [大概率是正片] 推测为第 738 集
+   6.39 GB │           ├── 00014.m2ts  [probably main episode] likely episode 733, about 24 minutes
+  54.31 MB │           ├── 00015.m2ts  [possibly preview image]
+   6.39 GB │           ├── 00016.m2ts  [probably main episode] likely episode 734
+  54.31 MB │           ├── 00017.m2ts  [possibly preview image]
+   6.39 GB │           ├── 00018.m2ts  [probably main episode] likely episode 735
+  54.35 MB │           ├── 00019.m2ts  [possibly preview image]
+   6.39 GB │           ├── 00020.m2ts  [probably main episode] likely episode 736
+  54.33 MB │           ├── 00021.m2ts  [possibly preview image]
+   6.39 GB │           ├── 00022.m2ts  [probably main episode] likely episode 737
+  54.30 MB │           ├── 00023.m2ts  [possibly preview image]
+   6.39 GB │           ├── 00024.m2ts  [probably main episode] likely episode 738
    3.58 MB │           ├── 00025.m2ts
    5.36 MB │           ├── 00026.m2ts
-   8.14 MB │           ├── ...（省略 19 个 8.14 MB 的文件：00027~00045；7 个 5.36 MB 的文件：00047~00053）
+   8.14 MB │           ├── ...(19 files of 8.14 MB omitted: 00027~00045; 7 files of 5.36 MB: 00047~00053)
    8.14 MB │           ├── 00054.m2ts
   66.00 KB │           ├── 00055.m2ts
  216.00 KB │           ├── 00056.m2ts
   14.81 MB │           ├── 00057.m2ts
   54.33 MB │           ├── 00058.m2ts
-   6.39 GB │           ├── 00059.m2ts  [大概率是正片] 推测为第 739 集
+   6.39 GB │           ├── 00059.m2ts  [probably main episode] likely episode 739
   54.28 MB │           ├── 00060.m2ts
  168.33 MB │           ├── 00063.m2ts
    1.80 MB │           └── 00064.m2ts
            └── OnePiece_S11_V9_D2
-               └── ...（结构一致，文件太多，此处省略）
+                └── ...(same structure; too many files, omitted here)
 ```
 
-> 难点：不仔细看就可能会漏掉 `00059.m2ts`，导致“比别人少做一集”
+> Pitfall: without careful inspection, `00059.m2ts` may be missed, resulting in one fewer episode than everyone else.
 
-**播放观察结果：**
-- 正片猜测正确
-- `00025~00055.m2ts` 都是黑屏
-- 此前判断的“预告图”实际上是英文配音演员（和公司）的职员表（Credit）
-  - 考虑到制作年代较老，额外添加职员表确实可以避免修改片源
+**Playback observations:**
+- The main-episode guesses were correct
+- `00025~00055.m2ts` are all black screens
+- The items previously identified as “preview images” are actually credits for English voice actors and the company
+  - Given the age of the production of main-episode, adding separate credits prevent unnecessary re-encoding of source
 
-**结论：已经正常分集，但由于动漫爱好者群体较为重视配音演员（声优）职员表，因此需要将额外的职员表拼接到正片片尾（需重分集模式）**
+**Conclusion: the episodes are already separated correctly, but anime fans place importance on voice-actor credits, so the extra credits should be joined to the end of each main episode (Repart Mode required).**
 
 ---
 
-#### 演唱会文件结构
+#### Concert File Structure
 
-以一套 4 碟片演唱会为例，其中部分文件夹保持折叠以突出有效内容
+Using a 4-disc concert set as an example; some folders remain collapsed to highlight the relevant content
 ```
         [BDMV][251008] 結束バンド TOUR “We will B”
            ├── Kessoku Band TOUR “We will B” DISC1
@@ -222,65 +222,65 @@ BDMV/
  104.00  B     └── CERTIFICATE
 ```
 
-> 难点：文件路径同时含双引号和空格，用命令行工具写出来的难度很高
+> Pitfall: file paths contain both double quotes and spaces, making them difficult to write with command-line tools
 
-根据以上文件大小推测的视频内容类型，从文件大小可以发现一些细节
-- DISC1 和 DISC3、DISC2 和 DISC4 的视频大小分布结构最相似
-- 如果是完整不间断的长视频，那么 DISC2 的结构应该和 DISC1 结构一致
-    - **初步结论：有必要进行播放观察，看看怎么个事**
+Judging video content types from file sizes above reveals some details
+- The size distribution of DISC1 resembles DISC3, and DISC2 resembles DISC4 most closely
+- If these were complete uninterrupted long videos, the structure of DISC2 should match DISC1
+    - **Preliminary conclusion: playback observation is needed to see what is going on**
 ```
 DISC1 BDMV/STREAM/
-00000.m2ts  42.38 GB   [正片/演唱会主体]
-00001.m2ts  37.59 MB   [公共短片段：菜单/警告/logo]
-00002.m2ts   7.81 MB   [公共短片段]
-00003.m2ts  21.13 MB   [公共短片段]
-00004.m2ts   1.33 GB   [特典/广告/菜单视频]
-00005.m2ts  192 KB     [小图标/占位/通常不可播放]
-00006.m2ts  264 KB     [小图标/占位/通常不可播放]
+00000.m2ts  42.38 GB   [main feature/concert body]
+00001.m2ts  37.59 MB   [common short clip: menu/warning/logo]
+00002.m2ts   7.81 MB   [common short clip]
+00003.m2ts  21.13 MB   [common short clip]
+00004.m2ts   1.33 GB   [bonus/advertisement/menu video]
+00005.m2ts  192 KB     [small icon/placeholder/usually unplayable]
+00006.m2ts  264 KB     [small icon/placeholder/usually unplayable]
 
 DISC2 BDMV/STREAM/
-00000.m2ts  16.88 GB   [正片/主内容 A]
-00001.m2ts  37.59 MB   [公共短片段：菜单/警告/logo]
-00002.m2ts   7.81 MB   [公共短片段]
-00003.m2ts  21.13 MB   [公共短片段]
-00004.m2ts   1.27 GB   [特典/广告/菜单视频]
-00005.m2ts  11.31 GB   [正片/主内容 B 或 长特典]
-00006.m2ts  30 KB      [小图标/占位/通常不可播放]
-00008.m2ts  30 KB      [小图标/占位/通常不可播放]
+00000.m2ts  16.88 GB   [main feature/main content A]
+00001.m2ts  37.59 MB   [common short clip: menu/warning/logo]
+00002.m2ts   7.81 MB   [common short clip]
+00003.m2ts  21.13 MB   [common short clip]
+00004.m2ts   1.27 GB   [bonus/advertisement/menu video]
+00005.m2ts  11.31 GB   [main feature/main content B or long bonus]
+00006.m2ts  30 KB      [small icon/placeholder/usually unplayable]
+00008.m2ts  30 KB      [small icon/placeholder/usually unplayable]
 
 DISC3 BDMV/STREAM/
-00000.m2ts  30.35 GB   [正片/演唱会主体]
-00001.m2ts  37.59 MB   [公共短片段：菜单/警告/logo]
-00002.m2ts   7.81 MB   [公共短片段]
-00003.m2ts  21.13 MB   [公共短片段]
-00004.m2ts  1020.69 MB [约 1GB：菜单/短特典/广告]
-00005.m2ts  102 KB     [小图标/占位/通常不可播放]
-00006.m2ts  132 KB     [小图标/占位/通常不可播放]
+00000.m2ts  30.35 GB   [main feature/concert body]
+00001.m2ts  37.59 MB   [common short clip: menu/warning/logo]
+00002.m2ts   7.81 MB   [common short clip]
+00003.m2ts  21.13 MB   [common short clip]
+00004.m2ts  1020.69 MB [approx. 1GB: menu/short bonus/advertisement]
+00005.m2ts  102 KB     [small icon/placeholder/usually unplayable]
+00006.m2ts  132 KB     [small icon/placeholder/usually unplayable]
 
 DISC4 BDMV/STREAM/
-00000.m2ts  11.64 GB   [正片/主内容 A]
-00001.m2ts  37.59 MB   [公共短片段：菜单/警告/logo]
-00002.m2ts   7.81 MB   [公共短片段]
-00003.m2ts  21.13 MB   [公共短片段]
-00004.m2ts   1.50 GB   [特典/广告/菜单视频]
-00005.m2ts  11.42 GB   [正片/主内容 B 或 长特典]
-00006.m2ts  30 KB      [小图标/占位/通常不可播放]
-00008.m2ts  30 KB      [小图标/占位/通常不可播放]
+00000.m2ts  11.64 GB   [main feature/main content A]
+00001.m2ts  37.59 MB   [common short clip: menu/warning/logo]
+00002.m2ts   7.81 MB   [common short clip]
+00003.m2ts  21.13 MB   [common short clip]
+00004.m2ts   1.50 GB   [bonus/advertisement/menu video]
+00005.m2ts  11.42 GB   [main feature/main content B or long bonus]
+00006.m2ts  30 KB      [small icon/placeholder/usually unplayable]
+00008.m2ts  30 KB      [small icon/placeholder/usually unplayable]
 ```
 
-**播放观察结果：**
-- DISC1：演唱会上半场
-- DISC2：中场休息排练和采访
-- DISC3：演唱会下半场
-- DISC4：另一场演唱会的上、下半场（~~可能...是凑数的~~）
+**Playback observations:**
+- DISC1: first half of the concert
+- DISC2: rehearsals and interviews during the intermission
+- DISC3: second half of the concert
+- DISC4: first and second halves of another concert (~~possibly... filler~~)
 
-**结论：已经正常分集，无需拼接或拆分（单视频模式，队列模式已经够用，用不到重分集模式）**
+**Conclusion: already separated into episodes correctly; no joining or splitting needed (single-video mode; Queue Mode is sufficient, Repart Mode is unnecessary).**
 
 ---
 
-#### 电影文件结构 1
+#### Movie File Structure 1
 
-以一套 4 碟片演唱会为例，其中部分文件夹保持折叠以突出有效内容，并直接将播放观察结果标记在路径下
+Using a 4-disc concert set as an example; some folders remain collapsed to highlight the relevant content, with playback observations marked directly under the paths
 ```
         [BDMV][210623]スーパー戦隊MOVIEレンジャー2021 コレクターズパック 豪華版[Blu-ray]
    3.00 GB ├── DISC 2.iso
@@ -291,25 +291,25 @@ DISC4 BDMV/STREAM/
            │   │   ├── META
    8.37 KB │   │   ├── PLAYLIST
   43.31 GB │   │   └── STREAM
-   8.53 GB │   │       ├── 00000.m2ts [电影正片]（压缩率意外的高...因为全片仅 38 分钟）
+   8.53 GB │   │       ├── 00000.m2ts [movie feature] (surprisingly high compression... because the whole film is only 38 minutes)
   48.00 KB │   │       ├── 00001.m2ts
-   3.27 GB │   │       ├── 00002.m2ts [特别篇]（也算内容）
- 373.99 MB │   │       ├── 00003.m2ts [片头曲音乐 MV]
- 209.58 MB │   │       ├── 00004.m2ts [片尾曲音乐 MV]
+   3.27 GB │   │       ├── 00002.m2ts [special] (also counts as content)
+ 373.99 MB │   │       ├── 00003.m2ts [opening theme MV]
+ 209.58 MB │   │       ├── 00004.m2ts [ending theme MV]
  522.00 KB │   │       ├── 00005.m2ts
  498.00 KB │   │       ├── 00006.m2ts
  522.00 KB │   │       ├── 00007.m2ts
   48.00 KB │   │       ├── 00008.m2ts
  384.00 KB │   │       ├── 00009.m2ts
-   4.58 GB │   │       ├── 00010.m2ts [舞台见面会 1]
-   3.63 GB │   │       ├── 00011.m2ts [舞台见面会 2]（1 的一个月后）
-   1.36 GB │   │       ├── 00012.m2ts [短预告]
-   6.52 GB │   │       ├── 00013.m2ts [正片花絮]
-   6.34 GB │   │       ├── 00014.m2ts [长预告]
- 385.13 MB │   │       ├── 00015.m2ts [猜测：特别篇]（短）
- 122.64 MB │   │       ├── 00016.m2ts [广告]
-   3.23 GB │   │       ├── 00017.m2ts [公开纪念会 1]（舞台见面会 2 之前）
-   4.26 GB │   │       ├── 00018.m2ts [公开纪念会 2]（...反正就是要开会...）
+   4.58 GB │   │       ├── 00010.m2ts [stage greeting 1]
+   3.63 GB │   │       ├── 00011.m2ts [stage greeting 2] (one month after #1)
+   1.36 GB │   │       ├── 00012.m2ts [short trailer]
+   6.52 GB │   │       ├── 00013.m2ts [feature behind-the-scenes]
+   6.34 GB │   │       ├── 00014.m2ts [long trailer]
+ 385.13 MB │   │       ├── 00015.m2ts [guess: special] (short)
+ 122.64 MB │   │       ├── 00016.m2ts [advertisement]
+   3.23 GB │   │       ├── 00017.m2ts [release event 1] (before stage greeting 2)
+   4.26 GB │   │       ├── 00018.m2ts [release event 2] (...more meetings anyway...)
  366.00 KB │   │       ├── 00019.m2ts
  378.00 KB │   │       ├── 00020.m2ts
  360.00 KB │   │       ├── 00021.m2ts
@@ -318,25 +318,25 @@ DISC4 BDMV/STREAM/
  270.00 KB │   │       ├── 00024.m2ts
  444.00 KB │   │       ├── 00025.m2ts
    8.41 MB │   │       ├── 00028.m2ts
- 433.17 MB │   │       ├── 00029.m2ts [猜测：Menu]
+ 433.17 MB │   │       ├── 00029.m2ts [guess: menu]
   67.64 MB │   │       ├── 00030.m2ts
    8.96 MB │   │       ├── 00031.m2ts
    2.26 MB │   │       ├── 00032.m2ts
    2.25 MB │   │       └── 00033.m2ts
  104.00  B │   └── CERTIFICATE
  320.67 MB ├── SCANS
-  96.94 MB └── 特典CD
+  96.94 MB └── Bonus CD
 ```
 
-> 难点：DISC2、3 并非蓝光盘，而是 DVD 结构
+> Pitfall: DISC2 and DISC3 are not Blu-ray discs; they use a DVD structure
 
-**播放观察结果：**DISC2、3 是制作成 DVD 的 DISC1（正片、特别篇）
+**Playback observations:** DISC2 and DISC3 are DVD versions of DISC1 (feature and special).
 
-**结论：已经正常分集，无需拼接或拆分（队列模式已经够用，用不到重分集模式）**
+**Conclusion: already separated into episodes correctly; no joining or splitting needed (Queue Mode is sufficient, Repart Mode is unnecessary).**
 
-#### 电影文件结构 2
+#### Movie File Structure 2
 
-以一部番剧转电影片源为例，其中部分文件夹保持折叠以突出有效内容，并直接将播放观察结果标记在路径下
+Using a TV-to-movie source as an example; some folders remain collapsed to highlight the relevant content, with playback observations marked directly under the paths
 ```
         Shakugan.no.Shana.The.Movie.2007.ANiME.DUAL.COMPLETE.BLURAY-ANiMEHD
    2.85 KB ├── BDMV
@@ -346,13 +346,13 @@ DISC4 BDMV/STREAM/
   51.27 KB │   ├── CLIPINF
    5.29 KB │   ├── PLAYLIST
   20.78 GB │   └── STREAM
- 255.62 MB │       ├── 00000.m2ts [猜测：Menu]
+ 255.62 MB │       ├── 00000.m2ts [guess: menu]
    2.60 MB │       ├── 00002.m2ts
    5.27 MB │       ├── 00003.m2ts
    5.44 MB │       ├── 00004.m2ts
    5.71 MB │       ├── 00005.m2ts
    2.55 MB │       ├── 00010.m2ts
-  17.28 GB │       ├── 00012.m2ts [正片]
+  17.28 GB │       ├── 00012.m2ts [feature]
    5.07 MB │       ├── 00013.m2ts
  193.61 MB │       ├── 00014.m2ts
  217.07 MB │       ├── 00015.m2ts
@@ -363,156 +363,154 @@ DISC4 BDMV/STREAM/
  317.54 MB │       ├── 00020.m2ts
  170.98 MB │       ├── 00021.m2ts
  177.29 MB │       ├── 00022.m2ts
-   1.21 GB │       ├── 00023.m2ts [片头曲音乐 MV]
+   1.21 GB │       ├── 00023.m2ts [opening theme MV]
  250.35 MB │       ├── 00024.m2ts
   11.37 MB │       └── 00025.m2ts
  104.00  B └── CERTIFICATE
 ```
 
-**结论：已经正常分集，无需拼接或拆分（队列模式已经够用，用不到重分集模式）**
+**Conclusion: already separated into episodes correctly; no joining or splitting needed (Queue Mode is sufficient, Repart Mode is unnecessary).**
 
 ---
 
-## 蓝光播放列表
+## Blu-ray Playlists
 
-从上面的例子可以看出，单纯依赖文件结构和大小来判断片源类型，既麻烦又容易出错。因此，应该换一种思路——解析播放列表，从而实现与蓝光播放器一致的浏览“体验”。
+As the examples above show, judging source types solely from file structure and sizes is tedious and error-prone. A better approach is to parse playlists, reproducing the browsing experience of a Blu-ray player.
 
-1cenc 通过 ChapterTools Core 读取蓝光文件结构的播放列表（PLAYLIST）文件夹，提供总结出的所有播放列表和子列表，通过选择需要的列表来构建压制队列或重分集队列。
+1cenc reads the PLAYLIST folder of a Blu-ray structure via ChapterTools Core, summarizes every playlist and sub-playlist, and lets you build an encoding queue or repart queue by selecting the lists you need.
 
 ### PLAYLIST (.mpls)
 
-播放列表文件。一个 `.mpls` 通常定义一个 Playlist，Playlist 通过 PlayItem 来指定具体的 `.m2ts` 流引用映射，并指定其中使用的视频、音频、字幕的搭配。
+Playlist files. One `.mpls` file usually defines one Playlist, which uses PlayItems to reference specific `.m2ts` streams and to specify the video, audio, and subtitle combination.
 
-根据 Playlist 的组织方式和用途，常见结构可归纳为：
+Common structures by Playlist organization and purpose can be summarized as follows:
 
-#### 一视频、多字幕
+#### One Video, Multiple Subtitles
 
-多个 Playlist 指向**相同的视频**，但选择不同的字幕/音轨组合
-* **一文件多列表**：一个 `.mpls` 内存在多个 Playlist，分别选择不同字幕
-* **多文件一列表**：多个 `.mpls` 分别包含一个 Playlist，均指向相同的视频 Clip，但选择不同字幕
-* **特征**：
-  * 各 Playlist 的播放时长基本相同
-  * 引用的 `.m2ts` 文件高度重合
-  * 主要差异通常在字幕、音频等 Stream 选择
+Multiple Playlists point to the **same video** but select different subtitle/audio combinations
+* **One file, multiple Playlists**: one `.mpls` contains several Playlists with different subtitles
+* **Multiple files, one Playlist each**: several `.mpls` files each contain one Playlist pointing to the same video Clip with different subtitles
+* **Characteristics**:
+  * Playback durations are nearly identical
+  * Referenced `.m2ts` files overlap heavily
+  * Differences usually lie in subtitle, audio, and other stream selections
 
-#### 正片、花絮
+#### Feature and Bonus Content
 
-不同 Playlist 分别对应正片、演唱会主体、特典、幕后花絮等独立内容
+Different Playlists correspond to independent content such as the feature, concert body, bonuses, and behind-the-scenes footage
 
-* **一文件多列表**：一个 `.mpls` 内包含多个 Playlist，分别指向不同内容
-* **多文件一列表**：多个 `.mpls` 各自对应一个内容
-* **特征**：
-  * 正片通常具有**最长的播放时长**
-  * 电影、演唱会通常 Playlist 较少，且单个 Playlist 引用的 Clip 数量相对集中
-  * 番剧通常存在多个时长相近的 Playlist
-  * 番剧的 Playlist/Clip 编号常具有一定的连续或周期性规律
-  * 单个 Playlist 引用的 Clip 数量可能超过 4，用于组成一整集内容
+* **One file, multiple Playlists**: one `.mpls` contains several Playlists pointing to different content
+* **Multiple files, one Playlist each**: each `.mpls` corresponds to one piece of content
+* **Characteristics**:
+  * The feature usually has the **longest playback duration**
+  * Movies and concerts usually have fewer Playlists, and each Playlist references a relatively concentrated set of Clips
+  * Series usually have several Playlists of similar duration
+  * Series Playlist/Clip numbers often follow continuous or periodic patterns
+  * A single Playlist may reference more than 4 Clips to form one complete episode
 
-#### 广告、MV、短篇
-广告、音乐视频（MV）、宣传片、短特典等较短内容。
+#### Advertisements, MVs, and Shorts
+Advertisements, music videos (MVs), trailers, short bonuses, and other short content.
 
-* **常见情况**：一个 `.mpls` 对应一个主要 Playlist
-* **特征**：
-  * 播放时长明显短于正片
-  * 通常只引用少量 `.m2ts` Clip
-  * Playlist/Clip 编号有时存在较弱的连续或分组规律
-  * 在番剧 BD 中，也可能表现为 OP、ED、PV、CM 等独立短篇内容
+* **Common case**: one `.mpls` corresponds to one main Playlist
+* **Characteristics**:
+  * Playback duration is clearly shorter than the feature
+  * Usually references only a few `.m2ts` Clips
+  * Playlist/Clip numbers sometimes show weak sequential or grouping patterns
+  * On anime BDs, these may also appear as standalone shorts such as OPs, EDs, PVs, or CMs
 
-> 以上是纯经验判断（往难听了说就是瞎猜），并非分类规则标准
-
----
-
-## 导入蓝光播放列表
-
-### 队列模式
-
-在队列模式（Queue Mode）和重分集模式（Repart Mode）中用于快速导入蓝光盘文件结构中正片的工具。
-
-1. 在 1cenc 主界面点击“队列模式”
-2. 在“是否导入蓝光”对话框中选择“确认”
-  <img src="./img2-all/2-Queue-Mode-Import-Branch.png" alt="队列模式导入分支" width=500 />
-3. 选中一个蓝光盘体文件夹（`BDMV`）中的 `PLAYLIST` 文件夹并按确认——蓝光播放列表选择器会出现：
-  <img src="./img2-all/3-BDPlaylistSelector.png" alt="蓝光播放列表选择器 1" width=700 />
-4. 判断正片视频流所在的簇（Cluster），位于第一列
-    - 图中为先前的演唱会资源，无需重分集，因此根据最长时长判断——选择第一个簇
-5. 根据第二列提供的播放列表（Playlist），选择正片所对应的列表，点击此列底部的添加按钮
-    - 图中的簇里只含有单个播放列表，因此直接添加
-6. 判断是否还有需要压制的播放列表并添加到最终播放列表（Final Playlist）里，并点击“完成”
-    - 此处判断为无需添加
-
-**最终播放列表：**
-<img src="./img2-all/4-BDPlaylistSelector-1.png" alt="蓝光播放列表选择器 2" width=700 />
-
-**完成队列导入：**
-<img src="./img2-all/5-BDPlaylistSelector-2.png" alt="蓝光播放列表选择器 3" width=500 />
-
-> 同时，这个空格 + 双引号的“恐怖”路径被正确解析了
-
-### 重分集模式
-1. 在 1cenc 主界面点击“重分集模式”
-2. 在“是否导入蓝光”对话框中选择“确认”
-3. 选出最终播放列表并确认
-  <img src="./img2-all/6-BDPlaylistSelector-3.png" alt="蓝光播放列表选择器 4" width=500 />
-
-这一次可以看到额外的警告信息：*源视频被标记为隔行扫描。*——可能需要进行转换才能处理。
-
-#### 蓝光隔行视频
-
-由于历史原因，在 1080p 分辨率下，原始蓝光标准支持有限：
-- 1080p @ 23.976 / 24 fps（逐行，电影）
-- 1080i @ 29.97 / 25 fps（隔行，即 59.94i / 50i，电视）
-- 1080p @ 59.94 / 50 fps（BD-ROM 不支持，属于 Ultra HD 4K 蓝光规格）
-
-因此，大部分蓝光播放机会拒绝 30fps 逐行扫描源。这产生了两种兼容策略：
-1. 通过 SPS/PPS 标记隔行解码方案，实现伪 29.97fps
-    - 实际为逐行扫描，只要播放就能看出来
-    - 可以无损重编码，但据说存在一些“笨播放器”，会强行施加额外的去隔行处理，导致画质损失
-2. 编码为隔行，并且可能存在 3:2 或其它格式的 Pulldown，实现 1080i 29.97 格式
-    - 需逐帧观察，识别 Pulldown 规律，选用正确的恢复滤镜组
-
-> 1cenc 对 Pulldown 恢复处理的能力有限，因此暂且需要古法处理，并且需要长篇幅说明，此处略
-> 可能不止两种兼容策略
-
-**播放观察结果：** 图中的源是伪隔行视频（情况 1），可以点击确定继续。
-
-#### 重分集编辑器
-
-用于将 N 个输入视频重新分集为 M 个输出视频（虚拟拼接 + 拆分），其原理并非 1cenc 独创，而是参考自 [Haruite/BluraySubtitle](https://github.com/Haruite/BluraySubtitle)，一个强大的全自动蓝光 BDRip 项目。
-
-**虚拟拼接：** 假设所有视频源已经被拼接为一整段长视频流，在最终的压制命令生成步骤才创建拼接—拆分压制命令
-
-<img src="./img2-all/7-RepartConfModal.png" alt="重分集编辑器" width=650 />
-
-- 顶部：虚拟总时间轴，由下方左侧的输入视频源按顺序拼接得到
-  - 竖线：分割线，产生最终视频队列
-- 中心处：分割线编辑工具，用于添加、移动、删除和精确调整分割线位置
-- 下方底部：输出队列列表，由分割线变动触发更新，不动分割线时可以手动调整顺序
-- 右侧：多帧预览，用于确认分割线位置，任意分割线被选中时渲染
-
-**基本操作**
-- **蓝光播放列表导入：** 章节信息会被转义为分割线——根据是否需要分割来判断其去留，删掉多余的分割线
-- **常规导入：** 将真正分割处的时间戳输入到分割线编辑工具，点击添加（或者双击时间轴大致位置创建，再修改）
-- 双击时间轴空白处以添加新的分割线
-- 拖拽分割线以移动大致位置，但无法越过之前/后的分割线
-
-**判断分割线的去留**
-结合上图的演唱会片源例子：
-- 预览 → 会场在分割线时刻关灯——推测按歌曲数分节
-  - 播放检查确认推测，根据分集需求决定分割
-- 有些分割线挨得很近 → 预览检查 → 内容为黑屏——推测是短休息和舞台准备
-  - 保留分割线以在输出列表中排除
+> The above is purely empirical judgment (bluntly speaking, educated guessing), not a classification standard
 
 ---
 
+## Importing Blu-ray Playlists
+
+### Queue Mode
+
+A tool for quickly importing the feature from a Blu-ray disc structure in Queue Mode and Repart Mode.
+
+1. Click "Queue Mode" in the 1cenc main window
+2. Select "Confirm" in the "Import Blu-ray?" dialog
+  <img src="./img2-all/2-Queue-Mode-Import-Branch.png" alt="Queue Mode import branch" width=500 />
+3. Select the `PLAYLIST` folder inside a Blu-ray (`BDMV`) folder and confirm — the Blu-ray playlist selector appears:
+  <img src="./img2-all/3-BDPlaylistSelector.png" alt="Blu-ray playlist selector 1" width=700 />
+4. Identify the cluster containing the feature video stream in the first column
+    - The example uses the concert source above, which needs no repart, so judge by longest duration — select the first cluster
+5. From the Playlists in the second column, select the feature list and click Add at the bottom of that column
+    - The cluster in the example contains only one Playlist, so add it directly
+6. Decide whether more Playlists need encoding, add them to the Final Playlist, and click "Done"
+    - Judged here as nothing more to add
+
+**Final Playlist:**
+<img src="./img2-all/4-BDPlaylistSelector-1.png" alt="Blu-ray playlist selector 2" width=700 />
+
+**Queue import complete:**
+<img src="./img2-all/5-BDPlaylistSelector-2.png" alt="Blu-ray playlist selector 3" width=500 />
+
+> Meanwhile, this "terrifying" path with spaces and double quotes was parsed correctly
+
+### Repart Mode
+1. Click "Repart Mode" in the 1cenc main window
+2. Select "Confirm" in the "Import Blu-ray?" dialog
+3. Select the Final Playlist and confirm
+  <img src="./img2-all/6-BDPlaylistSelector-3.png" alt="Blu-ray playlist selector 4" width=500 />
+
+This time you can see an extra warning: *The source video is flagged as interlaced.* — conversion may be required before processing.
+
+#### Blu-ray Interlaced Video
+
+For historical reasons, the original Blu-ray standard has limited support at 1080p:
+- 1080p @ 23.976 / 24 fps (progressive, movies)
+- 1080i @ 29.97 / 25 fps (interlaced, i.e. 59.94i / 50i, TV)
+- 1080p @ 59.94 / 50 fps (not supported by BD-ROM; belongs to the Ultra HD 4K Blu-ray specification)
+
+As a result, most Blu-ray players reject 30fps progressive sources. This produced two compatibility strategies:
+1. Signal an interlaced decoding scheme via SPS/PPS to implement pseudo-29.97fps
+    - Actually progressive; visible as soon as you play it
+    - Can be re-encoded losslessly, but some "stubborn players" reportedly force extra deinterlacing, losing quality
+2. Encode as interlaced, possibly with 3:2 or another Pulldown pattern, to implement 1080i 29.97
+    - Requires frame-by-frame inspection to identify the Pulldown pattern and select the correct restoration filter set
+
+> 1cenc has limited Pulldown restoration ability, so the traditional manual handling is still needed for now; it takes a long explanation and is omitted here
+> There may be more than two compatibility strategies
+
+**Playback observations:** the source in the figure is pseudo-interlaced video (case 1), so you can click Confirm to continue.
+
+#### Repart Editor
+
+Used to re-episode N input videos into M output videos (virtual concatenation + splitting). The mechanism is not original to 1cenc; it references [Haruite/BluraySubtitle](https://github.com/Haruite/BluraySubtitle), a powerful fully automatic Blu-ray BDRip project.
+
+**Virtual concatenation:** assumes all sources have already been joined into one long stream; the concat-then-split encoding commands are only created during final command generation
+
+<img src="./img2-all/7-RepartConfModal.png" alt="Repart editor" width=650 />
+
+- Top: virtual overall timeline, formed by joining the input sources at the lower left in order
+  - Vertical lines: split lines, producing the final video queue
+- Middle: split-line editing tools for adding, moving, deleting, and fine-tuning split positions
+- Bottom: output queue list, updated when split lines change; order can be adjusted manually when split lines stay fixed
+- Right: multi-frame preview for confirming split positions, rendered whenever any split line is selected
+
+**Basic operations**
+- **Blu-ray playlist import:** chapter information is converted into split lines — keep or remove them depending on whether splitting is needed
+- **Regular import:** enter the timestamp of each real split into the split-line editor and click Add (or double-click an approximate timeline position, then refine it)
+- Double-click empty timeline space to add a new split line
+- Drag split lines for approximate moves, but they cannot cross neighboring split lines
+
+**Deciding whether to keep split lines**
+Using the concert source above as an example:
+- Preview → the venue lights go out at a split line — presumably split by song
+  - Confirm by playback inspection, then split according to episode needs
+- Some split lines sit very close together → preview inspection → black-screen content — presumably short breaks and stage preparation
+  - Keep the split lines so these segments can be excluded from the output list
 
 ---
 
-## 队列模式
+## Queue Mode
 
-### 队列模式——滤镜编辑器
+### Queue Mode — Filter Editor
 
 ---
 
-## ？？教程完
+## ?? Tutorial Complete
 
-### 未提及内容
+### Unmentioned Content
+- Abnormal Blu-ray formats — conjoined discs, over-segmented discs
