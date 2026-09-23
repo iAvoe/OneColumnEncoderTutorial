@@ -39,12 +39,12 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 
 **Fork (Self-clone) | 分身（Fork）**
 - Basic Workflow | 基本操作流程
-- NUMA Node Distribution (optional) | NUMA 节点分配（可选）
-- Other Uses (look back during encoding, dense scheduling) | 其它用途（压制时回看、密集调度）
+- NUMA Node Distribution | NUMA 节点分配
+- Other Uses | 其它用途
 
 **Blu-ray Format | 蓝光格式**
 - File Structure to Encoding Mode | 文件结构到压制模式判断
-- Stream structure speculation & verification | 片源结构猜测与验证
+- Stream structure examples | 片源结构示例
 - Blu-ray PLAYLIST | 蓝光播放列表
 
 **Importing Blu-ray Playlists | 导入蓝光播放列表**
