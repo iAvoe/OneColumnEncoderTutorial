@@ -334,7 +334,6 @@ DISC4 BDMV/STREAM/
 
 #### 映画ファイル構造 2
 
-アニメを映画化したソースを例にします。一部のフォルダーは有効な内容を目立たせるため折りたたみ、再生確認の結果をパスの下に直接記しています。
 ```
         Shakugan.no.Shana.The.Movie.2007.ANiME.DUAL.COMPLETE.BLURAY-ANiMEHD
    2.85 KB ├── BDMV

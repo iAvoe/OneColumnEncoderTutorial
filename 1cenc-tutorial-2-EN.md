@@ -335,7 +335,6 @@ DISC4 BDMV/STREAM/
 
 #### Movie File Structure 2
 
-Using a TV-to-movie source as an example; some folders remain collapsed to highlight the relevant content, with playback observations marked directly under the paths
 ```
         Shakugan.no.Shana.The.Movie.2007.ANiME.DUAL.COMPLETE.BLURAY-ANiMEHD
    2.85 KB ├── BDMV

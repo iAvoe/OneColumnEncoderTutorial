@@ -335,7 +335,6 @@ DISC4 BDMV/STREAM/
 
 #### 電影文件結構 2
 
-以一部番劇轉電影片源為例，其中部分文件夾保持摺疊以突出有效內容，並直接將播放觀察結果標記在路徑下
 ```
         Shakugan.no.Shana.The.Movie.2007.ANiME.DUAL.COMPLETE.BLURAY-ANiMEHD
    2.85 KB ├── BDMV
