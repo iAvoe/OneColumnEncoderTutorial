@@ -1,6 +1,6 @@
 # OneColumnEncoder Tutorial
 
-The tutorials for operating OneColumnEncoder. | 1cenc 压制工具教程。
+The tutorials for operating [OneColumnEncoder](https://github.com/iAvoe/OneColumnEncoder/). | [OneColumnEncoder](https://github.com/iAvoe/OneColumnEncoder/) 压制工具教程。
 The screenshot images in tutorial may have differ from latest build, which is normal. | 教程中的截图画面或与最新版软件有所不同，这是正常现象。
 
 ## 1. Basics | 基础
