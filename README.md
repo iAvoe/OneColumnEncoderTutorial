@@ -59,11 +59,11 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 ## 3. End-Game | 终极
 
 **TODO**
-- Encode Settings Description | 压制设置说明
-- FFProbe raw JSON explained | 说明 FFProbe 原生 JSON
 - Concat Mode | 拼接模式
-- Advanced Repart Mode (over/under-segmented BD repartition) | 高级重分集模式（肉酱盘、合并盘重分集）
-- Basic video filter processing logics | 基本视频滤镜处理逻辑
+- Abnormal Blu-Ray format (over/under-segmented discs) | 异常蓝光格式（肉酱盘、合并盘）
+- Video Filtering Logics | 基本视频滤镜处理逻辑
+- Encoding Configuration Logics | 压制设置说明
+- FFProbe raw JSON explained | 说明 FFProbe 原生 JSON
 
 ## i18n:
 

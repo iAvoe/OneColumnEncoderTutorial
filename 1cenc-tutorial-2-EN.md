@@ -15,35 +15,35 @@ In simple terms, a fork clones the software's complete current state to create t
 
 <img src="./img2-all/1-Fork-Usage.png" alt="Fork" width=800 />
 
-> Fork is convenient because it eliminates repeated launches and repeated configuration.
+> Fork eliminates repeated launches and repeated configuration.
 > Distinguish running instances by checking the PID (process ID) shown on the taskbar or in the program title bar.
 
 ### Fork — Basic Workflow
-1. Complete the shared configuration
-    - Select upstream tool (filtering) and downstream tool (encoder)
-    - Import source video
-    - Define common video filters and encode settings as needed
-2. Create enough instances for the required targets
-    - 2: Lossless compression | Lossy compression
-    - 2: Burn-in subtitle | Contain subtitle
-    - 4: x264-1080p | x264-720p | x265-1080p | x265-720p
-    - N: Try different encoding parameter values to find the best, or simply for testing
-3. Differentiate each instance's configuration
-    - Individual video filters, encode settings, etc.
-     - Output Settings (Path and Filename): use different output filenames
+1. **Complete the shared configuration**
+   * Select the upstream tool (filtering) and downstream tool (encoder)
+   * Import the source video
+   * Define common video filters and encode settings as needed
+2. **Create enough instances for the required targets**
+   * 2: Lossless compression | Lossy compression
+   * 2: Burn-in subtitles | Embedded subtitles
+   * 4: x264-1080p | x264-720p | x265-1080p | x265-720p
+   * N: Try different encoding parameter values to find the best result, or simply for testing
+3. **Differentiate each instance's configuration**
+   * Individual video filters, encode settings, etc.
+   * Output Settings (Path and Filename): Use different output filenames
 
-### Fork — NUMA Node Distribution (optional)
-1. Complete the shared configuration
-    - Select upstream tool (filtering) and downstream tool (encoder)
-     - Import sources in Queue Mode or Repart Mode (described below)
-    - Define common video filters and encode settings as needed
-2. Create one instance for each available NUMA node
-3. Differentiate each instance's workload
-     - Delete duplicate tasks selectively so the work is distributed evenly across N nodes
-        - Queue Mode → Open Queue Editor → Delete button
-         - Repart Mode → Open the Repart Editor → find the Output Queue → press Delete
-         - “Sort by file size” can further improve the distribution
-     - Parallelism Control: assign each instance to an exclusive compute node
+### Fork — NUMA Node Distribution (Optional)
+1. **Complete the shared configuration**
+   * Select the upstream tool (filtering) and downstream tool (encoder)
+   * Import sources in Queue Mode or Repart Mode (described below)
+   * Define common video filters and encode settings as needed
+2. **Create one instance for each available NUMA node**
+3. **Differentiate each instance's workload**
+   * Selectively delete duplicate tasks so the work is distributed evenly across N nodes
+     * Queue Mode → Open Queue Editor → Delete button
+     * Repart Mode → Open Repart Editor → Find the Output Queue → Press Delete
+     * “Sort by file size” can further improve the distribution
+   * Parallelism Control: Assign each instance to an exclusive compute node
 
 > Queue Mode and Repart Mode do not support manually specifying filenames, but removing duplicate tasks also prevents overwriting.
 > This produces an effect similar to x265's thread-pool scheduling in x264...
