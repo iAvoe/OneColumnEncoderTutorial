@@ -441,11 +441,27 @@ DISC4 BDMV/STREAM/
 
 ### 導入藍光播放列表
 
-在 1cenc 主界面點擊“隊列模式”，在“是否導入藍光”對話框中選擇“確認”，選中一個藍光碟體文件夾結構中的 `PLAYLIST` 文件夾並按確認，即可打開播放列表選擇器：
+在隊列模式（Queue Mode）和重分集模式（Repart Mode）中用於快速導入藍光碟文件結構中正片的工具。
 
-<img src="./img2-all/2-BDPlaylistSelector.png" alt="藍光播放列表選擇器" width=700 />
+1. 在 1cenc 主界面點擊“隊列模式”
+2. 在“是否導入藍光”對話框中選擇“確認”
+  <img src="./img2-all/2-Queue-Mode-Import-Branch.png" alt="隊列模式導入分支" width=500 />
+3. 選中一個藍光碟體文件夾（`BDMV`）中的 `PLAYLIST` 文件夾並按確認——藍光播放列表選擇器會出現：
+  <img src="./img2-all/3-BDPlaylistSelector.png" alt="藍光播放列表選擇器 1" width=700 />
+4. 判斷正片影片串流所在的簇（Cluster），位於第一列
+    - 圖中為先前的演唱會資源，無需重分集，因此根據最長時長判斷——選擇第一個簇
+5. 根據第二列提供的播放列表（Playlist），選擇正片所對應的列表，點擊此列底部的添加按鈕
+    - 圖中的簇裡只含有單個播放列表，因此直接添加
+6. 判斷是否還有需要壓制的播放列表並添加到最終播放列表（Final Playlist）裡，並點擊“完成”
+    - 此處判斷為無需添加
 
-圖中是之前的 `Kessoku Band TOU R“We will B” DISC1` 播放列表讀取結果，最終檢測到 3 個列表，其中時長最長的自然是正片。
+最終播放列表：
+<img src="./img2-all/3-BDPlaylistSelector-1.png" alt="藍光播放列表選擇器 2" width=700 />
+
+完成隊列導入：
+<img src="./img2-all/3-BDPlaylistSelector-2.png" alt="藍光播放列表選擇器 3" width=500 />
+
+> 同時，這個空格 + 雙引號的恐怖路徑被正確解析了
 
 ---
 
