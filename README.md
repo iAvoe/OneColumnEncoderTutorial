@@ -6,8 +6,6 @@ The screenshot images and edge functionality in tutorial may differ from latest 
 
 ## 1. Basics | 基础
 
-Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础流程教程，使能快速上手。
-
 **Download and "Installation" | 下载与“安装”**
 - Archived files | 解压文件列表
 - Bundled Tools | 集成的工具
