@@ -375,7 +375,7 @@ DISC4 BDMV/STREAM/
 
 As the examples above show, judging source types solely from file structure and sizes is tedious and error-prone. A better approach is to parse playlists, reproducing the browsing experience of a Blu-ray player.
 
-1cenc reads the PLAYLIST folder of a Blu-ray structure via ChapterTools Core, summarizes every playlist and sub-playlist, and lets you build an encoding queue or repart queue by selecting the lists you need.
+1cenc reads the PLAYLIST folder of a Blu-ray structure via [ChapterTool Core](https://github.com/tautcony/ChapterTool/pkgs/nuget/ChapterTool.Core), summarizes every playlist and sub-playlist, and lets you build an encoding queue or repart queue by selecting the lists you need.
 
 ### PLAYLIST (.mpls)
 
@@ -478,9 +478,10 @@ As a result, most Blu-ray players reject 30fps progressive sources. This produce
 
 #### Repart Editor
 
-Used to re-episode N input videos into M output videos (virtual concatenation + splitting). The mechanism is not original to 1cenc; it references [Haruite/BluraySubtitle](https://github.com/Haruite/BluraySubtitle), a powerful fully automatic Blu-ray BDRip project.
+Used to re-episode N input videos into M output videos (virtual concatenation + splitting). The mechanism is not original to 1cenc; but references [Haruite/BluraySubtitle](https://github.com/Haruite/BluraySubtitle), a powerful fully automatic Blu-ray BDRip project.
 
-**Virtual concatenation:** assumes all sources have already been joined into one long stream; the concat-then-split encoding commands are only created during final command generation
+**Virtual concatenation**
+- Assumes all sources have already been joined into one long stream; the concat-then-split encoding commands are only created during final command generation
 
 <img src="./img2-all/7-RepartConfModal.png" alt="Repart editor" width=650 />
 

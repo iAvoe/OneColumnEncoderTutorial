@@ -377,7 +377,7 @@ DISC4 BDMV/STREAM/
 
 從上面的例子可以看出，單純依賴文件結構和大小來判斷片源類型，既麻煩又容易出錯。因此，應該換一種思路——解析播放列表，從而實現與藍光播放器一致的瀏覽“體驗”。
 
-1cenc 通過 ChapterTools Core 讀取藍光文件結構的播放列表（PLAYLIST）文件夾，提供總結出的所有播放列表和子列表，透過選擇需要的列表來構建壓制隊列或重分集隊列。
+1cenc 通過 [ChapterTool Core](https://github.com/tautcony/ChapterTool/pkgs/nuget/ChapterTool.Core) 讀取藍光文件結構的播放列表（PLAYLIST）文件夾，提供總結出的所有播放列表和子列表，透過選擇需要的列表來構建壓制隊列或重分集隊列。
 
 ### PLAYLIST (.mpls)
 
@@ -482,7 +482,8 @@ DISC4 BDMV/STREAM/
 
 用於將 N 個輸入影片重新分集為 M 個輸出影片（虛擬拼接 + 拆分），其原理並非 1cenc 獨創，而是參考自 [Haruite/BluraySubtitle](https://github.com/Haruite/BluraySubtitle)，一個強大的全自動藍光 BDRip 項目。
 
-**虛擬拼接：** 假設所有影片源已經被拼接為一整段長影片串流，在最終的壓製命令生成步驟才創建拼接—拆分壓制命令
+**虛擬拼接**
+- 假設所有影片源已經被拼接為一整段長影片串流，在最終的壓製命令生成步驟才創建拼接—拆分壓制命令
 
 <img src="./img2-all/7-RepartConfModal.png" alt="重分集編輯器" width=650 />
 
