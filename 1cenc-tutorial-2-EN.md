@@ -435,7 +435,7 @@ A tool for quickly importing the feature from a Blu-ray disc structure in Queue 
     - The example uses the concert source above, so judge by longest duration — select the first cluster
 5. From the Playlists in the second column, select the feature list and click Add at the bottom of that column
     - The cluster in the example contains only one Playlist, so add it directly
-6. Decide whether more Playlists need encoding, add them to the Final Playlist, and click "Done"
+6. Decide whether more Playlists need encoding, add them to the Final Playlist, and click "Confirm"
     - Judged here as nothing more to add
 
 **Final Playlist:**
@@ -471,7 +471,8 @@ As a result, most Blu-ray players reject 30fps progressive sources. This produce
     - Requires frame-by-frame inspection to identify the Pulldown pattern and select the correct restoration filter set
 
 > 1cenc has limited Pulldown restoration ability, so the traditional manual handling is still needed for now; it takes a long explanation and is omitted here
-> There may be more than two compatibility strategies
+
+> There may be more than 2 compatibility strategies
 
 **Playback observations:** the source in the figure is pseudo-interlaced video (case 1), so you can click Confirm to continue.
 
