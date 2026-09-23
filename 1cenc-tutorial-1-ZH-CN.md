@@ -1,10 +1,9 @@
 # 1cenc 基本流程使用教程
 
-本文档面向入门群体，用于说明从下载到开始压制视频的完整流程顺序；本文的操作流程会写的偏详细，且会忽略可能与压制性能相关的使用建议。
+本文档面向入门群体，用于说明从下载到开始压制视频的完整流程顺序。
 
-## 如何反馈问题
-
-通过 [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) 或 [NazoRip 项目评论区](https://nazorip.site/archives/1593/) 可以反馈。反馈前请确认问题着实归咎于 1cenc，最好有截图、运行日志拷贝、ffprobe 日志之类的辅助信息，以便排查。
+**如何反馈问题**
+- 通过 [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) 或 [NazoRip 项目评论区](https://nazorip.site/archives/1593/) 可以反馈。反馈前请确认问题着实归咎于 1cenc，最好有截图、运行日志拷贝、ffprobe 日志之类的辅助信息，以便排查。
 
 ## 下载与“安装”
 

@@ -1,69 +1,70 @@
-# 1cenc 高级流程使用教程
+# 1cenc Advanced Worflow Tutorial
 
-本文档用于说明蓝光格式细节，适用于高级压制工作流的功能，使用方法和操作示例；不同于基础教程，本文不会完整展示所有步骤。
+This document outlines Blu-Ray nuances and features made for advanced encoding workflows, usages and examples; Unlike the basic tutorials, this tutorial no longer shows every single step.
 
-**如何反馈问题**
-- [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) 或 [NazoRip 项目评论区](https://nazorip.site/archives/1593/) 可以反馈。反馈前请确认问题着实归咎于 1cenc，最好有截图、运行日志拷贝、ffprobe 日志之类的辅助信息，以便排查。
+**To report an issue**
+- You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
 
-## 分身（Fork）
 
-简单地说，就是对软件当前完整状态的克隆，从而产生两个一模一样，无明显主次之分的运行实例。1cenc 可能是首批支持它的压制软件，但其概念并不新鲜，而是在 Git（版本管理）、VMFork（虚拟机管理），以及一些 PVE 网游中都有的设计。
+## Fork (Self-clone)
 
-**实例（Instance）**
-- 在计算机科学中，基于某种模型或蓝图的所创建的具体实现。这个实例通常与其他基于同一模型的实例有一个共同的数据结构，但储存在实例中的值是独立的——维基百科
+In Layman's terms, fork is a clone with all states copied to another instance, becoming 2 identical instances with no clear primary-secondary tiering. 1cenc might be the first batch of encoding program that incroporated this functionality, but this idea isn't something new, Git (version control), VMFork (virtual machine control), and many PVE online games uses it all the time.
 
-<img src="./img2-all/1-Fork-Usage.png" alt="分身功能" width=800 />
+**Instance**
+- In computer science, an instance or token (from metalogic and metamathematics) is a specific occurrence of a software element that is based on a type definition——Wikipedia
 
-> 分身功能的便利性来自于消除了“重复打开”和“重复配置”
-> 区分运行实例的方法是观察任务栏和程序标题栏的 PID（进程号）
+<img src="./img2-all/1-Fork-Usage.png" alt="Fork" width=800 />
 
-### 分身——基本操作流程
-1. 将相同的配置项完成
-    - 选择上游程序（滤镜工具）和下游程序（编码器）
-    - 导入视频源
-    - 按需完成通用的滤镜与压制配置
-2. 根据需求分出数量足够的实例
-    - 2: 无损压缩 | 有损压缩
-    - 2: 烧录字幕 | 内封字幕
+> The convenience of Fork comes from eliminating the need to repeatly relaunch and re-configure
+> You may distinguish the running instances by checking the PID (Process ID) displayed on the taskbar or in the program's title bar
+
+### Fork——Basic Workflow
+1. Complete the shared encoding configurations
+    - Select upstream tool (filtering) and downstream tool (encoder)
+    - Import source video
+    - Define common video filters and encode settings as needed
+2. Fork into a number of instances, depending on your encoding target
+    - 2: Lossless compression | Lossy compression
+    - 2: Burn-in subtitle | Contain subtitle
     - 4: x264-1080p | x264-720p | x265-1080p | x265-720p
-    - N: 分为多个不同编码器参数值的版本，选出效果最好的结果或单纯用于测试
-3. 分化各个实例的配置
-    - 按需分化滤镜与压制配置
-    - 导出设置（Output Path and Filename）：设置导出不同的文件名
+    - N: Try different encoding parameter values to find the best, or simply for testing
+3. Define individual encoding settings
+    - Individual video filters, encode settings, etc.
+    - Output Settings (Path and Filename): Differenciate output filenames
 
-### 分身——NUMA 节点分配（可选）
-1. 将相同的配置项完成
-    - 选择上游程序（滤镜工具）和下游程序（编码器）
-    - 导入队列模式（Queue Mode）或重分集模式（Repart Mode）的视频源（下面讲队列模式）
-    - 按需完成通用的滤镜与压制配置
-2. 根据已有的 NUMA 节点数量，分身出匹配数量的示例
-3. 分化各个实例的配置
-    - 选择性地删除重复的任务，让 N 个节点均匀分配任务
-        - 队列模式 → 打开队列编辑器 → 按删除按钮
-        - 重分集模式 → 打开队列编辑器 → 找到输出队列 → 按删除按钮
-        - 可以通过“按文件大小排序”进一步优化任务分配，使得 N 个节点分到的工作量更加一致
-    - 并行计算设置（Parallelism Control）：分配不同实例到可独占的计算节点
+### Fork——NUMA node work distribution (optional)
+1. Complete the shared encoding configurations
+    - Select upstream tool (filtering) and downstream tool (encoder)
+    - Import source videos using Queue Mode or Repart Mode (Explaination below)
+    - Define common video filters and encode settings as needed
+2. Fork into a number of instances based on available NUMA nodes
+3. Define individual workload
+    - Selectively delete duplicated source to encode, so that work is evenly distributed across N nodes
+        - Queue Mode → Open Queue Editor → Delete button
+        - Repart Mode → Open Repart Editor → find Output Queue → Delete button
+        - You may use “Sort by file size” to further improve workload distribution
+    - Parallelism Control: Select an idle NUMA node
 
-> 队列模式和重分集模式并不支持手动指定文件名，但这里消除了重复的队列任务，因此同样避免了覆盖
-> 相当于在 x264 上实现了 x265 的线程池调度系统... 的效果
+> Queue Mode and Repart Mode cannot specify output filename manually, but since the duplicated works are dropped, overwritting is prevented
+> Effectively achieves the x265 thread pool scheduling in x264... but only for the result
 
-### 分身——其它用途
+### Fork——Other uses
 
-**压制时回看**
-- 进入压制窗口时主界面会隐藏，因此如果有回看需求可以考虑打开
+**Look back during encoding**
+- The main window hides when an encoding is in progress, Fork allows you to double check your settings
 
-**密集调度**
-- 限制所有实例的核心占用到 1~4 核（或 AMD ZEN 架构 CPU 的单颗 CCD）
-- 单个任务变慢，但改良的缓存调度开销会改善编码器冗余（无损压缩）能力，以及提升大批量任务的运行效率
-- 高分辨率视频下可能会出现内存空间不足的问题
+**Dense scheduling**
+- Limit all instances to run on 1~4 cores (or all cores a ZEN CCD povides)
+- Every encoding task slows down, but the improved caching ends up improves redundancy (lossless compression), and overall batch encoding performance
+- High-res. video may consume too much RAM than the computer offers
 
 ---
 
-## 蓝光格式
+## Blu-Ray Format
 
-**注意：碟片资源可能来自于非法渠道，执行前应参考所在地区和国际的版权保护规定，以及对内容本身是否合法的地区规定。如美国的 DMCA、欧盟的版权指令等，选择如超过版权保护期的资源。**
+**Note: Content may originate from illegal sources. Before proceeding, please consult to local and international copyright regulations as well as regional laws regarding the legality of the content itself (such as the US DMCA or EU copyright directives), and opt for resources that are no longer under copyright protection.**
 
-### 文件结构与压制模式判断
+### File Structure and Encoding Mode Selection
 
 考虑到很多人大概率是第一次接触蓝光光盘，因此这部分会啰嗦一些，并且会含有很多“推测”和“结论”在内；已悉则可略。
 - 以下文件结构由 `Get-PSTree` 列出

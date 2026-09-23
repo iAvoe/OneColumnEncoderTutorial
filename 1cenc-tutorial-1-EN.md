@@ -1,10 +1,9 @@
 # 1cenc Basic Workflow Tutorial
 
-This document is aimed at beginners, explaining the workflow from download to encoding. The instructions are written in great detail and omit performance-related usage tips.
+This document is aimed at beginners, explaining the workflow from download to encoding.
 
-## How to Report Issues
-
-You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
+**How to Report Issues**
+- You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
 
 ## Download and "Installation"
 
