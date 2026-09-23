@@ -280,7 +280,6 @@ DISC4 BDMV/STREAM/
 
 #### Movie File Structure 1
 
-Using a 4-disc concert set as an example; some folders remain collapsed to highlight the relevant content, with playback observations marked directly under the paths
 ```
         [BDMV][210623]スーパー戦隊MOVIEレンジャー2021 コレクターズパック 豪華版[Blu-ray]
    3.00 GB ├── DISC 2.iso
