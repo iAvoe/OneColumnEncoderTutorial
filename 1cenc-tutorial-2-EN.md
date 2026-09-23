@@ -474,7 +474,7 @@ As a result, most Blu-ray players reject 30fps progressive sources. This produce
 
 > There may be more than 2 compatibility strategies
 
-**Playback observations:** the source in the figure is pseudo-interlaced video (case 1), so you can click Confirm to continue.
+**Playback observations:** the source in the figure is pseudo-interlaced video (case 1), so it is safe to click Confirm
 
 #### Repart Editor
 
