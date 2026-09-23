@@ -428,11 +428,11 @@ DISC4 BDMV/STREAM/
 
 1. 在 1cenc 主界面點擊“隊列模式”
 2. 在“是否導入藍光”對話框中選擇“確認”
-  <img src="./img2-all/2-Queue-Mode-Import-Branch.png" alt="隊列模式導入分支" width=500 />
+  - <img src="./img2-all/2-Queue-Mode-Import-Branch.png" alt="隊列模式導入分支" width=500 />
 3. 選中一個藍光碟體文件夾（`BDMV`）中的 `PLAYLIST` 文件夾並按確認——藍光播放列表選擇器會出現：
-  <img src="./img2-all/3-BDPlaylistSelector.png" alt="藍光播放列表選擇器 1" width=700 />
+  - <img src="./img2-all/3-BDPlaylistSelector.png" alt="藍光播放列表選擇器 1" width=700 />
 4. 判斷正片影片串流所在的簇（Cluster），位於第一列
-    - 圖中為先前的演唱會資源，無需重分集，因此根據最長時長判斷——選擇第一個簇
+    - 圖中為先前的演唱會資源，因此根據最長時長判斷——選擇第一個簇
 5. 根據第二列提供的播放列表（Playlist），選擇正片所對應的列表，點擊此列底部的添加按鈕
     - 圖中的簇裡只含有單個播放列表，因此直接添加
 6. 判斷是否還有需要壓制的播放列表並添加到最終播放列表（Final Playlist）裡，並點擊“完成”

@@ -428,11 +428,11 @@ A tool for quickly importing the feature from a Blu-ray disc structure in Queue 
 
 1. Click "Queue Mode" in the 1cenc main window
 2. Select "Confirm" in the "Import Blu-ray?" dialog
-  <img src="./img2-all/2-Queue-Mode-Import-Branch.png" alt="Queue Mode import branch" width=500 />
+  - <img src="./img2-all/2-Queue-Mode-Import-Branch.png" alt="Queue Mode import branch" width=500 />
 3. Select the `PLAYLIST` folder inside a Blu-ray (`BDMV`) folder and confirm — the Blu-ray playlist selector appears:
-  <img src="./img2-all/3-BDPlaylistSelector.png" alt="Blu-ray playlist selector 1" width=700 />
+  - <img src="./img2-all/3-BDPlaylistSelector.png" alt="Blu-ray playlist selector 1" width=700 />
 4. Identify the cluster containing the feature video stream in the first column
-    - The example uses the concert source above, which needs no repart, so judge by longest duration — select the first cluster
+    - The example uses the concert source above, so judge by longest duration — select the first cluster
 5. From the Playlists in the second column, select the feature list and click Add at the bottom of that column
     - The cluster in the example contains only one Playlist, so add it directly
 6. Decide whether more Playlists need encoding, add them to the Final Playlist, and click "Done"

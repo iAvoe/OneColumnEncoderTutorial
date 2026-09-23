@@ -427,11 +427,11 @@ Playlist の構成方法と用途に基づき、一般的な構造は次のよ�
 
 1. 1cenc のメイン画面で「キューモード」をクリック
 2. 「Blu-ray をインポートしますか」ダイアログで「確認」を選択
-  <img src="./img2-all/2-Queue-Mode-Import-Branch.png" alt="キューモードのインポート分岐" width=500 />
+  - <img src="./img2-all/2-Queue-Mode-Import-Branch.png" alt="キューモードのインポート分岐" width=500 />
 3. Blu-ray ディスクの `BDMV` フォルダー内にある `PLAYLIST` フォルダーを選択して確認すると、Blu-ray プレイリストセレクターが表示されます。
-  <img src="./img2-all/3-BDPlaylistSelector.png" alt="Blu-ray プレイリストセレクター 1" width=700 />
+  - <img src="./img2-all/3-BDPlaylistSelector.png" alt="Blu-ray プレイリストセレクター 1" width=700 />
 4. 本編動画ストリームがある Cluster を判定します。これは第 1 列にあります
-    - 図は先ほどのコンサートソースで、再分割が不要なため、最長時間に基づいて最初の Cluster を選択します
+    - 図は先ほどのコンサートソースで、最長時間に基づいて最初の Cluster を選択します
 5. 第 2 列に表示された Playlist から本編に対応するリストを選び、この列の下部にある追加ボタンをクリックします
     - 図の Cluster には Playlist が 1 つしかないため、そのまま追加します
 6. まだエンコードする Playlist があるかを判断して Final Playlist に追加し、「完了」をクリックします
