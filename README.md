@@ -9,9 +9,10 @@ The screenshot images and edge functionality in tutorial may differ from latest 
 Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础流程教程，使能快速上手。
 
 **Download and "Installation" | 下载与“安装”**
-- Video Processing Tool Placement (Auto import) | 解压文件列表、视频处理工具放置
-- AviSynth+, LSMASH Installation | 安装 AviSynth+, LSMASH
-- Python-VapourSynth-libvslsmashsource Installation | 安装 Python-VapourSynth-libvslsmashsource
+- Archived files | 解压文件列表
+- Video Processing Tool Placement | 视频处理工具放置
+- AviSynth+, LSMASH
+- Python-VapourSynth-LSMASH
 
 **First Launch | 首次启动**
 - Main Interface Overview | 主界面一览
@@ -42,13 +43,15 @@ Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础�
 - Other Uses (look back during encoding, dense scheduling) | 其它用途（压制时回看、密集调度）
 
 **Blu-ray Format | 蓝光格式**
-- File Structure and Encoding Mode Selection | 文件结构与压制模式判断
-- TV Series / Concert / Movie File Structure, source speculation and verification | 番剧 / 演唱会 / 电影文件结构、片源猜测与验证
-- Blu-ray Playlists PLAYLIST (.mpls): One Video Multiple Subtitles, Feature and Bonus, Advertisements MVs Shorts | 蓝光播放列表 PLAYLIST（.mpls）：一视频多字幕、正片花絮、广告 MV 短篇
+- File Structure to Encoding Mode | 文件结构到压制模式判断
+- Stream structure speculation & verification | 片源结构猜测与验证
+- Blu-ray PLAYLIST | 蓝光播放列表
 
 **Importing Blu-ray Playlists | 导入蓝光播放列表**
-- Queue Mode via BDPlaylistSelector | 队列模式经由蓝光播放列表选择器
-- Repart Mode via BDPlaylistSelector + Repart Editor (RepartConfModal), Blu-ray Interlaced Video note | 重分集模式经由蓝光播放列表选择器 + 重分集编辑器，蓝光隔行视频说明
+- Blu-Ray Playlist Selector | 蓝光播放列表选择器
+- Queue Mode | 队列模式
+- Repart Mode | 重分集模式
+- Interlaced Blu-Ray streams | 蓝光隔行视频流
 
 * **English:** [1cenc-tutorial-2-EN](./1cenc-tutorial-2-EN.md)
 * **中文简体：** [1cenc-tutorial-2-ZH-CN](./1cenc-tutorial-2-ZH-CN.md)
