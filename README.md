@@ -7,49 +7,74 @@ The screenshot images in tutorial may have differ from latest build, which is no
 
 Walkthrough of 1cenc, so people don't have to figure it out. | 1cenc 的基础流程教程，使能快速上手。
 
-### Coverage | 涵盖范围
-- Download (File struct.) → 1st launch (UI & behaviors) → 1st encode (Showing flow) → 2nd encode (Showing tools)
-- 下载（文件结构）→ 首次启动（UI 与软件行为）→ 首次压制（展示流程）→ 再次压制（展示工具）
+**Download and "Installation" | 下载与“安装”**
+- Video Processing Tool Placement (Auto import) | 解压文件列表、视频处理工具放置
+- AviSynth+, LSMASH Installation | 安装 AviSynth+, LSMASH
+- Python-VapourSynth-libvslsmashsource Installation | 安装 Python-VapourSynth-libvslsmashsource
 
-- [1cenc-tutorial-1-EN](./1cenc-tutorial-1-EN.md)
-- [1cenc-tutorial-1-ZH-CN](./1cenc-tutorial-1-ZH-CN.md)
-- [1cenc-tutorial-1-ZH-TW](./1cenc-tutorial-1-ZH-TW.md)
-- [1cenc-tutorial-1-JA](./1cenc-tutorial-1-JA.md)
-- [1cenc-tutorial-1-RU](./1cenc-tutorial-1-RU.md)
+**First Launch | 首次启动**
+- Main Interface Overview | 主界面一览
+- Settings Overview | 设置一览
+
+**First Encode——Simple Workflow | 首次压制——简易工作流**
+- Flow & Encoding Monitor Overview | 流程与压制监视器一览
+
+**Second Encode——Full Workflow | 再次压制——完整工作流**
+- Filter Editor | 滤镜编辑器
+- Open Raw JSON | 打开原生 JSON
+- Output Filename and Path | 导出文件名和路径
+- Parallelism Scheduling | 并行计算调度
+- Encoding Parameters and Preview | 压缩参数配置和预览
+- Clip Sampling | 取段打样
+
+[1cenc-tutorial-1-EN](./1cenc-tutorial-1-EN.md)
+
+[1cenc-tutorial-1-ZH-CN](./1cenc-tutorial-1-ZH-CN.md)
+
+[1cenc-tutorial-1-ZH-TW](./1cenc-tutorial-1-ZH-TW.md)
+
+[1cenc-tutorial-1-JA](./1cenc-tutorial-1-JA.md)
+
+[1cenc-tutorial-1-RU](./1cenc-tutorial-1-RU.md)
 
 ## Advanced | 高级
 
-- Fork (Full state instance cloning) | 分身（完整状态克隆）
-  - Encoding-target-based fork | 压制目标分化
-  - NUMA task distribution fork | NUMA 工作量分配
-  - Other use cases | 其它用途
+**Fork (Self-clone) | 分身（Fork）**
+- Basic Workflow | 基本操作流程
+- NUMA Node Distribution (optional) | NUMA 节点分配（可选）
+- Other Uses (look back during encoding, dense scheduling) | 其它用途（压制时回看、密集调度）
 
-- Blu-Ray Format | 蓝光格式
-  - File structure | 文件结构
-  - Stream structure of TV Show, Movie, Concert | 番剧、电影和演唱会的流结构
-  - Stream source speculation and verification | 片源猜测与验证
-  - Find the approriate encoding mode | 找出合适的压制模式
-  - Blu-ray playlist import | 蓝光章节导入
+**Blu-ray Format | 蓝光格式**
+- File Structure and Encoding Mode Selection | 文件结构与压制模式判断
+- TV Series / Concert / Movie File Structure, source speculation and verification | 番剧 / 演唱会 / 电影文件结构、片源猜测与验证
+- Blu-ray Playlists PLAYLIST (.mpls): One Video Multiple Subtitles, Feature and Bonus, Advertisements MVs Shorts | 蓝光播放列表 PLAYLIST（.mpls）：一视频多字幕、正片花絮、广告 MV 短篇
 
-- [1cenc-tutorial-2-EN](./1cenc-tutorial-2-EN.md)
-- [1cenc-tutorial-2-ZH-CN](./1cenc-tutorial-2-ZH-CN.md)
-- [1cenc-tutorial-2-ZH-TW](./1cenc-tutorial-2-ZH-TW.md)
-- [1cenc-tutorial-2-JA](./1cenc-tutorial-2-JA.md)
-- [1cenc-tutorial-2-RU](./1cenc-tutorial-2-RU.md)
+**Importing Blu-ray Playlists | 导入蓝光播放列表**
+- Queue Mode via BDPlaylistSelector | 队列模式经由蓝光播放列表选择器
+- Repart Mode via BDPlaylistSelector + Repart Editor (RepartConfModal), Blu-ray Interlaced Video note | 重分集模式经由蓝光播放列表选择器 + 重分集编辑器，蓝光隔行视频说明
+
+[1cenc-tutorial-2-EN](./1cenc-tutorial-2-EN.md)
+
+[1cenc-tutorial-2-ZH-CN](./1cenc-tutorial-2-ZH-CN.md)
+
+[1cenc-tutorial-2-ZH-TW](./1cenc-tutorial-2-ZH-TW.md)
+
+[1cenc-tutorial-2-JA](./1cenc-tutorial-2-JA.md)
+
+[1cenc-tutorial-2-RU](./1cenc-tutorial-2-RU.md)
 
 **TODO**
+- Encode Settings Description | 压制设置说明
 
-- Queue Mode | 队列模式
-- Video source concat mode
-- Video source repart mode (basic splitting, over-segmented BD repartition, conjoined BD repartition)
+## End-Game | 终极
+
+**TODO**
+- Concat Mode | 拼接模式
+- Advanced Repart Mode (over-segmented BD repartition, conjoined BD repartition)
 - Basic AviSynth and VapourSynth filter processing with queue, concat, and repart mode variations
-- Multi-NUMA-node multi-instance strategies (title PID numbers, source folder splitting, queue splitting)
 
-- 视频源队列模式
-- 视频源拼接模式
-- 视频源重分集模式（基本分割、肉酱盘重分集、合并盘重分集）
+- 高级重分集模式（肉酱盘重分集、合并盘重分集）
 - 基本 AviSynth 和 VapourSynth 滤镜处理与队列、拼接、重分集模式的变化
-- 多 NUMA 节点的多开策略（标题 PID 号、源文件夹拆分、队列拆分）
 
 ## i18n:
 
