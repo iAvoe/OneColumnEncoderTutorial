@@ -16,7 +16,7 @@ This version is further simplified, with internal function names, variable names
 | Source | The video file you import. The program mainly cares about the picture stream, not audio. |
 | Multi-file modes | Queue, Concat, and Repart together. |
 | ffprobe | A tool that reads video parameters such as resolution, frame rate, pixel format, color, and field order. |
-| Checklist | The program checks each source item by item: metadata, progressive, bit depth, constant frame rate, YUV420, chroma, etc. |
+| Checklist | The program checks each source item by item: metadata, progressive, bit-depth, constant frame rate, YUV420, chroma, etc. |
 | Error / Warning | Error disables the Start Encoding button. Warning only reminds you and does not disable it. |
 | Silent drop | If a file is not in the whitelist, it is not imported and no error is shown. |
 | Reference file | The baseline file in multi-file modes. Other files are compared with it. |
@@ -32,16 +32,16 @@ This version is further simplified, with internal function names, variable names
 | Route priority | Queue > Concat > Repart > Single Video | When multiple modes are active at the same time, the mode to use is decided in this order |
 | Dialog extension filter | Whitelist of about 90 entries; scripts support `.avs`, `.vpy`, `.ini` | The file dialog only shows files with video extensions |
 | Effect of All files | Every dialog has an All files option | Any file can still be force-selected |
-| Checklist | Metadata, progressive, bit depth, CFR, square pixels, color, chroma, YUV420, etc. | Every source is checked; errors disable the Start Encoding button, warnings do not |
+| Checklist | Metadata, progressive, bit-depth, CFR, square pixels, color, chroma, YUV420, etc. | Every source is checked; errors disable the Start Encoding button, warnings do not |
 | Metadata | Must not be unknown, unspecified, or reserved | Abnormal metadata usually means the source may be damaged |
 | Progressive | Empty field order, progressive, or unknown counts as a pass | Failure is usually a warning |
-| Bit depth | 8 and 10 are supported; SVT-AV1 supports up to 10-bit; other encoders support up to 12-bit | Extra-high bit depths may be unsupported |
+| bit-depth | 8 and 10 are supported; SVT-AV1 supports up to 10-bit; other encoders support up to 12-bit | Extra-high bit-depths may be unsupported |
 | CFR | Average frame rate must be non-empty, non-zero, and equal to the real frame rate | Queue Mode performs an extra check |
 | YUV420 | Pixel format must contain 420 | Failure → warning; becomes an error when SVT-AV1 is selected |
 | Square pixels | Pixels must not be rectangular | Failure → warning with a suggestion to add a fix-up filter |
 | Chroma sampling | The sampling position must be supported by the tools | SVT-AV1 supports fewer positions; failure is a warning |
 | Mode card availability | Without ffprobe, all video source cards are disabled; when certain upstream tools are selected, the multi-file mode cards are disabled | Modes are proactively disabled when tools are incomplete |
-| Pre-start checks | Queue/Repart check for missing sources and duplicate outputs; all routes have overwrite confirmation; route support is checked | Missing files, duplicate output names, or unsupported routes cause errors |
+| Pre-start checks | Queue/Repart check for missing sources and duplicate outputs; all routes have overwritten confirmation; route support is checked | Missing files, duplicate output names, or unsupported routes cause errors |
 | Script-to-video validation | Performed for Single Video/Queue; skipped for Concat/Repart | Concat scripts carry their own clip list; Repart does not require a script source |
 
 ## 3. Check Differences Across the Four Import Modes
@@ -63,9 +63,9 @@ This version is further simplified, with internal function names, variable names
 | VFR | CFR is required | Suggests adding a fix-up filter | Excluded directly | Queue is strict, Concat reminds you, Repart hard-excludes |
 | Interlaced | Checklist | Checklist | Flagged as interlaced, prompts to keep or exclude; cancelling aborts the import | Repart will ask you |
 | Codec / pixel format | Checked via parameter fingerprint | Inconsistency is a warning | Inconsistency causes hard exclusion | Repart is the strictest |
-| Color / chroma / bit depth | Participate in comparison | Affect warnings | Hard exclusion | The stricter the mode, the easier it is to be excluded on parameter mismatch |
+| Color / chroma / bit-depth | Participate in comparison | Affect warnings | Hard exclusion | The stricter the mode, the easier it is to be excluded on parameter mismatch |
 | File stability | — | — | Checks file size and modification time | Repart checks whether files have changed |
-| Total frame count | Queue result is usable | Accumulated; missing frame counts cause an error | Obtained per file; failures are excluded | Concat needs the total length |
+| Total frame count | Queue result is usable | Accumulated; missing frame counts → error | Obtained per file; failures are excluded | Concat needs the total length |
 
 ## 5. Mode-Specific Rules
 
@@ -152,7 +152,7 @@ This version is further simplified, with internal function names, variable names
 |---|---|
 | Codec | Encoder, profile, level |
 | Dimensions | Width, height, coded width, coded height |
-| Pixels | Pixel format, bit depth |
+| Pixels | Pixel format, bit-depth |
 | Field order | Progressive or interlaced |
 | Aspect ratio | Pixel aspect ratio |
 | Frame rate | Average frame rate, real frame rate |
