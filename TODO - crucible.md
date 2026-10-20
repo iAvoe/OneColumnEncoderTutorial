@@ -122,3 +122,15 @@ Note: Actual behavior varies depending on hardware and software, user settings, 
     -   封装文件使得播放器的程序逻辑变得简单（例如，在读取视频流之前就获取视音频格式，而不是先打开所有解码器，再关掉不兼容的解码器）
     -   如有必要，附加音频流/音轨、字幕轨、字体等文件（但要根据封装文件的兼容性判断）
 
+---
+
+| EN | ZH-CN | ZH-TW | FR | ES | JA | RU | DE | KO | PT-BR |
+|---|---|---|---|---|---|---|---|---|---|
+| General Purpose | 通用 | 通用 | Général | General | 汎用 | Общее | Allgemein | 범용 | Propósito geral |
+| Stock Footage | 剪輯素材 | 剪輯素材 | Images d'archives | Material de archivo | 素材映像 | Стоковое видео | Archivmaterial | 스톡 영상 | Material de arquivo |
+| Film / IRL Shoot | 電影/實拍 | 電影/實拍 | Film / Prises de vue réelles | Cine / grabación real | 映畫 / 実写 | Фильм / съемка | Film / Reale Aufnahmen | 영화/실사 촬영 | Filmagem / Cena real |
+| Anime | 動畫 | 動畫 | Animation | Anime | アニメ | Аниме | Anime | 애니메이션 | Anime |
+| Stress Test | 壓力測試 | 壓力測試 | Test de charge | Prueba de estrés | ストレステスト | Стресс-тест | Stresstest | 스트레스 테스트 | Teste de estresse |
+| Peak Quality | 極致畫質 | 極致畫質 | Qualité max. | Calidad máxima | 最高品質 | Макс. качество | Maximale Qualität | 최고 품질 | Qualidade máxima |
+| High Compression | 最佳化壓縮 | 最佳化壓縮 | Compression élevée | Alta compresión | 高圧縮 | Высокое сжатие | Hohe Kompression | 고압축 | Alta compressão |
+| Fast | 最佳化速度 | 最佳化速度 | Rapide | Rápido | 高速 | Быстро | Schnell | 고속 | Rápido |

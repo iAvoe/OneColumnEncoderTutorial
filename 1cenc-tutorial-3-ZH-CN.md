@@ -124,14 +124,3 @@
 
 **如何反馈问题**
 - [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) 或 [NazoRip 项目评论区](https://nazorip.site/archives/1593/) 可以反馈。反馈前请确认问题着实归咎于 1cenc，最好有截图、运行日志拷贝、ffprobe 日志之类的辅助信息，以便排查。
-
-| EN | ZH-CN | ZH-TW | FR | ES | JA | RU | DE | KO | PT-BR |
-|---|---|---|---|---|---|---|---|---|---|
-| General Purpose | 通用 | 通用 | Général | General | 汎用 | Общее | Allgemein | 범용 | Propósito geral |
-| Stock Footage | 剪辑素材 | 剪輯素材 | Images d'archives | Material de archivo | 素材映像 | Стоковое видео | Archivmaterial | 스톡 영상 | Material de arquivo |
-| Film / IRL Shoot | 电影/实拍 | 電影/實拍 | Film / Prises de vue réelles | Cine / grabación real | 映画 / 実写 | Фильм / съемка | Film / Reale Aufnahmen | 영화/실사 촬영 | Filmagem / Cena real |
-| Anime | 动画 | 動畫 | Animation | Anime | アニメ | Аниме | Anime | 애니메이션 | Anime |
-| Stress Test | 压力测试 | 壓力測試 | Test de charge | Prueba de estrés | ストレステスト | Стресс-тест | Stresstest | 스트레스 테스트 | Teste de estresse |
-| Peak Quality | 极致画质 | 極致畫質 | Qualité max. | Calidad máxima | 最高品質 | Макс. качество | Maximale Qualität | 최고 품질 | Qualidade máxima |
-| High Compression | 优化压缩 | 優化壓縮 | Compression élevée | Alta compresión | 高圧縮 | Высокое сжатие | Hohe Kompression | 고압축 | Alta compressão |
-| Fast | 优化速度 | 優化速度 | Rapide | Rápido | 高速 | Быстро | Schnell | 고속 | Rápido |

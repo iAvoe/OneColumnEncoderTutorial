@@ -64,24 +64,41 @@ The screenshot images and edge functionality in tutorial may differ from latest 
 * **日本語：** [1cenc-tutorial-2-JA](./1cenc-tutorial-2-JA.md)
 * **Русский:** [1cenc-tutorial-2-RU](./1cenc-tutorial-2-RU.md)
 
-## 3. End-Game | 终极
+## 3. Professional | 专业级
+
+**Video Format | 视频格式**
+- Compression types | 压缩种类
+- Color Spaces | 色彩空间
+- Video Codecs | 编码格式
+
+**Filtering & Encoding | 滤镜与压制**
+- General Principles | 通用准则
+- Filtering Principles | 滤镜处理准则
+- Encoding Principles | 视频压制准则
+- Filtering Settings | 滤镜处理设置
+- Encoding Settings | 视频压制设置
+
+* **English:** [1cenc-tutorial-3-EN](./1cenc-tutorial-3-EN.md)
+* **中文简体：** [1cenc-tutorial-3-ZH-CN](./1cenc-tutorial-3-ZH-CN.md)
+* **中文繁體：** [1cenc-tutorial-3-ZH-TW](./1cenc-tutorial-3-ZH-TW.md)
+* **日本語：** [1cenc-tutorial-3-JA](./1cenc-tutorial-3-JA.md)
+* **Русский:** [1cenc-tutorial-3-RU](./1cenc-tutorial-3-RU.md)
+
+## 4. ???
 
 **TODO**
-- Concat Mode | 拼接模式
-- Abnormal Blu-Ray format (over/under-segmented discs) | 异常蓝光格式（肉酱盘、合并盘）
-- Video Filtering Logics | 基本视频滤镜处理逻辑
-- Encoding Configuration Logics | 压制设置说明
+- Abnormal Blu-ray format (over/under-segmented discs) | 异常蓝光格式（肉酱盘、合并盘）
 - FFProbe raw JSON explained | 说明 FFProbe 原生 JSON
 
 ## i18n:
 
-- ✔ English 1 2
-- ✔ 中文简体 1 2
-- ✔ 中文繁體 1 2
+- ✔ English 1 2 3
+- ✔ 中文简体 1 2 3
+- ✔ 中文繁體 1 2 3
 - ✘ Français
 - ✘ Español
-- ✔ 日本語 1 2
-- ✔ Русский 1 2
+- ✔ 日本語 1 2 3
+- ✔ Русский 1 2 3
 - ✘ Deutsch
 - ✘ 한국어
 - ✘ Português (Brasil)

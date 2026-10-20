@@ -52,18 +52,18 @@ This document breaks down settings and general principles in video filtering and
 ### The Core Trade-Off
 Encoding video, balances 3 competing factors: **Speed**, **Small File**, and **Image Clarity**. You can typically optimize for only 2 at the expense of the third.
 ```
-   [Target]    → Bigger ←     [Target]
-  Fast-quick      File      Image clarity
-             ***************
-              *************
-      ↘       ***********       ↙
-        Bad     *********     Slow
-      Quality    *******    Progress
-            ↖    *****    ↗
-                   ***
-                    *
-                [Target]
-               Small file
+ [Target]    → Bigger ←     [Target]
+Fast-quick      File      Image clarity
+           ***************
+            *************
+    ↘       ***********       ↙
+      Bad     *********     Slow
+    Quality    *******    Progress
+          ↖    *****    ↗
+                 ***
+                  *
+              [Target]
+             Small file
 ```
 
 ### Hardware vs. Software Encoding
@@ -132,14 +132,3 @@ Encoding video, balances 3 competing factors: **Speed**, **Small File**, and **I
 
 **How to Report Issues**
 - You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
-
-| EN | ZH-CN | ZH-TW | FR | ES | JA | RU | DE | KO | PT-BR |
-|---|---|---|---|---|---|---|---|---|---|
-| General Purpose | 通用 | 通用 | Général | General | 汎用 | Общее | Allgemein | 범용 | Propósito geral |
-| Stock Footage | 剪辑素材 | 剪輯素材 | Images d'archives | Material de archivo | 素材映像 | Стоковое видео | Archivmaterial | 스톡 영상 | Material de arquivo |
-| Film / IRL Shoot | 电影/实拍 | 電影/實拍 | Film / Prises de vue réelles | Cine / grabación real | 映画 / 実写 | Фильм / съемка | Film / Reale Aufnahmen | 영화/실사 촬영 | Filmagem / Cena real |
-| Anime | 动画 | 動畫 | Animation | Anime | アニメ | Аниме | Anime | 애니메이션 | Anime |
-| Stress Test | 压力测试 | 壓力測試 | Test de charge | Prueba de estrés | ストレステスト | Стресс-тест | Stresstest | 스트레스 테스트 | Teste de estresse |
-| Peak Quality | 极致画质 | 極致畫質 | Qualité max. | Calidad máxima | 最高品質 | Макс. качество | Maximale Qualität | 최고 품질 | Qualidade máxima |
-| High Compression | 优化压缩 | 優化壓縮 | Compression élevée | Alta compresión | 高圧縮 | Высокое сжатие | Hohe Kompression | 고압축 | Alta compressão |
-| Fast | 优化速度 | 優化速度 | Rapide | Rápido | 高速 | Быстро | Schnell | 고속 | Rápido |
