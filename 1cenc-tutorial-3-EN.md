@@ -1,6 +1,6 @@
-# Video Encoding and Filtering: A Beginner's Guide
+# 1cenc Professional Workflow Tutorial
 
-Breaking more things down, such as video encoding, compression formats, software settings, and filtering workflows for everyday computer users.
+This document breaks down settings and general principles in video filtering and encoding worflow and settings.
 
 ---
 
@@ -78,6 +78,8 @@ Encoding video, balances 3 competing factors: **Speed**, **Small File**, and **I
 
 ## Filtering Workflow
 
+
+
 **Golden Rule:** *Repair first, stylize second, downscale last.* Never apply sharpening or downscaling before fixing noise and artifacts, or you will bake those errors into the final video.
 
 * **Colorspace Profile Conversion:** Convert footage to **Bt.709** for standard SDR displays and predictable editing compatibility.
@@ -92,6 +94,8 @@ Encoding video, balances 3 competing factors: **Speed**, **Small File**, and **I
 ---
 
 ## Encoding Modes & Presets
+
+<img src="./img-en/21-Encode-Settings.png" alt="Encoding settings" width=1200 />
 
 ### CRF vs. ABR
 * **Constant Rate Factor (CRF):** Focuses on maintaining a consistent visual quality level across the entire video. The bitrate fluctuates dynamically depending on scene complexity. **Recommended for general use.**
@@ -113,3 +117,14 @@ Encoding video, balances 3 competing factors: **Speed**, **Small File**, and **I
 * **Peak Quality:** Delivers the highest possible image fidelity for AV1 encoding.
 * **High Compression:** Prioritizes smaller file sizes while maintaining strong visual quality.
 * **Fast:** Disables intensive optimization passes to speed up encoding times at the cost of larger file sizes.
+
+| EN | ZH-CN | ZH-TW | FR | ES | JA | RU | DE | KO | PT-BR |
+|---|---|---|---|---|---|---|---|---|---|
+| General Purpose | 通用 | 通用 | Général | General | 汎用 | Общее | Allgemein | 범용 | Propósito geral |
+| Stock Footage | 剪辑素材 | 剪輯素材 | Images d'archives | Material de archivo | 素材映像 | Стоковое видео | Archivmaterial | 스톡 영상 | Material de arquivo |
+| Film / IRL Shoot | 电影/实拍 | 電影/實拍 | Film / Prises de vue réelles | Cine / grabación real | 映画 / 実写 | Фильм / съемка | Film / Reale Aufnahmen | 영화/실사 촬영 | Filmagem / Cena real |
+| Anime | 动画 | 動畫 | Animation | Anime | アニメ | Аниме | Anime | 애니메이션 | Anime |
+| Stress Test | 压力测试 | 壓力測試 | Test de charge | Prueba de estrés | ストレステスト | Стресс-тест | Stresstest | 스트레스 테스트 | Teste de estresse |
+| Peak Quality | 极致画质 | 極致畫質 | Qualité max. | Calidad máxima | 最高品質 | Макс. качество | Maximale Qualität | 최고 품질 | Qualidade máxima |
+| High Compression | 优化压缩 | 優化壓縮 | Compression élevée | Alta compresión | 高圧縮 | Высокое сжатие | Hohe Kompression | 고압축 | Alta compressão |
+| Fast | 优化速度 | 優化速度 | Rapide | Rápido | 高速 | Быстро | Schnell | 고속 | Rápido |
