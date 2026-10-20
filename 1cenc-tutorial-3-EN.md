@@ -78,7 +78,11 @@ Encoding video, balances 3 competing factors: **Speed**, **Small File**, and **I
 
 ## Filtering Workflow
 
-
+<img src="./img-en/16-Filter-Scribe-Modal.png" alt="Filter editor" width=480 />
+<img src="./img-ja/16-Filter-Scribe-Modal.png" alt="フィルターエディター" width=480 />
+<img src="./img-ru/16-Filter-Scribe-Modal.png" alt="Редактор фильтров" width=480 />
+<img src="./img-cn/16-Filter-Scribe-Modal.png" alt="滤镜编辑器" width=480 />
+<img src="./img-cn/16-Filter-Scribe-Modal.png" alt="濾鏡編輯器" width=480 />
 
 **Golden Rule:** *Repair first, stylize second, downscale last.* Never apply sharpening or downscaling before fixing noise and artifacts, or you will bake those errors into the final video.
 

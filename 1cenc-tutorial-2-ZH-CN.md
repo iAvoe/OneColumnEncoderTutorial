@@ -1,9 +1,8 @@
 # 1cenc 高级流程使用教程
 
-本文档用于说明蓝光格式细节，适用于高级压制工作流的功能，使用方法和操作示例；不同于基础教程，本文不会完整展示所有步骤。
 
-**如何反馈问题**
-- [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) 或 [NazoRip 项目评论区](https://nazorip.site/archives/1593/) 可以反馈。反馈前请确认问题着实归咎于 1cenc，最好有截图、运行日志拷贝、ffprobe 日志之类的辅助信息，以便排查。
+
+本文档用于说明蓝光格式细节，适用于高级压制工作流的功能，使用方法和操作示例；不同于基础教程，本文不会完整展示所有步骤。注意截图 UI 源自旧版，可能与当前界面不一致。
 
 ## 分身（Fork）
 
@@ -512,3 +511,6 @@ DISC4 BDMV/STREAM/
 
 ### 未提及内容
 - 异常蓝光格式——连体盘、肉酱盘
+
+**如何反馈问题**
+- [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) 或 [NazoRip 项目评论区](https://nazorip.site/archives/1593/) 可以反馈。反馈前请确认问题着实归咎于 1cenc，最好有截图、运行日志拷贝、ffprobe 日志之类的辅助信息，以便排查。

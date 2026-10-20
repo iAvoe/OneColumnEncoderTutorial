@@ -1,10 +1,6 @@
 # 1cenc Advanced Workflow Tutorial
 
-This document explains Blu-ray format details, features for advanced encoding workflows, usage, and examples. Unlike the basic tutorial, it does not show every step in full.
-
-**How to Report Issues**
-- You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
-
+This document explains Blu-ray format details, features for advanced encoding workflows, usage, and examples. Unlike the basic tutorial, it does not show every step in full. Please note that screenshots are taken in the past and may not reflect the current UI.
 
 ## Fork (Self-clone)
 
@@ -502,7 +498,7 @@ Using the concert source above as an example:
 - Preview → the venue lights go out at a split line — presumably split by song
   - Confirm by playback inspection, then split according to episode needs
 - Some split lines sit very close together → preview inspection → black-screen content — presumably short breaks and stage preparation
-  - Keep the split lines so these segments can be excluded from the output list
+  - Keep the split lines, so these segments can be excluded from the output list
 
 ---
 
@@ -510,3 +506,6 @@ Using the concert source above as an example:
 
 ### Unmentioned Content
 - Abnormal Blu-ray formats — conjoined discs, over-segmented discs
+
+**How to Report Issues**
+- You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.

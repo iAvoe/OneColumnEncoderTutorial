@@ -1,9 +1,6 @@
 # 1cenc Basic Workflow Tutorial
 
-This document is aimed at beginners, explaining the workflow from download to encoding.
-
-**How to Report Issues**
-- You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
+This document is aimed at beginners, explaining the workflow from download to encoding. Please note that screenshots are taken in the past and may not reflect the current UI.
 
 ## Download and "Installation"
 
@@ -333,7 +330,7 @@ After encoding completes, 1cenc will start the auto mux operation, producing a s
 
 ## Second Encode (Full Workflow)
 
-***Follow the configuration / click sequence shown in the image below to re-run this encoding:***
+🖱️ <u>Follow the configuration / click sequence shown in the image below to re-run this encoding:</u>
 
 <img src="./img-en/15-Start-First-Encode-Again.png" alt="Start encoding again" width=600 />
 
@@ -342,18 +339,18 @@ After encoding completes, 1cenc will start the auto mux operation, producing a s
 Filter editor buttons unlock after analysis completes, as some lines rely on source data.
 - The filter editor automatically selects the tab (the upstream program here is ffmpeg)
 
-<img src="./img-en/16-Filter-Scribe-Modal.png" alt="Filter editor" width=500 />
+<img src="./img-en/16-Filter-Scribe-Modal.png" alt="Filter editor" width=480 />
 
 Parameters show "N/A" if unneeded; fixes for variable frame rates or non-square pixels generate automatically.
 
-***Follow the image below to generate a scale-down command using the resolution scaling controls, then paste it into the filter parameter box at the top and click Confirm.***
+🖱️ <u>Follow the image below to generate a scale-down command using the resolution scaling controls, then paste it into the filter parameter box at the top and click Confirm.</u>
 
-<img src="./img-en/17-Filter-Scribe-Modal-Apply.png" alt="Filter editor apply" width=500 />
+<img src="./img-en/17-Filter-Scribe-Modal-Apply.png" alt="Filter editor apply" width=480 />
 
 
 When clicking Confirm to save, an "Overwrite ffprobe JSON" confirmation dialog will appear. This occurs because resolution changes require encoding parameter recalibration.
 
-***Click "Update ffprobe JSON".***
+🖱️ <u>Click "Update ffprobe JSON"</u>
 
 <img src="./img-en/18-Source-Reviser.png" alt="Source reviser" width=350 />
 
@@ -363,7 +360,7 @@ When clicking Confirm to save, an "Overwrite ffprobe JSON" confirmation dialog w
 
 When 1cenc makes strange checklist judgments or triggers unexpected warnings, you can use this to troubleshoot.
 
-***(Optional) Open your preferred text editor, paste it in, and inspect it***
+🖱️ <u>(Optional) Open your preferred text editor, paste it in, and inspect it</u>
 
 ### Second Encode ⑥ — Output Filename and Path
 
@@ -385,7 +382,7 @@ Configures NUMA node assignments for multi-node processors or custom BIOS setups
 **Pipe Buffer**
 - Theoretically increases cache usage; negligible practical impact, safe to ignore.
 
-***You can keep the defaults or check all items here, then confirm***
+🖱️ <u>You can keep the defaults or check all items here, then confirm</u>
 
 <img src="./img-en/20-Parallelism-Settings.png" alt="Parallelism settings" width=500 />
 
@@ -403,7 +400,7 @@ Configure and preview encoder / downstream program parameters here:
 7. (Optional) Drag the **Frame Position** progress bar to preview again
 8. (Optional) Change the **encoder** in the top-left corner of the preview window and preview again
 
-***Adjust CRF mode parameter values, select base parameters, and keyframe interval according to the instructions above, then click Confirm at the bottom of the left panel***
+🖱️ <u>Adjust CRF mode parameter values, select base parameters, and keyframe interval according to the instructions above, then click Confirm at the bottom of the left panel</u>
 
 <img src="./img-en/21-Encode-Settings.png" alt="Encoding settings" width=1200 />
 
@@ -411,13 +408,13 @@ Configure and preview encoder / downstream program parameters here:
 
 Specify a segment of the video to encode. Trims intros/outros for sample testing and quality review.
 
-***Try using the duration slider to expand the segment to 60 seconds, drag the yellow portion on the timeline to the beginning, and click "Start Sampling"***
+🖱️ <u>Try using the duration slider to expand the segment to 60 seconds, drag the yellow portion on the timeline to the beginning, and click "Start Sampling"</u>
 
 <img src="./img-en/22-Clip-Sampler.png" alt="Clip sampler" width=450 />
 
 After confirming "Start Sampling", a debug window will pop up, but this time no muxing command will appear.
 
-***Click Confirm to start encoding***
+🖱️ <u>Click Confirm to start encoding</u>
 
 <img src="./img-en/23-Inspect-Sampling-Param.png" alt="Inspect sampling parameters" width=400 />
 
@@ -425,11 +422,5 @@ After confirming "Start Sampling", a debug window will pop up, but this time no 
 
 ## Basic Workflow Tutorial Complete
 
-### Unmentioned Content (Advanced Use Cases)
-
-- Blu-ray chapter import
-- Video source queue mode
-- Video source concat mode
-- Video source repart mode (basic splitting, over-segmented BD repartition, conjoined BD repartition)
-- Basic AviSynth and VapourSynth filter processing with queue, concat, and repart mode variations
-- Multi-NUMA-node multi-instance strategies (title PID numbers, source folder splitting, queue splitting)
+**How to Report Issues**
+- You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
