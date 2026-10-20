@@ -120,7 +120,7 @@
 
 ---
 
-## エキスパート向け使用チュートリアル終了
+## エキスパート向け使用ガイド完了
 
 **問題の報告方法**
 - [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) または [NazoRip プロジェクトのコメント欄](https://nazorip.site/archives/1593/) で報告できます。報告前に、問題が本当に 1cenc に起因することを確認してください。調査のため、スクリーンショット、実行ログのコピー、ffprobe ログなどの補助情報があると望ましいです。
