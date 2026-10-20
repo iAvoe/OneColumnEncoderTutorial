@@ -4,14 +4,14 @@ This document breaks down settings and general principles in video filtering and
 
 ---
 
+**Bitrate:** The amount of data processed per second, measured in bits per second (b/s, Kb/s, Mb/s, Gb/s).
+
 ## Types of Compression
 * **Uncompressed (Raw):** Video data is stored exactly as captured. Files are massive, demanding immense storage and high read/write speeds, but require virtually no computer power to play back.
 * **Lossless Compression:** Reduces file size without losing a single pixel of data (similar to `.zip` or `.7z` archives). Files remain very large, and playback requires moderate CPU power.
 * **Lossy Compression:** Permanently discards redundant or imperceptible visual details to drastically shrink file size.
   * **High Quality:** Retains more details, closer to the original.
   * **Low Quality:** Drops more data, resulting in smaller files but lower visual fidelity and reduced playback decoding requirements.
-
-* **Bitrate:** The amount of data processed per second, measured in bits per second (b/s, Kb/s, Mb/s, Gb/s).
 
 ---
 
