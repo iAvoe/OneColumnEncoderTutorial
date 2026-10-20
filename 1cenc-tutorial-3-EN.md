@@ -67,12 +67,19 @@ Fast-quick      File      Image clarity
 ```
 
 ### Hardware vs. Software Encoding
-* **Hardware Encoders (GPUs/ASICs):** Built directly into graphics cards or mobile chips for fast encoding, but offer less compression efficiency and image quality than software encoders.
-* **Software Encoders (CPU-based):** Slower, but offer superior control, compression, and visual quality.
+
+**Hardware Encoder (ASIC):** Uses dedicated circuits on the chip to accelerate encoding. However, chip area is limited, and ASIC codec involve trade-offs with other hardware resources. Hardware encoders may offer lower compression efficiency or image quality at the same bitrate.
+
+**Software Encoder (CPU/GPU-based):** Uses programmable processors to execute encoding algorithms. It is generally slower than dedicated hardware encoding, but offers greater control and can achieve better quality at the same bitrate or smaller files at the same quality.
+
+- ASIC uses dedicated circuits to process data in parallel, like reading a weight directly from a scale.
+- CPU uses arithmetic logic units (ALUs) to perform calculations, like calculating weight from raw measurements.
 
 ### Speed and Size Expectations
-* **Encoding Speed:** Measured in **Frames Per Second (fps)**. If an encoder processes video at 2 fps, a 24 fps video will take 12 times longer to encode than its actual runtime.
-* **Resolution Scaling:** Doubling a video's resolution (e.g., 1080p to 4K) quadruples (4x) the total pixel count ($4\times$), which can slow encoding by $20\times$ or more due to compounding effect from compression algorithms.
+
+**Encoding Speed:** Measured in **Frames Per Second (fps)**. If an encoder processes video at 2 fps, a 24 fps video will take 12 times longer to encode than its actual runtime.
+
+**Resolution Scaling:** Doubling a video's resolution (e.g., 1080p to 4K) quadruples (4x) the total pixel count ($4\times$), which can slow encoding by $20\times$ or more due to compounding effect from compression algorithms.
 
 ---
 
