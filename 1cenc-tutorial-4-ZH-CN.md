@@ -4,7 +4,6 @@
 
 **如何反馈问题**
 - [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) 或 [NazoRip 项目评论区](https://nazorip.site/archives/1593/) 可以反馈反馈前请确认问题着实归咎于 1cenc，最好有截图、运行日志拷贝、ffprobe 日志之类的辅助信息，以便排查
-下面这版进一步简化，并去掉了内部函数名、变量名、类名、字段名和文件位置。只保留新手需要理解的规则、后果和处理方式。中文、English 两版。
 
 ---
 

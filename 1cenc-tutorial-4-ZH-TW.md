@@ -4,7 +4,6 @@
 
 **如何回饋問題**
 - [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) 或 [NazoRip 項目評論區](https://nazorip.site/archives/1593/) 可以回饋回饋前請確認問題著實歸咎於 1cenc，最好有截圖、運行日誌拷貝、ffprobe 日誌之類的輔助資訊，以便排查
-下面這版進一步簡化，並去掉了內部函數名、變數名、類名、欄位名和檔案位置。只保留新手需要理解的規則、後果和處理方式。中文、English 兩版。
 
 ---
 

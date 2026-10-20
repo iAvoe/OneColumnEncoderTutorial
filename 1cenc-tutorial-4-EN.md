@@ -5,8 +5,6 @@ This document explains the video import and check system.
 **How to Report Issues**
 - You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
 
-This version is further simplified, with internal function names, variable names, class names, field names, and file locations removed. Only the rules, consequences, and handling methods that beginners need to understand are kept. Available in Chinese and English versions.
-
 ---
 
 ## 1. Terms

@@ -19,7 +19,7 @@ In simple terms, a fork clones the software's complete current state to create t
    * Select the upstream tool (filtering) and downstream tool (encoder)
    * Import the source video
    * Define common video filters and encode settings as needed
-2. **Create enough instances for the required targets**
+2. **Creating enough instances for the required targets**
    * 2: Lossless compression | Lossy compression
    * 2: Burn-in subtitles | Embedded subtitles
    * 4: x264-1080p | x264-720p | x265-1080p | x265-720p

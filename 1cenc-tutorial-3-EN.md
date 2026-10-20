@@ -100,6 +100,10 @@ Encoding video, balances 3 competing factors: **Speed**, **Small File**, and **I
 ## Encoding Modes & Presets
 
 <img src="./img-en/21-Encode-Settings.png" alt="Encoding settings" width=1200 />
+<img src="./img-ja/21-Encode-Settings.png" alt="エンコード設定" width=1200 />
+<img src="./img-ru/21-Encode-Settings.png" alt="Настройки кодирования" width=1200 />
+<img src="./img-cn/21-Encode-Settings.png" alt="压制设置" width=1200 />
+<img src="./img-cn/21-Encode-Settings.png" alt="壓制設置" width=1200 />
 
 ### CRF vs. ABR
 * **Constant Rate Factor (CRF):** Focuses on maintaining a consistent visual quality level across the entire video. The bitrate fluctuates dynamically depending on scene complexity. **Recommended for general use.**
@@ -121,6 +125,13 @@ Encoding video, balances 3 competing factors: **Speed**, **Small File**, and **I
 * **Peak Quality:** Delivers the highest possible image fidelity for AV1 encoding.
 * **High Compression:** Prioritizes smaller file sizes while maintaining strong visual quality.
 * **Fast:** Disables intensive optimization passes to speed up encoding times at the cost of larger file sizes.
+
+---
+
+## Professional Workdlow Tutorial Complete
+
+**How to Report Issues**
+- You can report issues via [GitHub Issues](https://github.com/iAvoe/OneColumnEncoder/issues) or the [NazoRip comment section](https://nazorip.site/archives/1593/). Before reporting, please verify the issue is caused by 1cenc. It is best to include screenshots, runtime log copies, ffprobe logs, or other auxiliary information to aid troubleshooting.
 
 | EN | ZH-CN | ZH-TW | FR | ES | JA | RU | DE | KO | PT-BR |
 |---|---|---|---|---|---|---|---|---|---|
