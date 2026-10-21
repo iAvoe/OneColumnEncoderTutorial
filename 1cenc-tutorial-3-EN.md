@@ -15,11 +15,18 @@ This document breaks down settings and general principles in video filtering and
 
 ---
 
-## Video Formats & Codecs
+## Codecs
 
-* **AVC / H.264 (`x264`):** Released in 2003, this is the most universally supported video standard. It remains a gold standard because faster codecs lack its compatibility, while higher-compression codecs are significantly slower to encode.
-* **HEVC / H.265 (`x265`):** Released in 2013, an upgraded version of AVC. It offers much higher compression efficiency but demands heavy CPU resources during encoding.
-* **AV1 (`SVT-AV1`, `AV1AN`, etc.):** Released in 2018 based on Google's technology. It consistently beats HEVC in compression efficiency (especially for animations). However, older mobile phones and hardware lack native decoding support.
+* **AVC / H.264 (`x264`):** Standardized in 2003 and still the most widely supported video codec. Nearly every device, browser and editor can decode it, while newer codecs compress better but encode much more slowly and have patchier support.
+* **HEVC / H.265 (`x265`):** Standardized in 2013 as AVC's successor. It typically needs far less bitrate than AVC for the same quality, but encoding is very CPU-intensive. Patent licensing has also held back its adoption, especially in browsers.
+* **AV1 (`SVT-AV1`, `aomenc`, `rav1e`, etc.):** Released in 2018 by the Alliance for Open Media, an industry group that includes Google, and royalty-free. It generally beats HEVC in compression efficiency, especially for animation. However, older phones and other hardware lack native decoding. `AV1AN` is a chunked-encoding tool that drives these encoders, so it isn't an encoder itself.
+
+* **AAC (`ffmpeg aac`, `QAAC`, `fdkaac`):** Standardized in 1997 and one of the most common audio formats for streaming and video. It is also one of the main Bluetooth audio codecs, though only on devices that support it, so audio is re-encoded to AAC before transmission. QAAC (Apple's encoder) has long been regarded as the best-sounding. FFmpeg 9.1 introduced a rewritten native AAC encoder. Its developer claims it outperforms qaac and fdk-aac in objective quality tests, but it is CBR-only and optimized for 48 kHz. Independent listening tests are still limited, so "best" is not yet settled.
+* **Opus (`libopus`):** Standardized in 2012 as an open, royalty-free codec. It often sounds better than AAC at the same bitrate, especially at low bitrates, and is used in WebRTC, Discord, YouTube and OBS. Because it is newer, some legacy players and Adobe apps (Premiere Pro, After Effects) lack native support.
+
+Sources:
+- [FFmpeg 9.1 AAC encoder announcement thread](https://zeli.app/pt/story/48747116)
+- [Doom9: Evaluation of FFmpeg 9.1 new AAC encoder](https://forum.doom9.org/archive/index.php/t-187041.html)
 
 ### Common Color Spaces
 
@@ -112,11 +119,15 @@ Fast-quick      File      Image clarity
 <img src="./img-cn/21-Encode-Settings.png" alt="压制设置" width=1200 />
 <img src="./img-cn/21-Encode-Settings.png" alt="壓制設置" width=1200 />
 
-### CRF vs. ABR
-* **Constant Rate Factor (CRF):** Focuses on maintaining a consistent visual quality level across the entire video. The bitrate fluctuates dynamically depending on scene complexity. **Recommended for general use.**
-* **Average Bitrate (ABR):** Targets a strict average file size/bitrate. Useful only when you must meet a hard storage or streaming bandwidth limit.
+**Constant Rate Factor (CRF):**
+* Focuses on maintaining a consistent visual quality level across the entire video. The bitrate fluctuates dynamically depending on scene complexity. **Recommended for general use.**
 
-### Basic Preset Profiles
+**Average Bitrate (ABR):**
+* Targets a strict average file size/bitrate. Useful only when you must meet a hard storage or streaming bandwidth limit.
+
+> CRF and ABR modes appears in both video and audio encoders
+
+### Basic Presets——Video
 
 #### x264 (`AVC`)
 * **General Purpose:** Tuned for maximum compatibility and balanced speed across all source types.
@@ -132,6 +143,52 @@ Fast-quick      File      Image clarity
 * **Peak Quality:** Delivers the highest possible image fidelity for AV1 encoding.
 * **High Compression:** Prioritizes smaller file sizes while maintaining strong visual quality.
 * **Fast:** Disables intensive optimization passes to speed up encoding times at the cost of larger file sizes.
+
+### Audio (Auto-Mux Settings)
+
+<img src="./img-en/10-Settings.png" alt="Settings" width=480 />
+<img src="./img-ja/10-Settings.png" alt="設定" width=480 />
+<img src="./img-ru/10-Settings.png" alt="Настройки" width=480 />
+<img src="./img-cn/10-Settings.png" alt="設置" width=480 />
+
+1cenc uses ffmpeg to encode audio, modes can be seen from source code snipet:
+
+```csharp
+/// <summary>
+/// Builds the audio codec argument fragment for a resolved audio mux mode.
+/// Returns null for Disable so callers can emit the bare -an instead.
+/// </summary>
+private static string? BuildAudioMuxArgs(EncodingAudioMuxMode mode) => mode switch
+{
+    EncodingAudioMuxMode.Copy => "-c:a copy",
+    EncodingAudioMuxMode.ReEncodeAAC320 => "-c:a aac -b:a 320k",
+    EncodingAudioMuxMode.ReEncodeAAC256 => "-c:a aac -b:a 256k",
+    EncodingAudioMuxMode.ReEncodeAAC128 => "-c:a aac -b:a 128k",
+    EncodingAudioMuxMode.ReEncodeOpus320 => "-c:a libopus -b:a 320k -vbr on -application audio -compression_level 10",
+    EncodingAudioMuxMode.ReEncodeOpus256 => "-c:a libopus -b:a 256k -vbr on -application audio -compression_level 10",
+    EncodingAudioMuxMode.ReEncodeOpus128 => "-c:a libopus -b:a 128k -vbr on -application audio -compression_level 10",
+    // Separator: settings without bitrate limit, for quality-based unrestricted encoding
+    EncodingAudioMuxMode.ReEncodeAACQ2 => "-c:a aac -aac_coder nmr -q:a 2", // 1-Nk
+    EncodingAudioMuxMode.ReEncodeAACQ1_5 => "-c:a aac -aac_coder nmr -q:a 1.5", // 1-192k
+    EncodingAudioMuxMode.ReEncodeAACQ1 => "-c:a aac -aac_coder nmr -q:a 1", // 1-140k
+    EncodingAudioMuxMode.ReEncodeOpusVBR => "-c:a libopus -vbr on -application audio -compression_level 10",
+    _ => null
+};
+```
+
+**ReEncodeAACXXX:**
+- FFmpeg AAC encoder's ABR modes
+- Drops quality when the source audio is too complex to fit into average kbps limit
+
+**ReEncodeOPUSXXX:**
+- libopus encoder's ABR modes
+- Drops quality when the source audio is too complex to fit into average kbps limit
+
+**ReEncodeAACQXXX**
+- FFmpeg AAC encoder's CRF modes
+
+**ReEncodeOpusVBR**
+- libopus encoder's “Auto” mode, no bitrate guidance gives as much bitrate as needed, like lossless compression
 
 ---
 

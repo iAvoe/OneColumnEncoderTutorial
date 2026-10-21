@@ -240,17 +240,17 @@ These cards differ visually from the default white-background style due to their
 
 The settings page is the slowest window to open in 1cenc — due to font settings loading.
 
-<img src="./img-en/10-Settings.png" alt="Settings" width=500 />
+<img src="./img-en/10-Settings.png" alt="Settings" width=480 />
 
 #### Defaults and Recommended Values
 
 **Overwrite Handling — Cooldown MB Divisor**
 - Calculates an overwrite cooldown duration based on file size.
-- Recommended to keep default to prevent large files from being easily overwritten; minimum is 1
+- Recommended keeping default to prevent large files from being easily overwritten; minimum is 1
 
 **Encoding Log TXTs**
 - Saves runtime logs from upstream (FFmpeg, VapourSynth) and downstream (x264, x265, SVT-AV1) programs to files.
-- Recommended to enable for troubleshooting; the default number is based on common TV Show episode counts (i.e., queue length)
+- Recommended enabling for troubleshooting; the default number is based on common TV Show episode counts (i.e., queue length)
 
 **Auto Muxing**
 - Multiplexes encoded video streams into `.mkv` containers.

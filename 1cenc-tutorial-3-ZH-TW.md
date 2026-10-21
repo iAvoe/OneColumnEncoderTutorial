@@ -15,11 +15,18 @@
 
 ---
 
-## 影片格式與編碼器
+## 編碼格式
 
-* **AVC / H.264（`x264`）：** 發布於 2003 年，是支持最廣泛的影片標準。它至今仍是黃金標準，因為更快的編碼器缺乏其相容性，而壓縮率更高的編碼器編碼速度要慢得多。
-* **HEVC / H.265（`x265`）：** 發布於 2013 年，是 AVC 的升級版本。壓縮效率大幅提升，但編碼時對 CPU 資源的需求很高。
-* **AV1（`SVT-AV1`、`AV1AN` 等）：** 於 2018 年基於 Google 的技術發布。壓縮效率始終優於 HEVC（尤其在動畫方面）。但較舊的手機和硬體缺乏原生解碼支持。
+* **AVC / H.264（`x264`）：** 標準化於 2003 年，至今仍是支持最廣泛的影片編碼格式。幾乎每種設備、瀏覽器和剪輯軟體都能解碼它，而更新的編碼格式壓縮率更高，但編碼速度要慢得多，且支持參差不齊。
+* **HEVC / H.265（`x265`）：** 標準化於 2013 年，是 AVC 的繼任者。在相同畫質下通常比 AVC 需要低得多的碼率，但編碼非常消耗 CPU。專利許可也阻礙了它的普及，尤其是在瀏覽器中。
+* **AV1（`SVT-AV1`、`aomenc`、`rav1e` 等）：** 於 2018 年由包含 Google 在內的行業聯盟開放媒體聯盟（Alliance for Open Media）發布，免版稅。壓縮效率通常優於 HEVC，在動畫中尤其明顯。但較舊的手機和其它硬體缺乏原生解碼支持。`AV1AN` 是驅動這些編碼器的分塊編碼工具，本身並不是編碼器。
+
+* **AAC（`ffmpeg aac`、`QAAC`、`fdkaac`）：** 標準化於 1997 年，是串流媒體和影片中最常見的音訊格式之一。它也是主要的藍牙音訊編碼格式之一，但僅限支持的設備，因此音訊在傳輸前會被重編碼為 AAC。QAAC（Apple 的編碼器）長期以來被認為音質最好。FFmpeg 9.1 引入了重寫的原生 AAC 編碼器，其開發者聲稱在客觀品質測試中優於 qaac 和 fdk-aac，但它僅支援 CBR 且針對 48 kHz 最佳化。獨立聽音測試仍然有限，“最好”尚未有定論。
+* **Opus（`libopus`）：** 標準化於 2012 年，是一款開放且免版稅的編碼格式。在相同碼率下音質通常優於 AAC，在低碼率下尤其明顯，被用於 WebRTC、Discord、YouTube 和 OBS。由於較新，部分舊播放器和 Adobe 軟體（Premiere Pro、After Effects）缺乏原生支持。
+
+參考來源：
+- [FFmpeg 9.1 AAC 編碼器發布公告帖](https://zeli.app/pt/story/48747116)
+- [Doom9: Evaluation of FFmpeg 9.1 new AAC encoder](https://forum.doom9.org/archive/index.php/t-187041.html)
 
 ### 常見色彩空間
 
@@ -104,11 +111,15 @@
 
 <img src="./img-cn/21-Encode-Settings.png" alt="壓制設置" width=1200 />
 
-### CRF 與 ABR
-* **恆定碼率因子 / 碼率調諧常量（CRF）：** 側重於在整個影片中保持一致的畫面品質水準。碼率會根據場景複雜度動態波動。**推薦日常使用。**
-* **平均碼率（ABR）：** 以嚴格的平均文件體積/碼率作為目標。僅在你必須滿足硬性儲存或串流媒體頻寬限制時有用。
+**恆定碼率因子（CRF）：**
+* 側重於在整個影片中保持一致的畫面品質水準。碼率會根據場景複雜度動態波動。**推薦日常使用。**
 
-### 基本預設配置
+**平均碼率（ABR）：**
+* 以嚴格的平均文件體積/碼率作為目標。僅在你必須滿足硬性儲存或串流媒體頻寬限制時有用。
+
+> CRF 與 ABR 模式同時出現在影片和音訊編碼器中
+
+### 基本預設——影片
 
 #### x264（`AVC`）
 * **通用：** 針對所有片源類型的最大相容性和均衡速度進行調校。
@@ -124,6 +135,49 @@
 * **極致畫質：** 為 AV1 編碼提供盡可能高的圖像保真度。
 * **最佳化壓縮：** 優先追求更小的文件體積，同時保持出色的視覺質量。
 * **最佳化速度：** 禁用密集最佳化通道以加快編碼速度，代價是文件體積變大。
+
+### 音訊（自動封裝設定）
+
+<img src="./img-cn/10-Settings.png" alt="設定" width=480 />
+
+1cenc 使用 ffmpeg 編碼音訊，各模式可從下列原始碼片段中看出：
+
+```csharp
+/// <summary>
+/// Builds the audio codec argument fragment for a resolved audio mux mode.
+/// Returns null for Disable so callers can emit the bare -an instead.
+/// </summary>
+private static string? BuildAudioMuxArgs(EncodingAudioMuxMode mode) => mode switch
+{
+    EncodingAudioMuxMode.Copy => "-c:a copy",
+    EncodingAudioMuxMode.ReEncodeAAC320 => "-c:a aac -b:a 320k",
+    EncodingAudioMuxMode.ReEncodeAAC256 => "-c:a aac -b:a 256k",
+    EncodingAudioMuxMode.ReEncodeAAC128 => "-c:a aac -b:a 128k",
+    EncodingAudioMuxMode.ReEncodeOpus320 => "-c:a libopus -b:a 320k -vbr on -application audio -compression_level 10",
+    EncodingAudioMuxMode.ReEncodeOpus256 => "-c:a libopus -b:a 256k -vbr on -application audio -compression_level 10",
+    EncodingAudioMuxMode.ReEncodeOpus128 => "-c:a libopus -b:a 128k -vbr on -application audio -compression_level 10",
+    // Separator: settings without bitrate limit, for quality-based unrestricted encoding
+    EncodingAudioMuxMode.ReEncodeAACQ2 => "-c:a aac -aac_coder nmr -q:a 2", // 1-Nk
+    EncodingAudioMuxMode.ReEncodeAACQ1_5 => "-c:a aac -aac_coder nmr -q:a 1.5", // 1-192k
+    EncodingAudioMuxMode.ReEncodeAACQ1 => "-c:a aac -aac_coder nmr -q:a 1", // 1-140k
+    EncodingAudioMuxMode.ReEncodeOpusVBR => "-c:a libopus -vbr on -application audio -compression_level 10",
+    _ => null
+};
+```
+
+**ReEncodeAACXXX：**
+- FFmpeg AAC 編碼器的 ABR 模式
+- 當源音訊過於複雜、無法在平均 kbps 限制內完成編碼時，會降低品質
+
+**ReEncodeOPUSXXX：**
+- libopus 編碼器的 ABR 模式
+- 當源音訊過於複雜、無法在平均 kbps 限制內完成編碼時，會降低品質
+
+**ReEncodeAACQXXX**
+- FFmpeg AAC 編碼器的 CRF 模式
+
+**ReEncodeOpusVBR**
+- libopus 編碼器的「自動」模式，不限制碼率，按需分配盡量多的碼率，類似於無損壓縮
 
 ---
 

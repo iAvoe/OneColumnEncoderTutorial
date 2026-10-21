@@ -242,7 +242,7 @@ VapourSynth は Python 環境上で動作します。以下の表を参照する
 
 設定ページは 1cenc で最も開くのが遅いウィンドウです — フォント設定の読み込みが原因です。
 
-<img src="./img-ja/10-Settings.png" alt="設定" width=500 />
+<img src="./img-ja/10-Settings.png" alt="設定" width=480 />
 
 #### デフォルト値と推奨値
 

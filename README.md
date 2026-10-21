@@ -66,17 +66,19 @@ The screenshot images and edge functionality in tutorial may differ from latest 
 
 ## 3. Professional | 专业级
 
-**Video Format | 视频格式**
+**Codecs | 编码格式**
 - Compression types | 压缩种类
 - Color Spaces | 色彩空间
-- Video Codecs | 编码格式
+- Video Codecs (AVC / H.264, HEVC / H.265, AV1) | 视频编码格式（AVC / H.264、HEVC / H.265、AV1）
+- Audio Codecs (AAC, Opus) | 音频编码格式（AAC、Opus）
 
 **Filtering & Encoding | 滤镜与压制**
 - General Principles | 通用准则
 - Filtering Principles | 滤镜处理准则
 - Encoding Principles | 视频压制准则
 - Filtering Settings | 滤镜处理设置
-- Encoding Settings | 视频压制设置
+- Video Encoding Settings | 视频压制设置
+- Audio Encoding Settings | 音频编码设置
 
 * **English:** [1cenc-tutorial-3-EN](./1cenc-tutorial-3-EN.md)
 * **中文简体：** [1cenc-tutorial-3-ZH-CN](./1cenc-tutorial-3-ZH-CN.md)

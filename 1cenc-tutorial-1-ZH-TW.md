@@ -241,7 +241,7 @@ VapourSynth 基於 Python 環境運行，根據下表或直接使用 3.14.x 版�
 
 設置頁是 1cenc 中打開最慢的窗口——因為字體設置的載入所致。
 
-<img src="./img-cn/10-Settings.png" alt="設置" width=500 />
+<img src="./img-cn/10-Settings.png" alt="設置" width=480 />
 
 #### 默認與建議值
 

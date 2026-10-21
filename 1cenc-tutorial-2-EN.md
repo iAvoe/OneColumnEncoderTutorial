@@ -35,7 +35,7 @@ In simple terms, a fork clones the software's complete current state to create t
    * Define common video filters and encode settings as needed
 2. **Create one instance for each available NUMA node**
 3. **Differentiate each instance's workload**
-   * Selectively delete duplicate tasks so the work is distributed evenly across N nodes
+   * Selectively delete duplicate tasks, so the work is distributed evenly across N nodes
      * Queue Mode → Open Queue Editor → Delete button
      * Repart Mode → Open Repart Editor → Find the Output Queue → Press Delete
      * “Sort by file size” can further improve the distribution

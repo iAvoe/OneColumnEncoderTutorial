@@ -15,11 +15,18 @@
 
 ---
 
-## 動画フォーマットとコーデック
+## コーデック
 
-* **AVC / H.264（`x264`）：** 2003 年にリリースされ、最も普遍的にサポートされている動画規格です。高速なコーデックは互換性に欠け、高圧縮なコーデックはエンコードに大幅に時間がかかるため、今もなおゴールドスタンダードであり続けています。
-* **HEVC / H.265（`x265`）：** 2013 年にリリースされた AVC のアップグレード版です。はるかに高い圧縮効率を提供しますが、エンコード時に大きな CPU リソースを必要とします。
-* **AV1（`SVT-AV1`、`AV1AN` など）：** 2018 年に Google の技術をベースにリリースされました。圧縮効率では HEVC を一貫して上回ります（特にアニメーションで顕著）。ただし、古い携帯電話やハードウェアはネイティブのデコードに対応していません。
+* **AVC / H.264（`x264`）：** 2003 年に規格化され、現在も最も広くサポートされている動画コーデックです。ほぼすべてのデバイス、ブラウザー、編集ソフトでデコードできるため。新しいコーデックは圧縮率が高いものの、エンコードははるかに遅く、サポートもばらばらです。
+* **HEVC / H.265（`x265`）：** 2013 年に AVC の後継として規格化されました。同じ品質なら AVC よりはるかに低いビットレートで済みますが、エンコードは非常に CPU を消費します。特許ライセンスも普及を阻害しており、特にブラウザーでの対応が限定的です。
+* **AV1（`SVT-AV1`、`aomenc`、`rav1e` など）：** 2018 年に Google を含む業界団体 Alliance for Open Media から公開された、ロイヤリティフリーのコーデックです。圧縮効率は一般に HEVC を上回り、アニメーションで特に顕著です。ただし、古い携帯電話などのハードウェアはネイティブデコードに対応していません。`AV1AN` はこれらのエンコーダーを駆動するチャンク分割エンコード用ツールであり、エンコーダーそのものではありません。
+
+* **AAC（`ffmpeg aac`、`QAAC`、`fdkaac`）：** 1997 年に規格化され、ストリーミングや動画で最も一般的なオーディオ形式の一つです。Bluetooth オーディオコーデックの主要な選択肢の一つでもありますが、対応デバイスでのみ使えるため、送信前にオーディオが AAC に再エンコードされます。QAAC（Apple のエンコーダー）は長らく最高音質とされてきました。FFmpeg 9.1 ではネイティブ AAC エンコーダーが書き直されました。開発者は客観品質テストで qaac と fdk-aac を上回ると主張していますが、CBR 専用で 48 kHz 向けに最適化されています。独立したリスニングテストはまだ限られており、「最高」は未確定です。
+* **Opus（`libopus`）：** 2012 年に規格化された、オープンでロイヤリティフリーのコーデックです。同じビットレートでは AAC より音が良く、特に低ビットレートで顕著で、WebRTC、Discord、YouTube、OBS などで使われています。比較的新しいため、一部の旧来のプレーヤーや Adobe アプリ（Premiere Pro、After Effects）はネイティブサポートがありません。
+
+出典：
+- [FFmpeg 9.1 AAC エンコーダー発表スレッド](https://zeli.app/pt/story/48747116)
+- [Doom9: Evaluation of FFmpeg 9.1 new AAC encoder](https://forum.doom9.org/archive/index.php/t-187041.html)
 
 ### 一般的な色空間
 
@@ -104,11 +111,15 @@
 
 <img src="./img-ja/21-Encode-Settings.png" alt="エンコード設定" width=1200 />
 
-### CRF と ABR
-* **Constant Rate Factor / ビットレート調整定数（CRF）：** 動画全体で一貫した視覚品質レベルを維持することに重点を置きます。ビットレートはシーンの複雑さに応じて動的に変動します。**一般的な使用に推奨されます。**
-* **Average Bitrate / 平均ビットレート（ABR）：** 厳密な平均ファイルサイズ／ビットレートを目標とします。ハードウェアのストレージやストリーミング帯域幅の制限を満たす必要がある場合にのみ有用です。
+**Constant Rate Factor / ビットレート調整定数（CRF）：**
+* 動画全体で一貫した視覚品質レベルを維持することに重点を置きます。ビットレートはシーンの複雑さに応じて動的に変動します。**一般的な使用に推奨されます。**
 
-### 基本プリセットプロファイル
+**Average Bitrate / 平均ビットレート（ABR）：**
+* 厳密な平均ファイルサイズ／ビットレートを目標とします。ハードウェアのストレージやストリーミング帯域幅の制限を満たす必要がある場合にのみ有用です。
+
+> CRF と ABR モードは動画コーデックとオーディオコーデックの両方に登場します
+
+### 基本プリセット——動画
 
 #### x264（`AVC`）
 * **汎用：** すべてのソースタイプで最大限の互換性とバランスの取れた速度を実現するよう調整されています。
@@ -124,6 +135,49 @@
 * **最高品質：** AV1 エンコードで可能な最高の画像再現性を提供します。
 * **高圧縮：** 強力な視覚品質を維持しながら、より小さいファイルサイズを優先します。
 * **高速：** エンコード時間を短縮するために集中的な最適化パスを無効にしますが、ファイルサイズは大きくなります。
+
+### 音声（自動マルチプレクス設定）
+
+<img src="./img-ja/10-Settings.png" alt="設定" width=480 />
+
+1cenc は音声のエンコードに ffmpeg を使用します。各モードはソースコードのスニペットから確認できます：
+
+```csharp
+/// <summary>
+/// Builds the audio codec argument fragment for a resolved audio mux mode.
+/// Returns null for Disable so callers can emit the bare -an instead.
+/// </summary>
+private static string? BuildAudioMuxArgs(EncodingAudioMuxMode mode) => mode switch
+{
+    EncodingAudioMuxMode.Copy => "-c:a copy",
+    EncodingAudioMuxMode.ReEncodeAAC320 => "-c:a aac -b:a 320k",
+    EncodingAudioMuxMode.ReEncodeAAC256 => "-c:a aac -b:a 256k",
+    EncodingAudioMuxMode.ReEncodeAAC128 => "-c:a aac -b:a 128k",
+    EncodingAudioMuxMode.ReEncodeOpus320 => "-c:a libopus -b:a 320k -vbr on -application audio -compression_level 10",
+    EncodingAudioMuxMode.ReEncodeOpus256 => "-c:a libopus -b:a 256k -vbr on -application audio -compression_level 10",
+    EncodingAudioMuxMode.ReEncodeOpus128 => "-c:a libopus -b:a 128k -vbr on -application audio -compression_level 10",
+    // Separator: settings without bitrate limit, for quality-based unrestricted encoding
+    EncodingAudioMuxMode.ReEncodeAACQ2 => "-c:a aac -aac_coder nmr -q:a 2", // 1-Nk
+    EncodingAudioMuxMode.ReEncodeAACQ1_5 => "-c:a aac -aac_coder nmr -q:a 1.5", // 1-192k
+    EncodingAudioMuxMode.ReEncodeAACQ1 => "-c:a aac -aac_coder nmr -q:a 1", // 1-140k
+    EncodingAudioMuxMode.ReEncodeOpusVBR => "-c:a libopus -vbr on -application audio -compression_level 10",
+    _ => null
+};
+```
+
+**ReEncodeAACXXX：**
+- FFmpeg AAC エンコーダーの ABR モード
+- ソース音声が複雑すぎて平均 kbps の上限に収まらない場合、品質を落とします
+
+**ReEncodeOPUSXXX：**
+- libopus エンコーダーの ABR モード
+- ソース音声が複雑すぎて平均 kbps の上限に収まらない場合、品質を落とします
+
+**ReEncodeAACQXXX**
+- FFmpeg AAC エンコーダーの CRF モード
+
+**ReEncodeOpusVBR**
+- libopus エンコーダーの「自動」モード。ビットレートの指定がないため、必要に応じて十分なビットレートを割り当てます（ロスレス圧縮に近い挙動）
 
 ---
 
