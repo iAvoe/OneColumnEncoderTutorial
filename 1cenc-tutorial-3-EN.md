@@ -7,11 +7,37 @@ This document breaks down settings and general principles in video filtering and
 **Bitrate:** The amount of data processed per second, measured in bits per second (b/s, Kb/s, Mb/s, Gb/s).
 
 ## Types of Compression
-* **Uncompressed (Raw):** Video data is stored exactly as captured. Files are massive, demanding immense storage and high read/write speeds, but require virtually no computer power to play back.
-* **Lossless Compression:** Reduces file size without losing a single pixel of data (similar to `.zip` or `.7z` archives). Files remain very large, and playback requires moderate CPU power.
-* **Lossy Compression:** Permanently discards redundant or imperceptible visual details to drastically shrink file size.
-  * **High Quality:** Retains more details, closer to the original.
-  * **Low Quality:** Drops more data, resulting in smaller files but lower visual fidelity and reduced playback decoding requirements.
+**Uncompressed (Raw):** Video data is stored exactly as captured. Files are massive, demanding immense storage and high read/write speeds, but require virtually no computer power to play back.
+
+**Lossless Compression:** Reduces file size without losing a single pixel of data (similar to `.zip` or `.7z` archives). Files remain very large, and playback requires moderate CPU power.
+
+**Lossy Compression:** Permanently discards redundant or imperceptible visual details to drastically shrink file size.
+* **High Quality:** Retains more details, closer to the original.
+* **Low Quality:** Drops more data, resulting in smaller files but lower visual fidelity and reduced playback decoding requirements.
+
+### Compression Methods
+**Redundancy (Lossless)**
+- Compression: AAAAABBBC → 5(A)+3(B)+1(C)
+- Decompression/Reconstruction: 5(A)+3(B)+1(C) → AAAAA+BBB+C → AAAAABBBC
+- Double-edged sword — C is incompressible: fully restorable, but limited compression ratio
+
+**Quantization (Lossy)**
+- Compression: 5(A)+3(B)+1(C) → drop unimportant details, e.g. everything that occurs only once → 5(A)+3(B)
+- Decompression/Reconstruction: 5(A)+3(B) → … → AAAAABBB
+- Double-edged sword — C is discarded: higher compression ratio, but the data is lost forever
+
+**Video Compression**
+- Temporal-domain pixel value (Y, Cb, Cr) redundancy: e.g. frames 0–5 are identical → record as 5×Frame0
+- Spatial-domain pixel value (Y, Cb, Cr) redundancy and quantization
+- Text redundancy (entropy coding): chain the remaining pixel/block data into an array and encode it by probability
+
+**Image Compression**
+- Spatial-domain pixel value (Y, Cb, Cr) redundancy and quantization
+- Text redundancy (entropy coding): chain the remaining pixel/block data into an array and encode it by probability
+
+**Text Compression**
+- Text redundancy: chain any text into a character sequence and encode it by probability
+- Usually implemented via a dictionary method or a probabilistic model method
 
 ---
 
@@ -36,6 +62,10 @@ Sources:
 | **ARGB** | Alpha, Red, Green, Blue | Includes a transparency channel | Facilitates layered editing | Editing, Storage |
 | **CMYK** | Cyan, Magenta, Yellow, Black | Subtractive color model | Reduces ink usage in dark/colored prints | Printing |
 | **YCbCr / YUV** | Y (Luminance), Cb/Cr (Color differences) | Optimized for Human Vision Systems (HVS) | Shrinks color resolution since human eyes are less sensitive to color detail than brightness | Storage, Playback |
+
+### Common Video Data Structures
+- **GOP:** Group of pictures
+<img src="./img4-all/Video-Coding-Components-v2.png" alt="Common Video Data Structures" width=450 />
 
 ---
 
