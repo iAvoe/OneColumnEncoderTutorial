@@ -54,9 +54,15 @@
 >          │   └── ...
 >          ├── x64-CloudinarySSIMULACRA2.1
 >          │   └── ...
->          └── x64-GoogleButteraugli
->             └── ...
->
+>          ├── x64-GoogleButteraugli
+>          │   └── ...
+>          ├── SourceQueues
+>          │   └── queue_<yyyy-MM-dd>_<hh-mm-ss>.json
+>          │   └── concat_<yyyy-MM-dd>_<hh-mm-ss>.txt
+>          │   └── repart_<yyyy-MM-dd>_<hh-mm-ss>.txt
+>          └── EncodingLogs
+>              └── upstream_stderr_<yyyy-MM-dd>_<hh-mm-ss>.txt
+>              └── dnstream_stderr_<yyyy-MM-dd>_<hh-mm-ss>.txt
 
 ---
 

@@ -138,7 +138,8 @@ Using a two-disc multi-episode TV anime as an example; some folders remain colla
 - The items previously identified as “preview images” are actually credits for English voice actors and the company
   - Given the age of the production of main-episode, adding separate credits prevent unnecessary re-encoding of source
 
-**Conclusion: the episodes are already separated correctly, but anime fans place importance on voice-actor credits, so the extra credits should be joined to the end of each main episode (Repart Mode required).**
+**Conclusion: the episodes are already separated correctly**
+- However, anime fans place importance on voice-actor credits, so the extra credits should be joined to the end of each main episode (Repart Mode required).
 
 ---
 

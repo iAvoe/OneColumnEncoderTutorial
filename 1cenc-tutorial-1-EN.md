@@ -54,9 +54,15 @@ While .exe tools can go anywhere, 1cenc auto-imports them from the following loc
 >          │   └── ...
 >          ├── x64-CloudinarySSIMULACRA2.1
 >          │   └── ...
->          └── x64-GoogleButteraugli
->             └── ...
->
+>          ├── x64-GoogleButteraugli
+>          │   └── ...
+>          ├── SourceQueues
+>          │   └── queue_<yyyy-MM-dd>_<hh-mm-ss>.json
+>          │   └── concat_<yyyy-MM-dd>_<hh-mm-ss>.txt
+>          │   └── repart_<yyyy-MM-dd>_<hh-mm-ss>.txt
+>          └── EncodingLogs
+>              └── upstream_stderr_<yyyy-MM-dd>_<hh-mm-ss>.txt
+>              └── dnstream_stderr_<yyyy-MM-dd>_<hh-mm-ss>.txt
 
 
 ---
