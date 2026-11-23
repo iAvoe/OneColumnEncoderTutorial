@@ -65,7 +65,7 @@
 
 ---
 
-## Установка AviSynth+ и LSMASH (необязательно)
+## Установка AviSynth+ (необязательно)
 
 Если вы хотите использовать фильтры AviSynth, выполните этот шаг.
 
@@ -74,37 +74,18 @@
 - [Страница релизов AviSynth+ (GitHub)](https://github.com/AviSynth/AviSynthPlus/releases)
   - Выберите суффикс цели сборки в зависимости от типа системы
   - CPU архитектуры x86 + Windows 64bit → AviSynthPlus_x.y.z_yyyymmdd.exe
-- [Фильтры L-SMASH-Works (GitHub)](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works/releases/)
 
 <img src="./img-all/tools/AviSynth+.png" alt="Страница релизов AviSynth+" width=800 />
-
-<img src="./img-all/tools/L-SMASH-Works.png" alt="Страница релизов L-SMASH" width=800 />
 
 ### Установка
 
 <img src="./img-all/tools/AviSynth-Setup.png" alt="Установка AviSynth+" width=700 />
 
-1. Установите AviSynth+, можно выбрать только AviSynth+ Base
-2. Скопируйте `LSMASHSource.dll` из архива `L-SMASH-Works-rXXXX....7z` в соответствующую папку
-
-<img src="./img-all/tools/L-SMASH-Works-Extract-Archive.png" alt="Распаковка L-SMASH" width=350 />
-
-```
-C:\Program Files (x86)\AviSynth+
-├── ...
-├── plugins
-├── plugins+
-│   └── LSMASHSource.dll ← L-SMASH-Works-rXXXX....7z/x86/
-├── plugins64
-└── plugins64+
-    └── LSMASHSource.dll ← L-SMASH-Works-rXXXX....7z/x64/
-```
-
-> Примечание: это не `libvslsmashsource.dll`
+Установите AviSynth+, можно выбрать только AviSynth+ Base
 
 ---
 
-## Установка Python, VapourSynth, libvslsmashsource
+## Установка Python и VapourSynth (необязательно)
 
 Если вы хотите использовать фильтры VapourSynth и используете 64-битную ОС, выполните этот шаг.
 
@@ -137,19 +118,8 @@ VapourSynth работает на базе окружения Python; испол
 
 - [Страница релизов VapourSynth (GitHub)](https://github.com/vapoursynth/vapoursynth/releases)
   - Portable: портативная версия, требует ручной установки (добавление системных переменных и т.д.); не рекомендуется
-  
-- [Фильтры LSMAS GitHub/AkarinVS](https://github.com/AkarinVS/L-SMASH-Works/releases)
-  - Декодер создаёт индексные файлы источника видео (кэш-файлы); выберите версию в зависимости от желаемого пути хранения.
-    - tmp: `cachedir=%TEMP%`, кэш-диск определяется настройками ОС, обычно C: в Windows
-      - Рекомендуется — с высокой вероятностью будет автоматически удалён при очистке системы
-    - src: `cachedir=""`, текущий путь командной строки, по умолчанию C: в Windows
-    - cwd: `cachedir="."`, путь командной строки при запуске
-
-> Примечание: ранее загруженный `LSMASHSource.dll` также может работать, попробуйте.
 
 <img src="./img-all/tools/VapourSynth-R73.png" alt="Страница релизов VapourSynth" width=800 />
-
-<img src="./img-all/tools/libvslsmashsource.png" alt="Страница релизов AkarinVS L-SMASH" width=800 />
 
 ### Установка
 
@@ -157,8 +127,46 @@ VapourSynth работает на базе окружения Python; испол
 
 1. Установите VapourSynth; на второй странице установщика будут перечислены Python-окружения, обнаруженные в системе
     - Если ранее установленный Python не отображается, повторите установку
-2. Скопируйте `libvslsmashsource.dll` из архива в папку `C:\Program Files\VapourSynth\plugins`
-3. Откройте CMD или PowerShell и выполните `vspipe --version` для проверки
+2. Откройте CMD или PowerShell и выполните `vspipe --version` для проверки
+
+---
+
+## Установка исходного фильтра LSMASH (необязательно)
+
+AviSynth/VapourSynth использует этот фильтр для получения содержимого видеопотока.
+
+В 1cenc v2.25.32 фильтр LSMASH встроен, поэтому этот шаг можно пропустить, если вы не планируете вручную вызывать AviSynth/VapourSynth.
+
+- [L-SMASH-Works (GitHub)](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works/releases/)
+
+<img src="./img-all/tools/L-SMASH-Works.png" alt="Страница релизов L-SMASH" width=800 />
+
+**Содержимое архива:**
+
+<img src="./img-all/tools/L-SMASH-Works-Extract-Archive.png" alt="Распаковка L-SMASH" width=350 />
+
+### Размещение фильтра
+
+Переместите `LSMASHSource.dll` из архива `L-SMASH-Works-rXXXX....7z` в соответствующие папки:
+
+```
+C:\Program Files (x86)\AviSynth+
+├── ...
+├── plugins
+├── plugins+
+│   └── LSMASHSource.dll  ← 32bit
+├── plugins64
+└── plugins64+
+    └── LSMASHSource.dll  ← 64bit
+
+C:\Program Files\VapourSynth
+ ├── ...
+ ├── plugins
+ │   └── LSMASHSource.dll ← 32/64bit
+ ├── python
+ ├── sdk
+ └── vsrepo
+```
 
 ---
 

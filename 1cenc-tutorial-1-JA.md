@@ -67,7 +67,7 @@
 
 ---
 
-## AviSynth+ と LSMASH のインストール（オプション）
+## AviSynth+ のインストール（オプション）
 
 AviSynth フィルターを使用する場合は、この手順を行ってください。
 
@@ -76,37 +76,18 @@ AviSynth フィルターを使用する場合は、この手順を行ってく�
 - [AviSynth+ リリースページ（GitHub）](https://github.com/AviSynth/AviSynthPlus/releases)
   - システムタイプに応じてビルドターゲットのサフィックスを選択してください
   - x86 アーキテクチャ CPU + Windows 64bit → AviSynthPlus_x.y.z_yyyymmdd.exe
-- [L-SMASH-Works フィルター（GitHub）](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works/releases/)
 
 <img src="./img-all/tools/AviSynth+.png" alt="AviSynth+ リリースページ" width=800 />
-
-<img src="./img-all/tools/L-SMASH-Works.png" alt="L-SMASH リリースページ" width=800 />
 
 ### インストール
 
 <img src="./img-all/tools/AviSynth-Setup.png" alt="AviSynth+ インストール" width=700 />
 
-1. AviSynth+ をインストールします。AviSynth+ Base のみをインストールすることもできます。
-2. `L-SMASH-Works-rXXXX....7z` アーカイブ内の `LSMASHSource.dll` を対応するフォルダーにコピーします。
-
-<img src="./img-all/tools/L-SMASH-Works-Extract-Archive.png" alt="LSMASH 展開" width=350 />
-
-```
-C:\Program Files (x86)\AviSynth+
-├── ...
-├── plugins
-├── plugins+
-│   └── LSMASHSource.dll ← L-SMASH-Works-rXXXX....7z/x86/
-├── plugins64
-└── plugins64+
-    └── LSMASHSource.dll ← L-SMASH-Works-rXXXX....7z/x64/
-```
-
-> 注意：これは `libvslsmashsource.dll` ではありません。
+AviSynth+ をインストールします。AviSynth+ Base のみをインストールすることもできます。
 
 ---
 
-## Python、VapourSynth、libvslsmashsource のインストール
+## Python、VapourSynth のインストール（オプション）
 
 VapourSynth フィルターを使用し、かつ 64bit OS を使用している場合は、この手順を行ってください。
 
@@ -145,21 +126,8 @@ VapourSynth は Python 環境上で動作します。以下の表を参照する
 
 - [VapourSynth リリースページ（GitHub）](https://github.com/vapoursynth/vapoursynth/releases)
   - Portable：ポータブル版で、手動でインストール手順（システム変数の追加など）が必要です。推奨しません。
-   
-- [LSMAS フィルター GitHub/AkarinVS](https://github.com/AkarinVS/L-SMASH-Works/releases)
-  - デコーダーは動画ソースのインデックスファイル（キャッシュファイル）を作成します。保存先パスに応じてバージョンを選択してください。
-    - tmp：`cachedir=%TEMP%`、OS 設定に基づいてキャッシュドライブを指定します。Windows の場合は通常 C: ドライブです。
-      - 推奨 — システムクリーンアップ時に自動的に削除される可能性が高いです。
-    - src：`cachedir=""`、コマンドウィンドウの現在のパスです。
-      - Windows のデフォルトは C: ドライブです。
-    - cwd：`cachedir="."`、実行時のコマンドライン パスです。
-      - CMD/PowerShell/Bash を開いたときの初期パスです。
-
-> 以前にダウンロードした `LSMASHSource.dll` でも動作する可能性がありますので、試してみてください。
 
 <img src="./img-all/tools/VapourSynth-R73.png" alt="VapourSynth リリースページ" width=800 />
-
-<img src="./img-all/tools/libvslsmashsource.png" alt="AkarinVS L-SMASH リリースページ" width=800 />
 
 ### インストール
 
@@ -167,8 +135,46 @@ VapourSynth は Python 環境上で動作します。以下の表を参照する
 
 1. VapourSynth をインストールします。インストール画面の 2 ページ目に、システムに存在する Python 環境が一覧表示されます。
      - 以前にインストールした Python が一覧にない場合は、やり直してください。
-2. アーカイブ内の `libvslsmashsource.dll` を `C:\Program Files\VapourSynth\plugins` フォルダーにコピーします。
-3. CMD または PowerShell を開き、`vspipe --version` を実行して確認します。
+2. CMD または PowerShell を開き、`vspipe --version` を実行して確認します。
+
+---
+
+## LSMASH ソースフィルター（オプション）
+
+AviSynth/VapourSynth はこのフィルターを使用してビデオストリームの内容を取得します。
+
+1cenc v2.25.32 には LSMASH ソースフィルターがバンドルされているため、AviSynth/VapourSynth を手動で呼び出す予定がない場合はこの手順をスキップできます。
+
+- [L-SMASH-Works（GitHub）](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works/releases/)
+
+<img src="./img-all/tools/L-SMASH-Works.png" alt="L-SMASH リリースページ" width=800 />
+
+**アーカイブの内容：**
+
+<img src="./img-all/tools/L-SMASH-Works-Extract-Archive.png" alt="LSMASH 展開" width=350 />
+
+### フィルターの配置
+
+`L-SMASH-Works-rXXXX....7z` アーカイブ内の `LSMASHSource.dll` を対応するフォルダーに移動します：
+
+```
+C:\Program Files (x86)\AviSynth+
+├── ...
+├── plugins
+├── plugins+
+│   └── LSMASHSource.dll  ← 32bit
+├── plugins64
+└── plugins64+
+    └── LSMASHSource.dll  ← 64bit
+
+C:\Program Files\VapourSynth
+ ├── ...
+ ├── plugins
+ │   └── LSMASHSource.dll ← 32/64bit
+ ├── python
+ ├── sdk
+ └── vsrepo
+```
 
 ---
 

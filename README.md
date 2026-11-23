@@ -12,8 +12,9 @@ The screenshot images and edge functionality in tutorial may differ from latest 
 - Video Processing Tool Placement | 视频处理工具放置
 
 **Install Optional Tools | 安装可选工具**
-- AviSynth+, LSMASH (Optional)
-- Python, VapourSynth, LSMASH (Optional)
+- AviSynth+ (Optional)
+- Python, VapourSynth (Optional)
+- LSMASH Source Filter (Optional)
 
 **First Launch | 首次启动**
 - Main Interface Overview | 主界面一览
